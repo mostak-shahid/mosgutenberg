@@ -12,8 +12,8 @@ function add_slug_body_class( $classes ) {
 
 add_action( 'action_below_footer', 'back_to_top_fnc', 10, 1 );
 function back_to_top_fnc () {
-    global $mosgetweb_options;
-    if ($mosgetweb_options['misc-back-top']) :
+    global $mosgutenberg_options;
+    if ($mosgutenberg_options['misc-back-top']) :
     ?>
     <a href="javascript:void(0)" class="scrollup" style="display: none;"><img width="40" height="40" src="<?php echo get_template_directory_uri() ?>/images/icon_top.png" alt="Back To Top"></a>
     <?php 
@@ -25,7 +25,7 @@ function custom_admin_script(){
         ?>
         <script>
         jQuery(document).ready(function($){
-            $('#_mosgetweb_banner_details').hide();
+            $('#_mosgutenberg_banner_details').hide();
         });
         </script>
         <?php 

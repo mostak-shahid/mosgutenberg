@@ -33,7 +33,7 @@
  */
 require_once dirname( __FILE__ ) . '/class-tgm-plugin-activation.php';
 
-add_action( 'tgmpa_register', 'mosgetweb_plugins_management' );
+add_action( 'tgmpa_register', 'mosgutenberg_plugins_management' );
 
 /**
  * Register the required plugins for this theme.
@@ -69,7 +69,7 @@ add_action( 'init', function () {
 	}	
 });
 
-function mosgetweb_plugins_management() {
+function mosgutenberg_plugins_management() {
 	/*
 	 * Array of plugin arrays. Required keys are name and slug.
 	 * If the source is NOT from the .org repo, then source is also required.

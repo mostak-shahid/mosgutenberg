@@ -20,9 +20,9 @@ if (!function_exists('bootstrapBasicComment')) {
 			echo '>';
 			echo '<div class="media comment_section">';
 				echo '<div class="media-body">';
-					_e('Pingback:', 'mosgetweb');
+					_e('Pingback:', 'mosgutenberg');
 					comment_author_link(); 
-					edit_comment_link(__('Edit', 'mosgetweb'), '<span class="edit-link">', '</span>');
+					edit_comment_link(__('Edit', 'mosgutenberg'), '<span class="edit-link">', '</span>');
 				echo '</div>';
 			echo '</div>';
 		} else {
@@ -51,7 +51,7 @@ if (!function_exists('bootstrapBasicComment')) {
 						echo '<div class="comment-author vcard">';
 							echo '<div class="comment-metadata">';
 							// comment author says
-							//printf(/*__('%s <span class="says">says:</span>', 'mosgetweb'),*/ 
+							//printf(/*__('%s <span class="says">says:</span>', 'mosgutenberg'),*/ 
 //                                sprintf('<span class="comment-author">%s</span>&nbsp; ', get_comment_author_link());
                             //);
                             echo '<span class="comment-author">' . get_comment_author_link() . '</span>';
@@ -70,14 +70,14 @@ if (!function_exists('bootstrapBasicComment')) {
 	
 							echo ' ';
 	
-							//edit_comment_link('<span class="fa fa-pencil-square-o "></span>' . __('Edit Comment', 'mosgetweb'), '<span class="edit-link">', '</span>');
+							//edit_comment_link('<span class="fa fa-pencil-square-o "></span>' . __('Edit Comment', 'mosgutenberg'), '<span class="edit-link">', '</span>');
 	
 							echo '</div><!-- .comment-metadata -->';
 	
 							// if comment was not approved
 							if ('0' == $comment->comment_approved) {
 								echo '<div class="comment-awaiting-moderation text-warning"> <span class="glyphicon glyphicon-info-sign"></span> ';
-									_e('Your comment is awaiting moderation.', 'mosgetweb');
+									_e('Your comment is awaiting moderation.', 'mosgutenberg');
 								echo '</div>';
 							} //endif;
 						echo '</div><!-- .comment-author vcard -->';
@@ -91,8 +91,8 @@ if (!function_exists('bootstrapBasicComment')) {
 //								'add_below' => 'div-comment',
 //								'depth'     => $depth,
 //								'max_depth' => $args['max_depth'],
-//								'reply_text' => 'Reply' . __('', 'mosgetweb'),
-//								'login_text' => '<span class="fa fa-reply"></span> ' . __('Log in to Reply', 'mosgetweb')
+//								'reply_text' => 'Reply' . __('', 'mosgutenberg'),
+//								'login_text' => '<span class="fa fa-reply"></span> ' . __('Log in to Reply', 'mosgutenberg')
 //							)));
 							// end reply link
 					echo '</div><!-- .well -->';
@@ -106,12 +106,12 @@ if (!function_exists('bootstrapBasicComment')) {
 	}// bootstrapBasicComment
 }
 
-add_filter('comment_form_defaults', 'mosgetweb_comment_defaults');
-function mosgetweb_comment_defaults($defaults) {
+add_filter('comment_form_defaults', 'mosgutenberg_comment_defaults');
+function mosgutenberg_comment_defaults($defaults) {
 	$defaults['comment_notes_before'] = '';
 	$defaults['title_reply'] = 'Leave a comment';
 	$defaults['title_reply_to'] = 'Leave a comment %s';
-	$defaults['label_submit']  = __( 'Submit Comment', 'mosgetweb' );
+	$defaults['label_submit']  = __( 'Submit Comment', 'mosgutenberg' );
 	return $defaults;
 }
 add_filter('get_avatar', 'remove_photo_class');

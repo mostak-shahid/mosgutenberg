@@ -4,11 +4,11 @@ function mos_custom_post_types() {
 	 * Post Type: Projects.
 	 */
 	$labels = [
-		"name" => esc_html__( "Projects", "mosgetweb" ),
-		"singular_name" => esc_html__( "Project", "mosgetweb" ),
+		"name" => esc_html__( "Projects", "mosgutenberg" ),
+		"singular_name" => esc_html__( "Project", "mosgutenberg" ),
 	];
 	$args = [
-		"label" => esc_html__( "Projects", "mosgetweb" ),
+		"label" => esc_html__( "Projects", "mosgutenberg" ),
 		"labels" => $labels,
 		"description" => "",
 		"public" => true,
@@ -42,11 +42,11 @@ function mos_custom_taxonomy() {
 	 * Taxonomy: Categories.
 	 */
 	$labels = [
-		"name" => esc_html__( "Categories", "mosgetweb" ),
-		"singular_name" => esc_html__( "Category", "mosgetweb" ),
+		"name" => esc_html__( "Categories", "mosgutenberg" ),
+		"singular_name" => esc_html__( "Category", "mosgutenberg" ),
 	];	
 	$args = [
-		"label" => esc_html__( "Categories", "mosgetweb" ),
+		"label" => esc_html__( "Categories", "mosgutenberg" ),
 		"labels" => $labels,
 		"public" => true,
 		"publicly_queryable" => true,
@@ -71,11 +71,11 @@ function mos_custom_taxonomy() {
 	 * Taxonomy: Tags.
 	 */
 	$labels = [
-		"name" => esc_html__( "Tags", "mosgetweb" ),
-		"singular_name" => esc_html__( "Tag", "mosgetweb" ),
+		"name" => esc_html__( "Tags", "mosgutenberg" ),
+		"singular_name" => esc_html__( "Tag", "mosgutenberg" ),
 	];	
 	$args = [
-		"label" => esc_html__( "Tags", "mosgetweb" ),
+		"label" => esc_html__( "Tags", "mosgutenberg" ),
 		"labels" => $labels,
 		"public" => true,
 		"publicly_queryable" => true,

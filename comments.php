@@ -14,10 +14,10 @@ if ( post_password_required() ) {
         <?php if ( have_comments() ) { ?>
             <?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) {
                 // are there comments to navigate through  ?>
-                <h3 class="screen-reader-text sr-only"><?php _e( 'Comment navigation', 'mosgetwebtemplate' );?></h3>
+                <h3 class="screen-reader-text sr-only"><?php _e( 'Comment navigation', 'mosgutenbergtemplate' );?></h3>
                 <ul id="comment-nav-above" class="comment-navigation pager" role="navigation">
-                    <li class="nav-previous previous"><?php previous_comments_link( __( '&larr; Older Comments', 'mosgetwebtemplate' ) );?></li>
-                    <li class="nav-next next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'mosgetwebtemplate' ) );?></li>
+                    <li class="nav-previous previous"><?php previous_comments_link( __( '&larr; Older Comments', 'mosgutenbergtemplate' ) );?></li>
+                    <li class="nav-next next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'mosgutenbergtemplate' ) );?></li>
                 </ul><!-- #comment-nav-above -->
             <?php }
             // check for comment navigation  ?>
@@ -36,10 +36,10 @@ if ( post_password_required() ) {
 
             <?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) {
                 // are there comments to navigate through  ?>
-                <h3 class="screen-reader-text sr-only"><?php _e( 'Comment navigation', 'mosgetwebtemplate' );?></h3>
+                <h3 class="screen-reader-text sr-only"><?php _e( 'Comment navigation', 'mosgutenbergtemplate' );?></h3>
                 <ul id="comment-nav-below" class="comment-navigation comment-navigation-below pager" role="navigation">
-                    <li class="nav-previous previous"><?php previous_comments_link( __( '&larr; Older Comments', 'mosgetwebtemplate' ) );?></li>
-                    <li class="nav-next next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'mosgetwebtemplate' ) );?></li>
+                    <li class="nav-previous previous"><?php previous_comments_link( __( '&larr; Older Comments', 'mosgutenbergtemplate' ) );?></li>
+                    <li class="nav-next next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'mosgutenbergtemplate' ) );?></li>
                 </ul><!-- #comment-nav-below -->
             <?php }
                 // check for comment navigation  ?>
@@ -50,7 +50,7 @@ if ( post_password_required() ) {
         <?php
             // If comments are closed and there are comments, let's leave a little note, shall we?
         if (!comments_open() && '0' != get_comments_number() && post_type_supports(get_post_type(), 'comments')) { ?>
-            <p class="no-comments"><?php _e('Comments are closed.', 'mosgetwebtemplate'); ?></p>
+            <p class="no-comments"><?php _e('Comments are closed.', 'mosgutenbergtemplate'); ?></p>
             <?php 
         } //endif; 
         ?>
@@ -97,29 +97,29 @@ if ( post_password_required() ) {
 				 			'<div class = "col-md-4">' .
 				 			'<div class = "form-group">' .
                             '<label for="author">Name*</label>' .
-							'<input id="author" name="author" type="text" value="' . esc_attr($commenter['comment_author']) . '" ' . $aria_req . ' class="form-control"  placeholder="' .  __('Enter your name', 'mosgetwebtemplate') . '" />' . 
+							'<input id="author" name="author" type="text" value="' . esc_attr($commenter['comment_author']) . '" ' . $aria_req . ' class="form-control"  placeholder="' .  __('Enter your name', 'mosgutenbergtemplate') . '" />' . 
 							'</div>'.
 							'</div>',
 				'email'  => '<div class="col-md-4">' . 
 							'<div class="form-group">' .
                             '<label for="email">Email*</label>' .
-							'<input id="email" name="email" ' . ($html5 ? 'type="email"' : 'type="text"') . ' value="' . esc_attr($commenter['comment_author_email']) . '" ' . $aria_req . ' class="form-control"   placeholder="' .  __('Enter your email', 'mosgetwebtemplate') . '" />' . 
+							'<input id="email" name="email" ' . ($html5 ? 'type="email"' : 'type="text"') . ' value="' . esc_attr($commenter['comment_author_email']) . '" ' . $aria_req . ' class="form-control"   placeholder="' .  __('Enter your email', 'mosgutenbergtemplate') . '" />' . 
 							'</div>'.
 							'</div>',
 				'url'    => '<div class="col-md-4">' . 
 							'<div class="form-group">' .
                             '<label for="url">Website</label>' .
-							'<input id="url" name="url" ' . ($html5 ? 'type="url"' : 'type="text"') . ' value="' . esc_attr($commenter['comment_author_url']) . '" class="form-control"   placeholder="' .  __('Enter your website', 'mosgetwebtemplate') . '" />' . 
+							'<input id="url" name="url" ' . ($html5 ? 'type="url"' : 'type="text"') . ' value="' . esc_attr($commenter['comment_author_url']) . '" class="form-control"   placeholder="' .  __('Enter your website', 'mosgutenbergtemplate') . '" />' . 
 							'</div>' . 
 							'</div>' . 
 							'</div>',
 			),
 			'comment_field' => '<div class="form-group">' .   
                             '<label for="comment">Comment</label>' .
-							'<textarea id="comment" name="comment" rows="8" aria-required="true" class="form-control"  placeholder="' .  __('Type your comment here', 'mosgetwebtemplate') . '"></textarea>' .  
+							'<textarea id="comment" name="comment" rows="8" aria-required="true" class="form-control"  placeholder="' .  __('Type your comment here', 'mosgutenbergtemplate') . '"></textarea>' .  
 							'</div>',
 			/*'comment_notes_after' => '<p class="help-block">' . 
-							sprintf(__('You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes: %s', 'mosgetwebtemplate'), $comment_allowed_tags) . 
+							sprintf(__('You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes: %s', 'mosgutenbergtemplate'), $comment_allowed_tags) . 
 							This message will show after textarea
 							'</p>'*/
 		)

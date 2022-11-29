@@ -837,7 +837,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 					'tgmpa-nonce'
 				);
 
-				$method = ''; // Leave mosgetweb so WP_Filesystem can populate it as necessary.
+				$method = ''; // Leave mosgutenberg so WP_Filesystem can populate it as necessary.
 
 				$creds = request_filesystem_credentials( esc_url_raw( $url ), $method, false, false, array() );
 				if ( false === $creds ) {
@@ -1705,7 +1705,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 		public function get_info_link( $slug ) {
 			if ( ! empty( $this->plugins[ $slug ]['external_url'] ) && preg_match( self::IS_URL_REGEX, $this->plugins[ $slug ]['external_url'] ) ) {
 				$link = sprintf(
-					'<a href="%1$s" target="_mosgetweb">%2$s</a>',
+					'<a href="%1$s" target="_mosgutenberg">%2$s</a>',
 					esc_url( $this->plugins[ $slug ]['external_url'] ),
 					esc_html( $this->plugins[ $slug ]['name'] )
 				);
@@ -2960,7 +2960,7 @@ if ( ! class_exists( 'TGMPA_List_Table' ) ) {
 				// Give validated data back to $_POST which is the only place the filesystem looks for extra fields.
 				$_POST['plugin'] = implode( ',', $plugins_to_install ); // Work around for WP bug #19643.
 
-				$method = ''; // Leave mosgetweb so WP_Filesystem can populate it as necessary.
+				$method = ''; // Leave mosgutenberg so WP_Filesystem can populate it as necessary.
 				$fields = array_keys( $_POST ); // Extra fields to pass to WP_Filesystem.
 
 				$creds = request_filesystem_credentials( esc_url_raw( $url ), $method, false, false, $fields );

@@ -88,7 +88,7 @@
                                 </div>
                                 <div class="info">
                                     <h4 class="country text-white fw-bold fs-14">Skype</h4>
-                                    <a href="skype:live:mosgetwebinc" class="address textClrGray fs-14 fw-medium mb-0">mosgetwebinc</a>
+                                    <a href="skype:live:mosgutenberginc" class="address textClrGray fs-14 fw-medium mb-0">mosgutenberginc</a>
                                 </div>
                             </div>
                         </div>

@@ -33,7 +33,7 @@ We use the [git-flow](http://nvie.com/posts/a-successful-git-branching-model/) b
 ## Commit Messages
 We suggest you follow best practices for commit messages:
 
-* Separate subject (first line) from body with a mosgetweb line.
+* Separate subject (first line) from body with a mosgutenberg line.
 * Limit the subject line to 50 characters.
 * Capitalize the subject line.
 * Do not end the subject line with a period.

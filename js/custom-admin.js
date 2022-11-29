@@ -56,14 +56,14 @@ jQuery(document).ready(function($) {
 
     function show_meta_boxes(page_template) {
         if(page_template == 'page-template/lightbox-page.php') {
-            $('#_mosgetweb_gallery_details').show();
+            $('#_mosgutenberg_gallery_details').show();
         } else {
-           $('#_mosgetweb_gallery_details').hide(); 
+           $('#_mosgutenberg_gallery_details').hide(); 
         }
         if(page_template == 'page-template/gallery-page.php') {
-            $('#_mosgetweb_link_gallery_details').show();
+            $('#_mosgutenberg_link_gallery_details').show();
         } else {
-           $('#_mosgetweb_link_gallery_details').hide();
+           $('#_mosgutenberg_link_gallery_details').hide();
         }
     }
 

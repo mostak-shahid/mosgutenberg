@@ -1,7 +1,7 @@
 <?php
 //Add theme setup
-if ( ! function_exists( 'mosgetweb_setup' ) ) :
-	function mosgetweb_setup() {
+if ( ! function_exists( 'mosgutenberg_setup' ) ) :
+	function mosgutenberg_setup() {
 		add_theme_support('title-tag'); 	
 		add_theme_support('post-thumbnails');
 		add_theme_support( 'woocommerce' );
@@ -17,8 +17,8 @@ if ( ! function_exists( 'mosgetweb_setup' ) ) :
 
 		load_theme_textdomain( 'theme', get_template_directory() . '/languages' );
 		register_nav_menus( array(
-			'mainmenu' => esc_html__('Main Menu', 'mosgetweb'),
-			'mobilemenu' => esc_html__('Mobile Menu', 'mosgetweb'),
+			'mainmenu' => esc_html__('Main Menu', 'mosgutenberg'),
+			'mobilemenu' => esc_html__('Mobile Menu', 'mosgutenberg'),
 		));
 		add_theme_support( 'html5', array(
 			'search-form', 'comment-form', 'comment-list', 'gallery', 'caption'
@@ -28,4 +28,4 @@ if ( ! function_exists( 'mosgetweb_setup' ) ) :
 		));
 	}
 endif;
-add_action( 'after_setup_theme', 'mosgetweb_setup' );
+add_action( 'after_setup_theme', 'mosgutenberg_setup' );

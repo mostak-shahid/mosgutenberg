@@ -450,7 +450,7 @@ function crb_attach_theme_options() {
                             <img class="lazy-load-image lazyload img" src="<?php echo get_template_directory_uri() ?>/images/succesful-icon.svg" alt="icon" width="203px" height="184px" loading="lazy">
                         </div>
                         <h2 class="fs-30 fw-bold text-dark mb-4">Thanks for your application!</h2>
-                        <p class="fs-6 fw-normal textClrGray mb-5">A mosgetweb team member will reach out to schedule a call within 2 days.</p>
+                        <p class="fs-6 fw-normal textClrGray mb-5">A mosgutenberg team member will reach out to schedule a call within 2 days.</p>
                         <div class="sbm-btn">
                             <a class="btn bgClrGreen h-42 textClrThemeDark fs-14 fwSemiBold border-0 py-2 px-4 rounded-pill d-inline-flex align-items-center" href="<?php echo home_url() ?>">
                                 <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
