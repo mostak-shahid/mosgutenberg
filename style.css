@@ -1,0 +1,111 @@
+/*
+Theme Name: Getweb
+Theme URI: http://mdmostakshahid.com/
+Author: Md. Mostak Shahid
+Author URI: http://mdmostakshahid.com/
+Description: Our mosgetweb Theme default theme is clean, blog-focused, and designed for clarity. mosgetweb Theme is simple, straightforward typography is readable on a wide variety of screen sizes, and suitable for multiple languages. We designed it using a mobile-first approach. Your visitors arrive by smartphone, tablet, laptop, or desktop computer can view site easily.
+License: GNU General Public License v2 or later
+Version: 1.0.0
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: two-columns, one-column, left-sidebar, right-sidebar, fixed-layout, responsive-layout, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, post-formats, rtl-language-support, sticky-post, threaded-comments, translation-ready
+Text Domain: mosgetweb
+*/
+
+:root {
+    --primary-color: #121316;
+    --secondary-color: #191a1d;
+}
+
+html {
+    scroll-behavior: smooth
+}
+
+body {
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.hidden-link {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0
+}
+
+a {
+    text-decoration: none;
+}
+
+a,
+.smooth {
+    -webkit-transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out;
+    -o-transition: all .3s ease-out;
+    transition: all .3s ease-out
+}
+
+a:hover {
+    color: var(--secondary-color);
+}
+
+::-webkit-input-placeholder {
+    color: #4C4D54;
+}
+
+:-ms-input-placeholder {
+    color: #4C4D54;
+}
+
+::placeholder {
+    color: #4C4D54;
+}
+.scrollup {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    cursor: pointer;
+    z-index: 9;
+}
+.font-weight-100 {
+    font-weight: 100 !important
+}
+
+.font-weight-200 {
+    font-weight: 200 !important
+}
+
+.font-weight-300 {
+    font-weight: 300 !important
+}
+
+.font-weight-400 {
+    font-weight: 400 !important
+}
+
+.font-weight-500 {
+    font-weight: 500 !important
+}
+
+.font-weight-600 {
+    font-weight: 600 !important
+}
+
+.font-weight-700 {
+    font-weight: 700 !important
+}
+
+.font-weight-800 {
+    font-weight: 800 !important
+}
+
+.font-weight-900 {
+    font-weight: 900 !important
+}
+
+@media (min-width: 576px) {}
+@media (min-width: 992px) {}
