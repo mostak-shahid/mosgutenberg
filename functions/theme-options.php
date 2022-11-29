@@ -12,6 +12,17 @@ function mos_theme_options() {
         Field::make('footer_scripts', 'crb_footer_script', __('Footer Script')),
     ));
 
+    Container::make('theme_options', __('Color scheme'))
+    ->set_page_parent($basic_options_container) // reference to a top level container
+    ->add_fields(array(
+        Field::make( 'color', 'mos_body_bg', 'Body Background' )
+        //->set_palette( array( '#FF0000', '#00FF00', '#0000FF' ))
+        ->set_alpha_enabled( true ),
+        Field::make( 'color', 'mos_primary_color', 'Primary Color' ),
+        Field::make( 'color', 'mos_secondary_color', 'Secondary Color' ),
+        Field::make( 'color', 'mos_link_color', 'Link Color' ),
+        Field::make( 'color', 'mos_link_hover_color', 'Link Hover Color' ),
+    ));
     Container::make('theme_options', __('Contact Info'))
     ->set_page_parent($basic_options_container) // reference to a top level container
     ->add_fields(array(

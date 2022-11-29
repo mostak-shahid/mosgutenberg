@@ -27,7 +27,7 @@ else $page_id = get_the_ID();
 
 <body <?php body_class(); ?> <?php if (carbon_get_theme_option( 'mos-page-loader' ) == 'on') : ?> onload='document.getElementById("page-loader").classList.add("d-none")' <?php endif?>>
     <?php if (carbon_get_theme_option( 'mos-page-loader' ) == 'on') : ?>
-    <div id="page-loader" class="se-pre-con <?php echo carbon_get_theme_option( 'mos-page-loader-class' )?>" <?php if (carbon_get_theme_option( 'mos-page-loader-background' )) echo 'style="background-color:'.carbon_get_theme_option( 'mos-page-loader-background' ).'"' ?>>
+    <div id="page-loader" class="se-pre-con position-fixed top-0 start-0 bottom-0 end-0 d-flex justify-content-center align-items-center <?php echo carbon_get_theme_option( 'mos-page-loader-class' )?>" <?php if (carbon_get_theme_option( 'mos-page-loader-background' )) echo 'style="background-color:'.carbon_get_theme_option( 'mos-page-loader-background' ).'"' ?>>
         <?php if(carbon_get_theme_option( 'mos-page-loader-image' )): ?>
         <?php echo wp_get_attachment_image( carbon_get_theme_option( 'mos-page-loader-image' ), 'full', "", array( "class" => "loading-image" ) );  ?>
         <div class="rotating-border"></div>
@@ -74,41 +74,29 @@ else $page_id = get_the_ID();
 -->
             <div class="bootstrap-menu">
                 <nav class="navbar navbar-expand-lg bg-light">
-                    <div class="container-fluid">
-                        <a class="navbar-brand" href="#">Navbar w/ text</a>
+                    <div class="container">
+                        <a class="navbar-brand" href="<?php echo home_url()?>">
+                            <?php if(carbon_get_theme_option( 'mos-logo' )): ?>
+                            <?php echo wp_get_attachment_image( carbon_get_theme_option( 'mos-logo' ), 'full', "", array( "class" => "loading-image" ) );  ?>
+                            <?php else: ?>
+                            <?php echo get_bloginfo('name')?>
+                            <?php endif?>
+                        </a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
                         <?php
-        wp_nav_menu( array(
-            'theme_location'    => 'mainmenu',
-            'depth'             => 2,
-            'container'         => 'div',
-            'container_class'   => 'collapse navbar-collapse',
-            'container_id'      => 'navbarText',
-            'menu_class'        => 'nav navbar-nav',
-            'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
-            'walker'            => new WP_Bootstrap_Navwalker(),
-        ) );
-        ?>
-<!--
-                        <div class="collapse navbar-collapse" id="navbarText">
-                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Features</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Pricing</a>
-                                </li>
-                            </ul>
-                            <span class="navbar-text">
-                                Navbar text with an inline element
-                            </span>
-                        </div>
--->
+                        wp_nav_menu( array(
+                            'theme_location'    => 'mainmenu',
+                            'depth'             => 2,
+                            'container'         => 'div',
+                            'container_class'   => 'collapse navbar-collapse',
+                            'container_id'      => 'navbarText',
+                            'menu_class'        => 'nav navbar-nav',
+                            'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
+                            'walker'            => new WP_Bootstrap_Navwalker(),
+                        ) );
+                        ?>
                     </div>
                 </nav>
             </div>

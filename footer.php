@@ -56,22 +56,23 @@
             </div>
         </div>
     </div>
-    <?php 
-    $btt_enable = carbon_get_theme_option('mos-back-to-top');
-    $btt_image = carbon_get_theme_option('mos-back-to-top-image');
-    $btt_background = carbon_get_theme_option('mos-back-to-top-background');
-    $btt_class = carbon_get_theme_option('mos-back-to-top-class');
-    if($btt_enable) :
-    ?>    
-    <div class="scrollup <?php echo $btt_class ?>" style="display: none">
-        <?php if ($btt_image): ?>
-            <?php echo wp_get_attachment_image( $btt_image, 'full' );  ?>
-        <?php else : ?>
-            <img src="<?php echo get_template_directory_uri() ?>/images/btt.svg" alt="Back to top" width="40" height="40">
-        <?php endif?>
-    </div>
-    <?php endif?>
 </footer>
+
+<?php 
+$btt_enable = carbon_get_theme_option('mos-back-to-top');
+$btt_image = carbon_get_theme_option('mos-back-to-top-image');
+$btt_background = carbon_get_theme_option('mos-back-to-top-background');
+$btt_class = carbon_get_theme_option('mos-back-to-top-class');
+if($btt_enable) :
+?>    
+<div class="scrollup <?php echo $btt_class ?>" style="display: none">
+    <?php if ($btt_image): ?>
+        <?php echo wp_get_attachment_image( $btt_image, 'full' );  ?>
+    <?php else : ?>
+        <img src="<?php echo get_template_directory_uri() ?>/images/btt.svg" alt="Back to top" width="40" height="40">
+    <?php endif?>
+</div>
+<?php endif?>
 <?php wp_footer();?>
 <!--Theme Options CSS-->
 <style>
@@ -95,9 +96,6 @@
     ?>.footer {
         <?php if(@$footer_background && sizeof($footer_background)): ?> <?php foreach($footer_background as $value): ?> <?php //var_dump($value) ?>
             <?php foreach($value as $key=> $val): ?> <?php if ($key !='background-image'&& $key !='_type'&& $val): ?> <?php echo $key . ':'. $val . ';'?> <?php elseif ($key=='background-image'): ?> <?php echo $key . ':url('. wp_get_attachment_url($val) . ');'?> <?php endif?> <?php endforeach?> <?php endforeach?> <?php endif?>
-    }
-
-
     }
 
 </style>

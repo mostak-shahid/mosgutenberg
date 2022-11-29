@@ -64,6 +64,9 @@ a:hover {
 ::placeholder {
     color: #4C4D54;
 }
+.se-pre-con {
+    z-index: 9999;
+}
 .scrollup {
     position: fixed;
     right: 20px;
@@ -106,6 +109,46 @@ a:hover {
 .font-weight-900 {
     font-weight: 900 !important
 }
+.group-container > .wp-block-group__inner-container,
+.group-container-fluid > .wp-block-group__inner-container,
+.group-container-xxl > .wp-block-group__inner-container,
+.group-container-xl > .wp-block-group__inner-container,
+.group-container-lg > .wp-block-group__inner-container,
+.group-container-md > .wp-block-group__inner-container,
+.group-container-sm > .wp-block-group__inner-container {
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  width: 100%;
+  padding-right: calc(var(--bs-gutter-x) * 0.5);
+  padding-left: calc(var(--bs-gutter-x) * 0.5);
+  margin-right: auto;
+  margin-left: auto;
+}
 
+@media (min-width: 576px) {
+  .group-container-sm > .wp-block-group__inner-container, .group-container > .wp-block-group__inner-container {
+    max-width: 540px;
+  }
+}
+@media (min-width: 768px) {
+  .group-container-md > .wp-block-group__inner-container, .group-container-sm > .wp-block-group__inner-container, .group-container > .wp-block-group__inner-container {
+    max-width: 720px;
+  }
+}
+@media (min-width: 992px) {
+  .group-container-lg > .wp-block-group__inner-container, .group-container-md > .wp-block-group__inner-container, .group-container-sm > .wp-block-group__inner-container, .group-container > .wp-block-group__inner-container {
+    max-width: 960px;
+  }
+}
+@media (min-width: 1200px) {
+  .group-container-xl > .wp-block-group__inner-container, .group-container-lg > .wp-block-group__inner-container, .group-container-md > .wp-block-group__inner-container, .group-container-sm > .wp-block-group__inner-container, .group-container > .wp-block-group__inner-container {
+    max-width: 1140px;
+  }
+}
+@media (min-width: 1400px) {
+  .group-container-xxl > .wp-block-group__inner-container, .group-container-xl > .wp-block-group__inner-container, .group-container-lg > .wp-block-group__inner-container, .group-container-md > .wp-block-group__inner-container, .group-container-sm > .wp-block-group__inner-container, .group-container > .wp-block-group__inner-container {
+    max-width: 1320px;
+  }
+}
 @media (min-width: 576px) {}
 @media (min-width: 992px) {}

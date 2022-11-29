@@ -32,6 +32,11 @@ jQuery(document).ready(function ($) {
             $('.scrollup').fadeOut();
         }
     });
+    
+    $('.postFilter').change(function (e) {
+        console.log($(this).val());
+        location.href = $(this).val();
+    });
     $('.scrollup').click(function () {
         $("html, body").animate({
             scrollTop: 0
