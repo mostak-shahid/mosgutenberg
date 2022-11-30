@@ -11,11 +11,6 @@ Tags: two-columns, one-column, left-sidebar, right-sidebar, fixed-layout, respon
 Text Domain: mosgutenberg
 */
 
-:root {
-    --primary-color: #121316;
-    --secondary-color: #191a1d;
-}
-
 html {
     scroll-behavior: smooth
 }
