@@ -97,7 +97,7 @@ function mosgutenberg_plugins_management() {
 			'required'     => true, // If false, the plugin is only 'recommended' instead of required.
 			'external_url' => 'https://github.com/thomasgriffin/New-Media-Image-Uploader', // If set, overrides default API URL and points to an external URL.
 		),*/
-		array(
+		/*array(
 			'name'				=> 'Captcha by BestWebSoft', 
 			'slug'				=> 'captcha', 
 			'source'			=> get_template_directory_uri() . '/plugins/captcha.zip', 
@@ -131,46 +131,10 @@ function mosgutenberg_plugins_management() {
 			'source'			=> 'https://github.com/mostak-shahid/mos-image-alt/archive/master.zip', 
 			'required'			=> true,
 			'force_activation'	=> false, 
-		),
+		),*/
 		array(
 			'name'				=> 'Yoast SEO', 
 			'slug'				=> 'wordpress-seo', 
-			'required'			=> false,
-			'force_activation'	=> false, 
-		),
-		array(
-			'name'				=> 'Mos FAQs', 
-			'slug'				=> 'mos-faqs', 
-			'required'			=> false,
-			'force_activation'	=> false, 
-		),
-		array(
-			'name'				=> 'Mos Testimonial', 
-			'slug'				=> 'mos-testimonial', 
-			'required'			=> false,
-			'force_activation'	=> false, 
-		),
-		array(
-			'name'				=> 'Mos Speed up', 
-			'slug'				=> 'mos-speed-up', 
-			'required'			=> false,
-			'force_activation'	=> false, 
-		),
-		array(
-			'name'				=> 'Black Studio TinyMCE Widget', 
-			'slug'				=> 'black-studio-tinymce-widget',  
-			'required'			=> false,
-			'force_activation'	=> false, 
-		),
-		array(
-			'name'				=> 'Duplicate Post', 
-			'slug'				=> 'duplicate-post',  
-			'required'			=> false,
-			'force_activation'	=> false, 
-		),
-		array(
-			'name'				=> 'FakerPress', 
-			'slug'				=> 'fakerpress',  
 			'required'			=> false,
 			'force_activation'	=> false, 
 		),
@@ -193,8 +157,8 @@ function mosgutenberg_plugins_management() {
 			'force_activation'	=> false, 
 		),
 		array(
-			'name'				=> 'WP-Live Chat by 3CX', 
-			'slug'				=> 'wp-live-chat-support',  
+			'name'				=> 'Asset CleanUp: Page Speed Booster', 
+			'slug'				=> 'wp-asset-clean-up',  
 			'required'			=> false,
 			'force_activation'	=> false, 
 		),

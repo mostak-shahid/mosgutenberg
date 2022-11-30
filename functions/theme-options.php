@@ -7,7 +7,8 @@ function mos_theme_options() {
     $basic_options_container = Container::make('theme_options', __('Theme Options'))
     ->set_icon('dashicons-admin-customizer')
     ->add_fields(array(
-        Field::make('image', 'mos-logo', __('Logo')),
+        Field::make('image', 'mos-logo', __('Logo'))
+        ->set_default_value( get_template_directory_uri() . '/assets/img/logo.svg' ),
         Field::make('header_scripts', 'crb_header_script', __('Header Script')),
         Field::make('footer_scripts', 'crb_footer_script', __('Footer Script')),
     ));
@@ -17,11 +18,27 @@ function mos_theme_options() {
     ->add_fields(array(
         Field::make( 'color', 'mos_body_bg', 'Body Background' )
         //->set_palette( array( '#FF0000', '#00FF00', '#0000FF' ))
-        ->set_alpha_enabled( true ),
-        Field::make( 'color', 'mos_primary_color', 'Primary Color' ),
-        Field::make( 'color', 'mos_secondary_color', 'Secondary Color' ),
-        Field::make( 'color', 'mos_link_color', 'Link Color' ),
-        Field::make( 'color', 'mos_link_hover_color', 'Link Hover Color' ),
+        ->set_alpha_enabled( true )
+        ->set_help_text( 'Pick the color for body background, by default it is set to #ffffff. You can use this color in your css with var(--mos-body-bg)' )
+        ->set_default_value( '#ffffff' ),
+        
+        Field::make( 'color', 'mos_primary_color', 'Primary Color' )
+        ->set_help_text( 'Pick the primary color, by default it is set to #00f5eb. You can use this color in your css with var(--mos-primary-color)' )
+        ->set_default_value( '#00f5eb' ),
+        
+        Field::make( 'color', 'mos_secondary_color', 'Secondary Color' )
+        ->set_help_text( 'Pick the secondary color, by default it is set to #21fff6. You can use this color in your css with var(--mos-secondary-color)' )
+        ->set_default_value( '#21fff6' ),
+        
+        Field::make( 'color', 'mos_content_color', 'Content Color' )
+        ->set_help_text( 'Pick the content color, by default it is set to #212529. You can use this color in your css with var(--mos-content-color)' )
+        ->set_default_value( '#212529' ),
+        Field::make( 'color', 'mos_link_color', 'Link Color' )
+        ->set_help_text( 'Pick the link color, by default it is set to #015ea5.' )
+        ->set_default_value( '#015ea5' ),
+        Field::make( 'color', 'mos_link_hover_color', 'Link Hover Color' )
+        ->set_help_text( 'Pick the link hover color, by default it is set to #0a58ca.' )
+        ->set_default_value( '#0a58ca' ),
     ));
     Container::make('theme_options', __('Contact Info'))
     ->set_page_parent($basic_options_container) // reference to a top level container
@@ -65,8 +82,6 @@ function mos_theme_options() {
         ))
         ->set_default_value(['on']),
         Field::make('image', 'mos-back-to-top-image', __('Back to top image')),
-        Field::make('color', 'mos-back-to-top-background', 'Back to top background')
-        ->set_alpha_enabled(true),
         Field::make('text', 'mos-back-to-top-class', __('Back to top class')),
     ));
     Container::make('theme_options', __('Page Loader'))
@@ -94,7 +109,6 @@ function mos_theme_options() {
         Field::make('color', 'mos-header-content-color', __('Content Color')),
         Field::make('color', 'mos-header-link-color', __('Links Color')),
         Field::make('color', 'mos-header-link-color-hover', __('Hover Color')),
-        Field::make('text', 'mos-header-button-class', __('Button Class')),
         Field::make('complex', 'mos-header-background', __('Background'))
         ->set_max(1)
         ->set_collapsed(true)
@@ -155,11 +169,7 @@ function mos_theme_options() {
         Field::make('color', 'mos-footer-content-color', __('Content Color')),
         Field::make('color', 'mos-footer-link-color', __('Links Color')),
         Field::make('color', 'mos-footer-link-color-hover', __('Hover Color')),
-        Field::make('text', 'mos-footer-button-class', __('Button Class')),
         Field::make('rich_text', 'mos-footer-content', __('Copyright')),
-        Field::make('rich_text', 'footer-desc', __('Widget Intro')),
-        Field::make('media_gallery', 'footer_media_gallery', __('Media Gallery'))
-        ->set_type(array('image')),
         Field::make('complex', 'mos-footer-background', __('Background'))
         ->set_max(1)
         ->set_collapsed(true)

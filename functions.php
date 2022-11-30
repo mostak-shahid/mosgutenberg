@@ -22,7 +22,7 @@ require_once('functions/custom-comments.php');
 require_once('functions/theme-filter-hooks.php');
 require_once('functions/ajax.php');
 
-//require_once('inc/TGM-Plugin-Activation-develop/plugin-management.php');
+require_once('inc/TGM-Plugin-Activation-develop/plugin-management.php');
 
 require_once('functions/aq_resizer.php');
 require_once('functions/Mobile_Detect.php');

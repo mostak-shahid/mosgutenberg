@@ -20,15 +20,13 @@ else $page_id = get_the_ID();
     <!--[if lt IE 9]>
     <script src="<?php echo get_template_directory_uri(); ?>/js/html5shiv.js"></script>
     <script src="<?php echo get_template_directory_uri(); ?>/js/respond.min.js"></script>
-    <![endif]-->
+    <![endif]-->    
     <style>
     :root {
-        <?php if (carbon_get_theme_option( 'mos_primary_color' )) : ?>
-        --primary-color: <?php echo carbon_get_theme_option( 'mos_primary_color' )?>;
-        <?php endif?>
-        <?php if (carbon_get_theme_option( 'mos_secondary_color' )) : ?>        
-        --secondary-color: <?php echo carbon_get_theme_option( 'mos_secondary_color' )?>;
-        <?php endif?>
+        --mos-body-bg: <?php echo carbon_get_theme_option( 'mos_body_bg' )?carbon_get_theme_option( 'mos_body_bg' ):'#fff'?>;       
+        --mos-primary-color: <?php echo carbon_get_theme_option( 'mos_primary_color' )?carbon_get_theme_option( 'mos_primary_color' ):'#00f5eb'?>;            
+        --mos-secondary-color: <?php echo carbon_get_theme_option( 'mos_secondary_color' )?carbon_get_theme_option( 'mos_secondary_color' ):'#21fff6'?>;            
+        --mos-content-color: <?php echo carbon_get_theme_option( 'mos_content_color' )?carbon_get_theme_option( 'mos_content_color' ):'#212529'?>;       
     }    
     </style>
     <?php wp_head(); ?>
