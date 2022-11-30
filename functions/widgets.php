@@ -63,42 +63,6 @@ function mosgutenberg_widgets_init(){
 		'before_title' => '<h4 class="widget-title">',
 		'after_title' => '</h4>',
 		'after_widget' => '</div>'
-	));	
-	register_sidebar(array(
-		'id' => 'footer_5',
-		'name' => __('Footer Widget 5', 'mosgutenberg'),
-		'description' => __('Add widgets here to appear in your Footer Widget 5', 'mosgutenberg'),
-		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-		'before_title' => '<h4 class="widget-title">',
-		'after_title' => '</h4>',
-		'after_widget' => '</div>'
-	));	
-	register_sidebar(array(
-		'id' => 'footer_6',
-		'name' => __('Footer Widget 6', 'mosgutenberg'),
-		'description' => __('Add widgets here to appear in your Footer Widget 6', 'mosgutenberg'),
-		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-		'before_title' => '<h4 class="widget-title">',
-		'after_title' => '</h4>',
-		'after_widget' => '</div>'
-	));	
-	register_sidebar(array(
-		'id' => 'footer_7',
-		'name' => __('Footer Widget 7', 'mosgutenberg'),
-		'description' => __('Add widgets here to appear in your Footer Widget 7', 'mosgutenberg'),
-		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-		'before_title' => '<h4 class="widget-title">',
-		'after_title' => '</h4>',
-		'after_widget' => '</div>'
-	));	
-	register_sidebar(array(
-		'id' => 'footer_8',
-		'name' => __('Footer Widget 8', 'mosgutenberg'),
-		'description' => __('Add widgets here to appear in your Footer Widget 8', 'mosgutenberg'),
-		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-		'before_title' => '<h4 class="widget-title">',
-		'after_title' => '</h4>',
-		'after_widget' => '</div>'
 	));		
 
 }
