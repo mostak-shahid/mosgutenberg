@@ -113,10 +113,10 @@ if($btt_enable) :
     }
 
     <?php endif?>    
+</style>
     <?php if (carbon_get_theme_option( 'mos_plugin_wow' ) == 'on') : ?>
     <script>new WOW().init();</script>
     <?php endif?>
-</style>
 
 </body>
 
