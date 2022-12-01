@@ -40,6 +40,89 @@ function mos_theme_options() {
         ->set_help_text( 'Pick the link hover color, by default it is set to #0a58ca.' )
         ->set_default_value( '#0a58ca' ),
     ));
+    
+    Container::make('theme_options', __('JS Plugins'))
+    ->set_page_parent($basic_options_container) // reference to a top level container
+    ->add_fields(array(            
+
+        Field::make('radio', 'mos_plugin_fancybox', __('Fancybox'))
+        ->set_options(array(
+            'on' => 'Enabled',
+            'off' => 'Disabled',
+        ))
+        ->set_default_value(['off']),
+
+        Field::make('radio', 'mos_plugin_card_slider', __('Card Slider'))
+        ->set_options(array(
+            'on' => 'Enabled',
+            'off' => 'Disabled',
+        ))
+        ->set_default_value(['off']),
+        Field::make('radio', 'mos_plugin_jpages', __('jPages'))
+        ->set_options(array(
+            'on' => 'Enabled',
+            'off' => 'Disabled',
+        ))
+        ->set_default_value(['off']),
+        Field::make('radio', 'mos_plugin_lazyload', __('Lazy Load'))
+        ->set_options(array(
+            'on' => 'Enabled',
+            'off' => 'Disabled',
+        ))
+        ->set_default_value(['off']),
+        Field::make('radio', 'mos_plugin_table_shrinker', __('Table Shrinker'))
+        ->set_options(array(
+            'on' => 'Enabled',
+            'off' => 'Disabled',
+        ))
+        ->set_default_value(['off']),
+        Field::make('radio', 'mos_plugin_owlcarousel', __('Owl Carousel'))
+        ->set_options(array(
+            'on' => 'Enabled',
+            'off' => 'Disabled',
+        ))
+        ->set_default_value(['off']),
+        Field::make('radio', 'mos_plugin_slick', __('Slick Slider'))
+        ->set_options(array(
+            'on' => 'Enabled',
+            'off' => 'Disabled',
+        ))
+        ->set_default_value(['off']),
+        Field::make('radio', 'mos_plugin_wow', __('Wow'))
+        ->set_options(array(
+            'on' => 'Enabled',
+            'off' => 'Disabled',
+        ))
+        ->set_default_value(['off']),
+        Field::make('radio', 'mos_plugin_animate', __('Animate CSS'))
+        ->set_options(array(
+            'on' => 'Enabled',
+            'off' => 'Disabled',
+        ))
+        ->set_default_value(['off']),
+        Field::make('radio', 'mos_plugin_jflip', __('Jquery Flip'))
+        ->set_options(array(
+            'on' => 'Enabled',
+            'off' => 'Disabled',
+        ))
+        ->set_default_value(['off']),  
+        Field::make( 'complex', 'mos_plugin_additional', __( 'Additional Assets' ) )
+        ->add_fields( array(
+            Field::make( 'select', 'type', __( 'Asset Type' ))
+            ->set_options( array(
+                'style' => 'CSS',
+                'script' => 'Script',
+            )),
+            Field::make( 'select', 'from', __( 'From' ))
+            ->set_options( array(
+                'parent' => 'Parent Theme',
+                'child' => 'Child Theme',
+                'outside' => 'CDN/Outside',
+            )),
+            Field::make( 'text', 'source', __( 'Source' )),
+        )),
+    
+    ));
     Container::make('theme_options', __('Contact Info'))
     ->set_page_parent($basic_options_container) // reference to a top level container
     ->add_fields(array(
