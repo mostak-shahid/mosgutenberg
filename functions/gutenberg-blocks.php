@@ -14,6 +14,8 @@ function mos_gutenberg_blocks() {
             }
         }
     }
+    
+    //Section Title Block start
     Block::make(__('Section Title Block'))
     ->add_tab( __( 'Content' ), array(
         Field::make('text', 'mos_sec_subtitle', __('Sub Title')),
@@ -37,22 +39,22 @@ function mos_gutenberg_blocks() {
         Field::make( 'select', 'mos_sec_title_animation_option', __( 'Text alignment' ) )
         ->add_options( $animation_options),
         Field::make('text', 'mos_sec_title_animation_delay', __('Animation Delay'))
-        ->set_default_value(['0ms'])
-        ->set_help_text( 'Please add animation delay with ' ),
+        ->set_default_value('0')
+        ->set_help_text( 'Please add animation delay, unit will be ms.' ),
         
         Field::make( 'separator', 'mos_sec_subtitle_animation_separator', __( 'Sub Title' ) ),
         Field::make( 'select', 'mos_sec_subtitle_animation_option', __( 'Text alignment' ) )
         ->add_options( $animation_options),
         Field::make('text', 'mos_sec_subtitle_animation_delay', __('Animation Delay'))
-        ->set_default_value(['0ms'])
-        ->set_help_text( 'Please add animation delay with ' ),
+        ->set_default_value('0')
+        ->set_help_text( 'Please add animation delay, unit will be ms.' ),
         
         Field::make( 'separator', 'mos_sec_desc_animation_separator', __( 'Intro' ) ),
         Field::make( 'select', 'mos_sec_desc_animation_option', __( 'Text alignment' ) )
         ->add_options( $animation_options),
         Field::make('text', 'mos_sec_desc_animation_delay', __('Animation Delay'))
-        ->set_default_value(['0ms'])
-        ->set_help_text( 'Please add animation delay with ' ),
+        ->set_default_value('0')
+        ->set_help_text( 'Please add animation delay, unit will be ms.' ),
     ))  
     ->add_tab( __( 'Advanced' ), array(
         Field::make('textarea', 'mos_sec_style', __('Style'))
@@ -69,11 +71,11 @@ function mos_gutenberg_blocks() {
     ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
         ?>
 <div class="section-heading <?php echo @$fields['mos_sec_text_align']; ?> <?php echo @$fields['mos_sec_class']; ?>">
-    <?php if(@$fields['mos_sec_subtitle']) : ?><h6 class="sub-title  <?php echo @$fields['mos_sec_subtitle_class']; ?> wow <?php echo @$fields['mos_sec_subtitle_animation_option'] ?>" data-wow-delay="<?php echo @$fields['mos_sec_subtitle_animation_delay'] ?>"><?php echo do_shortcode($fields['mos_sec_subtitle']); ?></h6><?php endif?>
+    <?php if(@$fields['mos_sec_subtitle']) : ?><h6 class="sub-title  <?php echo @$fields['mos_sec_subtitle_class']; ?> wow <?php echo @$fields['mos_sec_subtitle_animation_option'] ?>" data-wow-delay="<?php echo @$fields['mos_sec_subtitle_animation_delay'] ?>ms"><?php echo do_shortcode($fields['mos_sec_subtitle']); ?></h6><?php endif?>
     
-    <?php if(@$fields['mos_sec_subtitle']) : ?><h2 class="title <?php echo @$fields['mos_sec_title_class']; ?> wow <?php echo @$fields['mos_sec_title_animation_option'] ?>" data-wow-delay="<?php echo @$fields['mos_sec_subtitle_animation_delay'] ?>"><?php echo do_shortcode($fields['mos_sec_title']); ?></h2><?php endif?>
+    <?php if(@$fields['mos_sec_subtitle']) : ?><h2 class="title <?php echo @$fields['mos_sec_title_class']; ?> wow <?php echo @$fields['mos_sec_title_animation_option'] ?>" data-wow-delay="<?php echo @$fields['mos_sec_title_animation_delay'] ?>ms"><?php echo do_shortcode($fields['mos_sec_title']); ?></h2><?php endif?>
     
-    <?php if(@$fields['mos_sec_desc']) : ?><div class="intro <?php echo @$fields['mos_sec_intro_class']; ?> wow <?php echo @$fields['mos_sec_desc_animation_option'] ?>" data-wow-delay="<?php echo @$fields['mos_sec_desc_animation_delay'] ?>"><?php echo do_shortcode($fields['mos_sec_desc']); ?></div><?php endif?>
+    <?php if(@$fields['mos_sec_desc']) : ?><div class="intro <?php echo @$fields['mos_sec_intro_class']; ?> wow <?php echo @$fields['mos_sec_desc_animation_option'] ?>" data-wow-delay="<?php echo @$fields['mos_sec_desc_animation_delay'] ?>ms"><?php echo do_shortcode($fields['mos_sec_desc']); ?></div><?php endif?>
 </div>
 <?php if(@$fields['mos_sec_style']) : ?>
 <style><?php echo $fields['mos_sec_style']; ?></style>
@@ -82,5 +84,6 @@ function mos_gutenberg_blocks() {
 <script><?php echo $fields['mos_sec_script']; ?></script>
 <?php endif?>
         <?php
-    });    
+    }); 
+    //Section Title Block end   
 }
