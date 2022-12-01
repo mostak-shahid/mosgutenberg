@@ -68,12 +68,12 @@ function mos_gutenberg_blocks() {
     ))*/
     ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
         ?>
-<div class="section-heading <?php echo @$fields['mos_sec_text_align']; ?>  <?php echo @$fields['mos_sec_class']; ?>">
-    <?php if(@$fields['mos_sec_subtitle']) : ?><h6 class="sub-title fs-18 fw-semi-bold text-lapis_lazuli bg-lapis_lazuli_light radius-4 d-inline-block wow <?php echo @$fields['mos_sec_subtitle_animation_option'] ?>" data-wow-delay="<?php echo @$fields['mos_sec_subtitle_animation_delay'] ?>"><?php echo do_shortcode($fields['mos_sec_subtitle']); ?></h6><?php endif?>
+<div class="section-heading <?php echo @$fields['mos_sec_text_align']; ?> <?php echo @$fields['mos_sec_class']; ?>">
+    <?php if(@$fields['mos_sec_subtitle']) : ?><h6 class="sub-title  <?php echo @$fields['mos_sec_subtitle_class']; ?> wow <?php echo @$fields['mos_sec_subtitle_animation_option'] ?>" data-wow-delay="<?php echo @$fields['mos_sec_subtitle_animation_delay'] ?>"><?php echo do_shortcode($fields['mos_sec_subtitle']); ?></h6><?php endif?>
     
-    <?php if(@$fields['mos_sec_subtitle']) : ?><h2 class="fs-48 fw-bold text-gray_1 mt-2 mb-3 wow <?php echo @$fields['mos_sec_title_animation_option'] ?>" data-wow-delay="<?php echo @$fields['mos_sec_subtitle_animation_delay'] ?>"><?php echo do_shortcode($fields['mos_sec_title']); ?></h2><?php endif?>
+    <?php if(@$fields['mos_sec_subtitle']) : ?><h2 class="title <?php echo @$fields['mos_sec_title_class']; ?> wow <?php echo @$fields['mos_sec_title_animation_option'] ?>" data-wow-delay="<?php echo @$fields['mos_sec_subtitle_animation_delay'] ?>"><?php echo do_shortcode($fields['mos_sec_title']); ?></h2><?php endif?>
     
-    <?php if(@$fields['mos_sec_desc']) : ?><div class="fs-18 text-gray_2 wow <?php echo @$fields['mos_sec_desc_animation_option'] ?>" data-wow-delay="<?php echo @$fields['mos_sec_desc_animation_delay'] ?>"><?php echo do_shortcode($fields['mos_sec_desc']); ?></div><?php endif?>
+    <?php if(@$fields['mos_sec_desc']) : ?><div class="intro <?php echo @$fields['mos_sec_intro_class']; ?> wow <?php echo @$fields['mos_sec_desc_animation_option'] ?>" data-wow-delay="<?php echo @$fields['mos_sec_desc_animation_delay'] ?>"><?php echo do_shortcode($fields['mos_sec_desc']); ?></div><?php endif?>
 </div>
 <?php if(@$fields['mos_sec_style']) : ?>
 <style><?php echo $fields['mos_sec_style']; ?></style>
