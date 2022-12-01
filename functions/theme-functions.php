@@ -215,6 +215,24 @@ $countryCodes = [
     "ZM (+260)",
     "ZW (+263)"
 ];
+$animations['Attention seekers'] = ['bounce','flash','pulse','rubberBand','shakeX','shakeY','headShake','swing','tada','wobble','jello','heartBeat'];
+$animations['Back entrances'] = ['backInDown','backInLeft','backInRight','backInUp'];
+$animations['Back exits'] = ['backOutDown','backOutLeft','backOutRight','backOutUp'];
+$animations['Bouncing entrances'] = ['backOutDown','backOutLeft','backOutRight','backOutUp'];  
+$animations['Bouncing entrances'] = ['bounceIn', 'bounceInDown', 'bounceInLeft', 'bounceInRight', 'bounceInUp'];
+$animations['Bouncing exits'] =['bounceOut', 'bounceOutDown', 'bounceOutLeft', 'bounceOutRight', 'bounceOutUp'];
+$animations['Fading entrances'] = ['fadeIn', 'fadeInDown', 'fadeInDownBig', 'fadeInLeft', 'fadeInLeftBig', 'fadeInRight', 'fadeInRightBig', 'fadeInUp', 'fadeInUpBig', 'fadeInTopLeft', 'fadeInTopRight', 'fadeInBottomLeft', 'fadeInBottomRight'];
+$animations['Fading exits'] = ['fadeOut', 'fadeOutDown', 'fadeOutDownBig', 'fadeOutLeft', 'fadeOutLeftBig', 'fadeOutRight', 'fadeOutRightBig', 'fadeOutUp', 'fadeOutUpBig', 'fadeOutTopLeft', 'fadeOutTopRight', 'fadeOutBottomRight', 'fadeOutBottomLeft'];
+$animations['Flippers'] = ['flip', 'flipInX', 'flipInY', 'flipOutX', 'flipOutY'];
+$animations['Lightspeed'] = ['lightSpeedInRight', 'lightSpeedInLeft', 'lightSpeedOutRight', 'lightSpeedOutLeft'];
+$animations['Rotating entrances'] = ['rotateIn', 'rotateInDownLeft', 'rotateInDownRight', 'rotateInUpLeft', 'rotateInUpRight'];
+$animations['Rotating exits'] = ['rotateOut', 'rotateOutDownLeft', 'rotateOutDownRight', 'rotateOutUpLeft', 'rotateOutUpRight'];
+$animations['Specials'] = ['hinge', 'jackInTheBox', 'rollIn', 'rollOut'];
+$animations['Zooming entrances'] = ['zoomIn', 'zoomInDown', 'zoomInLeft', 'zoomInRight', 'zoomInUp'];
+$animations['Zooming exits'] = ['zoomOut', 'zoomOutDown', 'zoomOutLeft', 'zoomOutRight', 'zoomOutUp'];
+$animations['Sliding entrances'] = ['slideInDown', 'slideInLeft', 'slideInRight', 'slideInUp'];
+$animations['Sliding exits'] = ['slideOutDown', 'slideOutLeft', 'slideOutRight', 'slideOutUp'];
+
 function mos_home_url_replace($data) {
     $replace_fnc = str_replace('home_url()', home_url(), $data);
     $replace_br = str_replace('{{home_url}}', home_url(), $replace_fnc);
