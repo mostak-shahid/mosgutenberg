@@ -35,7 +35,7 @@ function mos_gutenberg_blocks() {
         Field::make('text', 'mos_sec_subtitle_class', __('Sub Title Class')),
         Field::make('text', 'mos_sec_title_class', __('Main Title Class')),
         Field::make('text', 'mos_sec_intro_class', __('Intro Class')),
-        Field::make('text', 'mos_sec_btn_class', __('Button Class')),
+        Field::make('text', 'mos_sec_button_class', __('Button Class')),
     ))
     ->add_tab( __( 'Animation' ), array(
         Field::make( 'separator', 'mos_sec_title_animation_separator', __( 'Main Title' ) ),
