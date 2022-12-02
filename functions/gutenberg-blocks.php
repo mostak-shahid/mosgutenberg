@@ -23,6 +23,7 @@ function mos_gutenberg_blocks() {
         Field::make('textarea', 'mos_sec_desc', __('Intro')),
         Field::make('text', 'mos_sec_button_title', __('Button Title')),
         Field::make('text', 'mos_sec_button_url', __('Button URL')),
+        Field::make( 'image', 'mos_sec_image', __( 'Image' ) ),
     ))
     ->add_tab( __( 'Style' ), array(
         Field::make( 'select', 'mos_sec_text_align', __( 'Text Alignment' ) )
@@ -36,19 +37,21 @@ function mos_gutenberg_blocks() {
         Field::make('text', 'mos_sec_title_class', __('Main Title Class')),
         Field::make('text', 'mos_sec_intro_class', __('Intro Class')),
         Field::make('text', 'mos_sec_button_class', __('Button Class')),
+        Field::make('text', 'mos_sec_image_class', __('Button Class')),
     ))
     ->add_tab( __( 'Animation' ), array(
-        Field::make( 'separator', 'mos_sec_title_animation_separator', __( 'Main Title' ) ),
-        Field::make( 'select', 'mos_sec_title_animation_option', __( 'Animation' ) )
-        ->add_options( $animation_options),
-        Field::make('text', 'mos_sec_title_animation_delay', __('Animation Delay'))
-        ->set_default_value('0')
-        ->set_help_text( 'Please add animation delay, unit will be ms.' ),
         
         Field::make( 'separator', 'mos_sec_subtitle_animation_separator', __( 'Sub Title' ) ),
         Field::make( 'select', 'mos_sec_subtitle_animation_option', __( 'Animation' ) )
         ->add_options( $animation_options),
         Field::make('text', 'mos_sec_subtitle_animation_delay', __('Animation Delay'))
+        ->set_default_value('0')
+        ->set_help_text( 'Please add animation delay, unit will be ms.' ),
+        
+        Field::make( 'separator', 'mos_sec_title_animation_separator', __( 'Main Title' ) ),
+        Field::make( 'select', 'mos_sec_title_animation_option', __( 'Animation' ) )
+        ->add_options( $animation_options),
+        Field::make('text', 'mos_sec_title_animation_delay', __('Animation Delay'))
         ->set_default_value('0')
         ->set_help_text( 'Please add animation delay, unit will be ms.' ),
         
@@ -59,10 +62,17 @@ function mos_gutenberg_blocks() {
         ->set_default_value('0')
         ->set_help_text( 'Please add animation delay, unit will be ms.' ),
         
-        Field::make( 'separator', 'mos_sec_btn_animation_separator', __( 'Intro' ) ),
+        Field::make( 'separator', 'mos_sec_btn_animation_separator', __( 'Button' ) ),
         Field::make( 'select', 'mos_sec_btn_animation_option', __( 'Animation' ) )
         ->add_options( $animation_options),
         Field::make('text', 'mos_sec_btn_animation_delay', __('Animation Delay'))
+        ->set_default_value('0')
+        ->set_help_text( 'Please add animation delay, unit will be ms.' ),
+        
+        Field::make( 'separator', 'mos_sec_image_animation_separator', __( 'Image' ) ),
+        Field::make( 'select', 'mos_sec_image_animation_option', __( 'Animation' ) )
+        ->add_options( $animation_options),
+        Field::make('text', 'mos_sec_image_animation_delay', __('Animation Delay'))
         ->set_default_value('0')
         ->set_help_text( 'Please add animation delay, unit will be ms.' ),
     ))  
@@ -81,6 +91,7 @@ function mos_gutenberg_blocks() {
     ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
         ?>
 <div class="section-heading <?php echo @$fields['mos_sec_text_align']; ?> <?php echo @$fields['mos_sec_class']; ?> <?php echo @$attributes['className']; ?>">
+    <div class="text-part">
     <?php if(@$fields['mos_sec_subtitle']) : ?><h6 class="sub-title <?php echo @$fields['mos_sec_subtitle_class']; ?> wow <?php echo @$fields['mos_sec_subtitle_animation_option'] ?>" data-wow-delay="<?php echo @$fields['mos_sec_subtitle_animation_delay'] ?>ms"><?php echo do_shortcode($fields['mos_sec_subtitle']); ?></h6><?php endif?>
     
     <?php if(@$fields['mos_sec_title']) : ?><h2 class="title <?php echo @$fields['mos_sec_title_class']; ?> wow <?php echo @$fields['mos_sec_title_animation_option'] ?>" data-wow-delay="<?php echo @$fields['mos_sec_title_animation_delay'] ?>ms"><?php echo do_shortcode($fields['mos_sec_title']); ?></h2><?php endif?>
@@ -99,6 +110,12 @@ function mos_gutenberg_blocks() {
         </a>
     </div>
     <?php endif?>
+    </div>    
+    <?php if(@$fields['mos_sec_image']) : ?>
+        <div class="img-part <?php echo @$fields['mos_sec_image_class']; ?> wow <?php echo @$fields['mos_sec_image_animation_option'] ?>" data-wow-delay="<?php echo @$fields['mos_sec_image_animation_delay'] ?>ms">
+            <?php echo wp_get_attachment_image( $fields['mos_sec_image'], "full", "", array( "class" => "img-fluid" ) );  ?>
+        </div>
+    <?php endif?>   
 </div>
 <?php if(@$fields['mos_sec_style']) : ?>
 <style><?php echo $fields['mos_sec_style']; ?></style>
