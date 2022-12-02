@@ -117,6 +117,21 @@ if($btt_enable) :
     <?php if (carbon_get_theme_option( 'mos_plugin_wow' ) == 'on') : ?>
     <script>new WOW().init();</script>
     <?php endif?>
+    <?php if (carbon_get_theme_option( 'mos_plugin_owlcarousel' ) == 'on') : ?>
+    <script>
+        jQuery(document).ready(function($) {
+            var oc = $('.owl-carousel');
+            var ocOptions = oc.data('carousel-options');
+            var defaults = {
+                loop: true,
+                nav: false,
+                autoplay: true,
+            }
+            oc.owlCarousel($.extend(defaults, ocOptions));
+        });
+
+    </script>
+    <?php endif?>
 
 </body>
 
