@@ -110,6 +110,7 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) :
 		 * @param int              $id     Current item ID.
 		 */
 		public function start_el( &$output, $item, $depth = 0, $args = null, $id = 0 ) {
+            
 			if ( isset( $args->item_spacing ) && 'discard' === $args->item_spacing ) {
 				$t = '';
 				$n = '';
@@ -121,8 +122,9 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) :
 
 			if ( false !== strpos( $args->items_wrap, 'itemscope' ) && false === $this->has_schema ) {
 				$this->has_schema  = true;
-				$args->link_before = '<span itemprop="name">' . $args->link_before;
+				$args->link_before = '<span itemprop="name" class="menu-title">' . $args->link_before;
 				$args->link_after .= '</span>';
+                
 			}
 
 			$classes = empty( $item->classes ) ? array() : (array) $item->classes;
@@ -203,6 +205,7 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) :
 			// Initialize array for holding the $atts for the link item.
 			$atts           = array();
 			$atts['title']  = ! empty( $item->attr_title ) ? $item->attr_title : '';
+			//$atts['description']  = ! empty( $item->attr_description ) ? $item->attr_description : '';
 			$atts['target'] = ! empty( $item->target ) ? $item->target : '';
 			if ( '_blank' === $item->target && empty( $item->xfn ) ) {
 				$atts['rel'] = 'noopener noreferrer';
@@ -302,7 +305,10 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) :
 			}
 
 			// Put the item contents into $output.
-			$item_output .= isset( $args->link_before ) ? $args->link_before . $icon_html . $title . $args->link_after : '';
+            
+            $description = ($item->description)?'<span class="menu-description">'.$item->description.'</span>':'';
+            
+			$item_output .= isset( $args->link_before ) ? $args->link_before . $icon_html . $title . $args->link_after .$description: '';
 
 			/*
 			 * This is the end of the internal nav item. We need to close the
