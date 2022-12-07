@@ -1,11 +1,11 @@
 <?php
 show_admin_bar( false );
 // add_filter('show_admin_bar', false, PHP_INT_MAX);
-function disable_mytheme_action() {
-	define('DISALLOW_FILE_EDIT', TRUE);
+function disable_edit_options() {
+	define('DISALLOW_FILE_EDIT',true);
 	define('DISALLOW_FILE_MODS',true);
 }
-//add_action('init','disable_mytheme_action');
+//add_action('init','disable_edit_options');
 //require_once('functions/theme-init/plugin-update-checker.php');
 //$themeInit = Puc_v4_Factory::buildUpdateChecker(
 //	'https://raw.githubusercontent.com/mostak-shahid/update/master/mosgutenberg.json',
