@@ -131,7 +131,7 @@ a:hover {
     animation-delay: 0.75s
 }
 
-.delay-one-s {
+.delay-1s {
     -webkit-animation-delay: 1s;
     -moz-animation-delay: 1s;
     animation-delay: 1s
@@ -186,7 +186,7 @@ a:hover {
         animation-delay: 0.75s
     }
 
-    .delay-sm-one-s {
+    .delay-sm-1s {
         -webkit-animation-delay: 1s;
         -moz-animation-delay: 1s;
         animation-delay: 1s
@@ -206,7 +206,7 @@ a:hover {
     .delay-md-250ms{-webkit-animation-delay:0.25s;-moz-animation-delay:0.25s;animation-delay:0.25s}
     .delay-md-500ms{-webkit-animation-delay:0.5s;-moz-animation-delay:0.5s;animation-delay:0.5s}
     .delay-md-750ms{-webkit-animation-delay:0.75s;-moz-animation-delay:0.75s;animation-delay:0.75s}
-    .delay-md-one-s{-webkit-animation-delay:1s;-moz-animation-delay:1s;animation-delay:1s}
+    .delay-md-1s{-webkit-animation-delay:1s;-moz-animation-delay:1s;animation-delay:1s}
 }
 
 @media (min-width: 992px) {
@@ -222,7 +222,7 @@ a:hover {
     .delay-lg-250ms{-webkit-animation-delay:0.25s;-moz-animation-delay:0.25s;animation-delay:0.25s}
     .delay-lg-500ms{-webkit-animation-delay:0.5s;-moz-animation-delay:0.5s;animation-delay:0.5s}
     .delay-lg-750ms{-webkit-animation-delay:0.75s;-moz-animation-delay:0.75s;animation-delay:0.75s}
-    .delay-lg-one-s{-webkit-animation-delay:1s;-moz-animation-delay:1s;animation-delay:1s}
+    .delay-lg-1s{-webkit-animation-delay:1s;-moz-animation-delay:1s;animation-delay:1s}
 }
 
 @media (min-width: 1200px) {
@@ -239,7 +239,7 @@ a:hover {
     .delay-xl-250ms{-webkit-animation-delay:0.25s;-moz-animation-delay:0.25s;animation-delay:0.25s}
     .delay-xl-500ms{-webkit-animation-delay:0.5s;-moz-animation-delay:0.5s;animation-delay:0.5s}
     .delay-xl-750ms{-webkit-animation-delay:0.75s;-moz-animation-delay:0.75s;animation-delay:0.75s}
-    .delay-xl-one-s{-webkit-animation-delay:1s;-moz-animation-delay:1s;animation-delay:1s}
+    .delay-xl-1s{-webkit-animation-delay:1s;-moz-animation-delay:1s;animation-delay:1s}
 }
 
 @media (min-width: 1400px) {
@@ -257,7 +257,7 @@ a:hover {
     .delay-xxl-250ms{-webkit-animation-delay:0.25s;-moz-animation-delay:0.25s;animation-delay:0.25s}
     .delay-xxl-500ms{-webkit-animation-delay:0.5s;-moz-animation-delay:0.5s;animation-delay:0.5s}
     .delay-xxl-750ms{-webkit-animation-delay:0.75s;-moz-animation-delay:0.75s;animation-delay:0.75s}
-    .delay-xxl-one-s{-webkit-animation-delay:1s;-moz-animation-delay:1s;animation-delay:1s}
+    .delay-xxl-1s{-webkit-animation-delay:1s;-moz-animation-delay:1s;animation-delay:1s}
 }
 
 @media (min-width: 1399.98px) {}
