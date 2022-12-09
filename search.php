@@ -10,7 +10,7 @@ get_header();
                     <div class="filterLeft d-flex gap-3">
                         <div class="singleFilter custom-mos-select">
                             <?php $categories = mos_get_terms('category'); ?>
-                            <select class="bg-transparent rounded-pill px-4 form-select postFilter">
+                            <select class="bg-transparent rounded-pill px-4 form-select postFilter"onchange="window.location.replace(this.value)">
                                 <option value="0" selected="">All Categories</option>
                                 <?php foreach($categories as $category) : ?>
                                 <option value="<?php echo home_url().'/?s=&category='.$category['term_id'] ?>" <?php echo (@$_GET['category'] == $category['term_id'])?'selected':'' ?>><?php echo $category['name'] ?></option>
@@ -18,7 +18,7 @@ get_header();
                             </select>
                         </div>
                         <div class="singleFilter custom-mos-select">
-                            <select class="bg-transparent rounded-pill px-4 form-select postFilter">
+                            <select class="bg-transparent rounded-pill px-4 form-select postFilter"onchange="window.location.replace(this.value)">
                                 <option value="<?php echo home_url().'/?s=&time=' ?>0" selected="">Select One</option>
                                 <option value="<?php echo home_url().'/?s=&time=' ?>week" <?php echo (@$_GET['time'] == 'week')?'selected':''?>>Last 7 day's</option>
                                 <option value="<?php echo home_url().'/?s=&time=' ?>month" <?php echo (@$_GET['time'] == 'month')?'selected':''?>>Last Month</option>
