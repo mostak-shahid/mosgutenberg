@@ -41,9 +41,34 @@ function mos_theme_options() {
         ->set_default_value( '#0a58ca' ),
     ));
     
-    Container::make('theme_options', __('JS Plugins'))
+    Container::make('theme_options', __('Theme Resourcess'))
     ->set_page_parent($basic_options_container) // reference to a top level container
     ->add_fields(array(            
+
+        Field::make('radio', 'mos_plugin_bootstrap', __('Bootsrap'))
+        ->set_options(array(
+            'bootstrap-reboot' => 'Reboot CSS',
+            'bootstrap-grid' => 'Grid CSS',
+            'bootstrap-utilities' => 'Utilities CSS',
+            'bootstrap-reboot-utilities' => 'Reboot and Utilities CSS',
+            'bootstrap-bundle' => 'Bundle CSS',
+            'off' => 'Disabled',
+        ))
+        ->set_default_value('bootstrap-bundle'),
+
+        Field::make('radio', 'mos_plugin_jquery', __('Jquery'))
+        ->set_options(array(
+            'on' => 'Enabled',
+            'off' => 'Disabled',
+        ))
+        ->set_default_value('on'),
+
+        Field::make('radio', 'mos_plugin_fontawesome', __('Font Awesome'))
+        ->set_options(array(
+            'on' => 'Enabled',
+            'off' => 'Disabled',
+        ))
+        ->set_default_value('on'),         
 
         Field::make('radio', 'mos_plugin_fancybox', __('Fancybox'))
         ->set_options(array(
