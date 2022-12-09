@@ -65,11 +65,11 @@ $btt_background = carbon_get_theme_option('mos-back-to-top-background');
 $btt_class = carbon_get_theme_option('mos-back-to-top-class');
 if($btt_enable) :
 ?>    
-<div class="scrollup <?php echo $btt_class ?>" style="display: none">
+<div id="btt-btn" class="scrollup <?php echo $btt_class ?>" onclick="backToTop()">
     <?php if ($btt_image): ?>
-        <?php echo wp_get_attachment_image( $btt_image, 'full' );  ?>
+    <?php echo wp_get_attachment_image( $btt_image, 'full' );  ?>
     <?php else : ?>
-        <img src="<?php echo get_template_directory_uri() ?>/images/btt.svg" alt="Back to top" width="40" height="40">
+    <i class="fa fa-angle-up"></i>
     <?php endif?>
 </div>
 <?php endif?>

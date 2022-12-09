@@ -69,6 +69,16 @@ a:hover {
     bottom: 20px;
     cursor: pointer;
     z-index: 9;
+    display: none;
+}
+.scrollup.active{
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .font-weight-100 {

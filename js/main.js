@@ -1,23 +1,23 @@
 jQuery(document).ready(function ($) {
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 100) {
-            $('.main-header').addClass('tiny');
-            $('.scrollup').fadeIn();
-        } else {
-            $('.main-header').removeClass('tiny');
-            $('.scrollup').fadeOut();
-        }
-    });
+//    $(window).scroll(function () {
+//        if ($(this).scrollTop() > 100) {
+//            $('.main-header').addClass('tiny');
+//            $('.scrollup').fadeIn();
+//        } else {
+//            $('.main-header').removeClass('tiny');
+//            $('.scrollup').fadeOut();
+//        }
+//    });
+//    $('.scrollup').click(function () {
+//        $("html, body").animate({
+//            scrollTop: 0
+//        }, 600);
+//        return false;
+//    });
     
     $('.postFilter').change(function (e) {
         console.log($(this).val());
         location.href = $(this).val();
-    });
-    $('.scrollup').click(function () {
-        $("html, body").animate({
-            scrollTop: 0
-        }, 600);
-        return false;
     });
     $(".mos-menu-list li:has('ul')").prepend("<span class='down-arrow'></span>");
     $('body').on('click', '.down-arrow', function () {
@@ -58,6 +58,26 @@ jQuery(document).ready(function ($) {
 //    });
 
 });
+
+document.addEventListener('scroll', (e) => {
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+//    if (scrollTop > 100) document.querySelector('#btt-btn').style.display = "block";
+//    else document.querySelector('#btt-btn').style.display = "none"
+    if (scrollTop > 100) {
+        document.querySelector('#header').classList.add("tiny");
+        document.querySelector('#btt-btn').classList.add("active");
+    }
+    else {
+        document.querySelector('#header').classList.remove("tiny");
+        document.querySelector('#btt-btn').classList.remove("active");
+    }
+})
+
+// When the user clicks on the button, scroll to the top of the document
+function backToTop() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+}
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 (function () {
     'use strict';
