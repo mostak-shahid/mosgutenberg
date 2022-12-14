@@ -77,6 +77,13 @@ function mos_theme_options() {
         ))
         ->set_default_value(['off']),
 
+        Field::make('radio', 'mos_plugin_isotop', __('Isotop'))
+        ->set_options(array(
+            'on' => 'Enabled',
+            'off' => 'Disabled',
+        ))
+        ->set_default_value('off'),
+
         Field::make('radio', 'mos_plugin_card_slider', __('Card Slider'))
         ->set_options(array(
             'on' => 'Enabled',

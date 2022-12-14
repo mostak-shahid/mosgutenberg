@@ -40,6 +40,12 @@ function mosgutenberg_enqueue_scripts() {
         wp_register_script('jquery.fancybox.min', get_template_directory_uri() . '/plugins/fancybox/fancyapps/fancybox.umd.js', 'jquery');
         wp_enqueue_script('jquery.fancybox.min');    
     }
+    
+    if (carbon_get_theme_option( 'mos_plugin_isotop' ) == 'on') {
+        wp_register_script('isotope', get_template_directory_uri() . '/plugins/isotop/isotope.pkgd.js', 'jquery');
+        wp_enqueue_script('isotope');    
+    }
+    
     if (carbon_get_theme_option( 'mos_plugin_jpages' ) == 'on') {
         wp_register_script('jPages.min', get_template_directory_uri() . '/plugins/jPages/jPages.min.js', 'jquery');
         wp_enqueue_script('jPages.min');
