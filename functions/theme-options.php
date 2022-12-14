@@ -43,7 +43,7 @@ function mos_theme_options() {
     
     Container::make('theme_options', __('Theme Resourcess'))
     ->set_page_parent($basic_options_container) // reference to a top level container
-    ->add_fields(array(            
+    ->add_fields(array(                    
 
         Field::make('radio', 'mos_plugin_bootstrap', __('Bootsrap'))
         ->set_options(array(
@@ -52,9 +52,25 @@ function mos_theme_options() {
             'bootstrap-utilities' => 'Utilities CSS',
             'bootstrap-reboot-utilities' => 'Reboot and Utilities CSS',
             'bootstrap-bundle' => 'Bundle CSS',
+            'seperated-files' => 'Seperated Files',
             'off' => 'Disabled',
         ))
         ->set_default_value('bootstrap-bundle'),
+        
+        Field::make('multiselect', 'crb_select', __('Files'))
+        ->set_options(array(
+            'bootstrap-reboot' => 'Reboot CSS',
+            'bootstrap-grid' => 'Grid CSS',
+            'bootstrap-utilities' => 'Utilities CSS',
+        ))
+        ->set_conditional_logic(array(
+            'relation' => 'AND', // Optional, defaults to "AND"
+            array(
+                'field' => 'mos_plugin_bootstrap',
+                'value' => 'seperated-files', // Optional, defaults to "". Should be an array if "IN" or "NOT IN" operators are used.
+                'compare' => '=', // Optional, defaults to "=". Available operators: =, <, >, <=, >=, IN, NOT IN
+          )
+        )),
 
         Field::make('radio', 'mos_plugin_jquery', __('Jquery'))
         ->set_options(array(
