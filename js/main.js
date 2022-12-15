@@ -14,6 +14,34 @@ jQuery(document).ready(function ($) {
 //        }, 600);
 //        return false;
 //    });
+    
+    var $grid = $('.grid').isotope({
+        itemSelector: '.grid-item',
+//        layoutMode: 'fitRows',
+        percentPosition: true,
+        masonry: {
+            columnWidth: '.grid-sizer'
+        }
+    });
+    var filterFns = '';
+    $('.filters-button-group').on('click', 'li', function() {
+        var filterValue = $(this).attr('data-filter');
+        // use filterFn if matches value
+        filterValue = filterFns[filterValue] || filterValue;
+        //console.log(filterValue);
+        $grid.isotope({
+            filter: filterValue
+        });
+    });
+    // change is-checked class on buttons
+    $('.filters-button-group').each(function(i, buttonGroup) {
+        var $buttonGroup = $(buttonGroup);
+        $buttonGroup.on('click', 'li', function() {
+            $buttonGroup.find('.active').removeClass('active');
+            $(this).addClass('active');
+        });
+    });   
+    
     $(".mos-menu-list li:has('ul')").prepend("<span class='down-arrow'></span>");
     $('body').on('click', '.down-arrow', function () {
         $(this).parent().toggleClass('open-below');
