@@ -133,6 +133,12 @@ function mosgutenberg_plugins_management() {
 			'force_activation'	=> false, 
 		),*/
 		array(
+			'name'				=> 'Bootstrap Blocks', 
+			'slug'				=> 'wp-bootstrap-blocks', 
+			'required'			=> false,
+			'force_activation'	=> false, 
+		),
+		array(
 			'name'				=> 'Yoast SEO', 
 			'slug'				=> 'wordpress-seo', 
 			'required'			=> false,

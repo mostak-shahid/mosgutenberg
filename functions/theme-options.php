@@ -47,22 +47,19 @@ function mos_theme_options() {
 
         Field::make('radio', 'mos_plugin_bootstrap', __('Bootsrap'))
         ->set_options(array(
-            'bootstrap-reboot' => 'Reboot CSS',
-            'bootstrap-grid' => 'Grid CSS',
-            'bootstrap-utilities' => 'Utilities CSS',
-            'bootstrap-reboot-utilities' => 'Reboot and Utilities CSS',
             'bootstrap-bundle' => 'Bundle CSS',
             'seperated-files' => 'Seperated Files',
             'off' => 'Disabled',
        ))
         ->set_default_value('bootstrap-bundle'),
         
-        Field::make('multiselect', 'crb_select', __('Files'))
+        Field::make('multiselect', 'mos_plugin_bootstrap_seperated_files', __('Files'))
         ->set_options(array(
             'bootstrap-reboot' => 'Reboot CSS',
             'bootstrap-grid' => 'Grid CSS',
             'bootstrap-utilities' => 'Utilities CSS',
        ))
+        ->set_required( true )
         ->set_conditional_logic(array(
             'relation' => 'AND', // Optional, defaults to "AND"
             array(
