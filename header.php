@@ -51,7 +51,7 @@ else $page_id = get_the_ID();
     </div>
     <?php endif; ?>
 
-    <header class="main-header smooth <?php echo carbon_get_theme_option( 'mos-header-class' ) ?>">
+    <header id="header" class="main-header smooth <?php echo carbon_get_theme_option( 'mos-header-class' ) ?>">
         <div class="wrapper">
             <!--d-flex justify-content-between align-items-center-->
             <!--           
