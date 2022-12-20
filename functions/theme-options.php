@@ -175,31 +175,61 @@ function mos_theme_options() {
         ->add_fields(array(
             Field::make('text', 'title', __('Title')),
             Field::make('text', 'number', __('Phone Number')),
-       )),
+       ))
+        ->set_header_template('
+            <% if (title) { %>
+                <%- title %> <%- number ? "(" + number + ")" : "" %>
+            <% } %>
+        ')
+        ->set_collapsed(true),
         Field::make('complex', 'mos-contact-email', __('Email'))
         ->add_fields(array(
             Field::make('text', 'title', __('Title')),
             Field::make('text', 'email', __('Email Address')),
-       )),
+       ))
+        ->set_header_template('
+            <% if (title) { %>
+                <%- title %> <%- email ? "(" + email + ")" : "" %>
+            <% } %>
+        ')
+        ->set_collapsed(true),
         Field::make('complex', 'mos-contact-business-hours', __('Business Hours'))
         ->add_fields(array(
             Field::make('text', 'title', __('Title')),
             Field::make('text', 'hours', __('Business Hours')),
-       )),
+       ))
+        ->set_header_template('
+            <% if (title) { %>
+                <%- title %> <%- hours ? "(" + hours + ")" : "" %>
+            <% } %>
+        ')
+        ->set_collapsed(true),
         Field::make('complex', 'mos-contact-contact-address', __('Contact Address'))
         ->add_fields(array(
             Field::make('text', 'title', __('Title')),
             Field::make('text', 'address', __('Address')),
             Field::make('text', 'link', __('Map Link')),
-       )),
+       ))
+        ->set_header_template('
+            <% if (title) { %>
+                <%- title %>
+            <% } %>
+        ')
+        ->set_collapsed(true),
         Field::make('complex', 'mos-contact-social-media', __('Social Media'))
         ->add_fields(array(
             Field::make('text', 'title', __('Title')),
             Field::make('text', 'link', __('Link')),
             Field::make('checkbox', 'new-tab', __('Open in new tab'))
             ->set_option_value('no'),
-       )),
-   ));
+       ))        
+        ->set_header_template('
+            <% if (title) { %>
+                <%- title %> <%- link ? "(" + link + ")" : "" %>
+            <% } %>
+        ')
+        ->set_collapsed(true),
+ ));
     Container::make('theme_options', __('Back to Top'))
     ->set_page_parent($basic_options_container) // reference to a top level container
     ->add_fields(array(
