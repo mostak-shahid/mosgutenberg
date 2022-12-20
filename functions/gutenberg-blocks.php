@@ -14,6 +14,37 @@ function mos_gutenberg_blocks() {
             }
         }
     }
+    /*
+    //Base Block start
+    Block::make(__('Base Block'))
+    ->add_tab(__('Content'), array(
+        Field::make('text', 'mos_block_title', __('Title')),
+    ))
+    ->add_tab(__('Style'), array(
+        Field::make('text', 'mos_block_wrapper_class', __('Wrapper Class')),
+        Field::make('text', 'mos_block_title_class', __('Title Class')),
+    )) 
+    ->add_tab(__('Advanced'), array(
+        Field::make('textarea', 'mos_block_style', __('Style'))
+        ->set_help_text('Please write your custom css without style tag'),
+        Field::make('textarea', 'mos_block_script', __('Script'))
+        ->set_help_text('Please write your custom script without script tag'),
+    ))  
+    ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
+    ?>
+        <div class="mos-block-wrapper <?php echo @$fields['mos_block_wrapper_class']; ?> <?php echo @$attributes['className']; ?>"> 
+        <div class="title <?php echo @$fields['mos_block_title_class']; ?>"><?php echo $fields['mos_block_title'] ?></div>
+        </div>
+        <?php if(@$fields['mos_block_style']) : ?>
+        <style><?php echo $fields['mos_block_style']; ?></style>
+        <?php endif?>
+        <?php if(@$fields['mos_block_script']) : ?>
+        <script><?php echo $fields['mos_block_script']; ?></script>
+        <?php endif?>
+    <?php
+    }); 
+    //Base Block end
+    */
     
     //Section Title Block start
     Block::make(__('Section Title Block'))
