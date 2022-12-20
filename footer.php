@@ -133,6 +133,13 @@ if($btt_enable) :
         });
     </script>
     <?php endif?>
+    <?php if (carbon_get_theme_option( 'mos_plugin_slick' ) == 'on') : ?>
+    <script>
+        jQuery(document).ready(function($) {
+            $('.mos-slick').slick();
+        });
+    </script>
+    <?php endif?>
 
 </body>
 
