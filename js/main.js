@@ -86,12 +86,12 @@ document.addEventListener('scroll', (e) => {
 //    if (scrollTop > 100) document.querySelector('#btt-btn').style.display = "block";
 //    else document.querySelector('#btt-btn').style.display = "none"
     if (scrollTop > 100) {
-        document.querySelector('#header').classList.add("tiny");
-        document.querySelector('#btt-btn').classList.add("active");
+        if (document.querySelector('#header')) document.querySelector('#header').classList.add("tiny");
+        if (document.querySelector('#btt-btn')) document.querySelector('#btt-btn').classList.add("active");
     }
     else {
-        document.querySelector('#header').classList.remove("tiny");
-        document.querySelector('#btt-btn').classList.remove("active");
+        if (document.querySelector('#header'))document.querySelector('#header').classList.remove("tiny");
+        if (document.querySelector('#btt-btn')) document.querySelector('#btt-btn').classList.remove("active");
     }
 })
 
