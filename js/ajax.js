@@ -6,7 +6,7 @@ jQuery(document).ready(function($){
 		var form_data = $(this).serialize();
 		console.log(form_data);
         $.ajax({
-            url: mos_ajax_object.ajax_url, // or example_ajax_obj.ajaxurl if using on frontend
+            url: mos_ajax_object.ajaxurl, // or example_ajax_obj.ajaxurl if using on frontend
             type:"POST",
             dataType:"json",
             data: {
