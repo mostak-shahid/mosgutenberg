@@ -87,7 +87,7 @@ $term = get_queried_object();
                                     ?>
                                 </span>
                                 <?php endif?>
-                                By <span class="posted-by vcard author" itemtype="https://schema.org/Person" itemscope="itemscope" itemprop="author">
+                                By <span class="posted-by" itemtype="https://schema.org/Person" itemscope="itemscope" itemprop="author">
                                     <a title="View all posts by <?php echo $author_name ?>" href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>" rel="author" class="url" itemprop="url">
                                         <span class="author-name" itemprop="name"><?php echo $author_name ?></span>
                                     </a>
