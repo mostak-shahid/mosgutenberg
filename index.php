@@ -11,7 +11,7 @@ $term = get_queried_object();
 
 ?>
 
-<?php echo $blog_page_content?>
+<?php //echo $blog_page_content?>
 <section class="blogWrapper">
     <div class="filterArea pb-5 isBgBorder mb-5">
         <div class="container-lg">
@@ -50,36 +50,65 @@ $term = get_queried_object();
         <?php if ( have_posts() ) :?>
         <div id="blogs" class="row">
             <?php while ( have_posts() ) : the_post(); ?>
-            <div class="col-sm-6 col-lg-4 mb-4">
-                <div class="item-wrapper h-100">
-                    <div class="singleBlog isRadius16 d-flex flex-column justify-content-between">
+                <?php 
+                $post_id = get_the_ID();
+                $author_id = get_post_field( 'post_author', $post_id );
+                $author_name = get_the_author_meta('display_name',$author_id);
+                $categories = get_the_category();
+                ?>
+                <div class="col-sm-6 col-lg-4 mb-4">
+                    <article id="<?php echo get_post_type() ?>-<?php echo $post_id ?>" <?php post_class( 'single-blog' ); ?> itemtype="https://schema.org/CreativeWork" itemscope="itemscope">
                         <div class="content-part">
                             <?php 
-                                if (has_post_thumbnail()) : 
-                                $featured_img_url = get_the_post_thumbnail_url(get_the_ID(),'full');
-                                $featured_img_resized = aq_resize($featured_img_url, 350, 200, true);
+                            if (has_post_thumbnail()) : 
+                            $featured_img_url = get_the_post_thumbnail_url($post_id,'full');
+                            $featured_img_resized = aq_resize($featured_img_url, 350, 200, true);
                             ?>
-                            <div class="blogImage">
-                                <a class="text-decoration-none" href="<?php echo get_the_permalink() ?>">
+                            <div class="blog-image">
+                                <a class="text-decoration-none d-block" href="<?php echo get_the_permalink() ?>">
                                     <img decoding="async" class="lazy-load-image lazyload img-fluid w-100" src="<?php echo $featured_img_resized?$featured_img_resized:$featured_img_url ?>" alt="<?php echo get_the_title() ?>" width="350px" height="200px" loading="lazy">
                                 </a>
                             </div>
                             <?php endif?>
-                            <div class="blogInfo">
-                                <h3 class="blogTitle mb-2">
+                            
+                            <div class="entry-meta">			
+                                <span class="comments-link">
+                                    <a href="<?php echo get_the_permalink() ?>#respond">Leave a Comment</a>
+                                </span>
+                                <?php if (! empty( $categories ) ) : ?>
+                                <span class="cat-links">
+                                    <?php
+                                    $separator = ', ';
+                                    $output = '';
+                                    foreach( $categories as $category ) {
+                                        $output .= '<a href="' . esc_url( get_category_link( $category->term_id ) ) . '" title="' . esc_attr( sprintf( __( 'View all posts in %s', 'textdomain' ), $category->name ) ) . '">' . esc_html( $category->name ) . '</a>' . $separator;
+                                    }
+                                    echo trim( $output, $separator );                                    
+                                    ?>
+                                </span>
+                                <?php endif?>
+                                By <span class="posted-by vcard author" itemtype="https://schema.org/Person" itemscope="itemscope" itemprop="author">
+                                    <a title="View all posts by <?php echo $author_name ?>" href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>" rel="author" class="url" itemprop="url">
+                                        <span class="author-name" itemprop="name"><?php echo $author_name ?></span>
+                                    </a>
+                                </span>
+                            </div>
+                            
+                            <div class="blog-info" itemprop="text">
+                                <h3 class="blog-title" itemprop="headline">
                                     <a class="text-decoration-none" href="<?php echo get_the_permalink() ?>"><?php echo get_the_title() ?></a>
                                 </h3>
-                                <div class="blogDesc"><?php echo wp_trim_words( get_the_content(), 28, '...' )?></div>
+                                <div class="blog-intro"><?php echo wp_trim_words( strip_shortcodes(get_the_content()), 28, '...' )?></div>
                             </div>
                         </div>
                         <div class="link-part">
-                            <a class="readMore d-flex align-items-center text-decoration-none" href="<?php echo get_the_permalink() ?>">
+                            <a class="btn-read-more" href="<?php echo get_the_permalink() ?>">
+                                <span class="screen-reader-text d-none"><?php echo get_the_title() ?></span>
                                 <span>Read More</span>
                             </a>
                         </div>
-                    </div>
+                    </article>
                 </div>
-            </div>
             <?php endwhile;?>
         </div>
         <div class="blog-pagination-wrapper pagination-wrapper">

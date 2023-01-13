@@ -17,25 +17,29 @@ $audio = carbon_get_the_post_meta( 'mos_blog_details_audio' );
 
 ?>
 
-<section class="BlogSingleWrapper">
+<section class="blog-single-wrapper">
     <div class="container-lg">
         <div class="wrapper">
             <div class="row">
                 <div class="col-lg-8">
-                    <div class="blogFeathered">
-                        <div class="BlogsSingleHeader">
+                    <article id="<?php echo get_post_type() ?>-<?php echo $post_id ?>" <?php post_class( 'single-blog' ); ?> itemtype="https://schema.org/CreativeWork" itemscope="itemscope">
+                        <div class="entry-header">                            
                             <?php if ( ! empty( $categories ) ) : ?>
                                 <p class="blogSingleTag"><?php echo esc_html( $categories[0]->name ); ?></p>
                             <?php endif?>
-                            <h1 class="blogSingleTitle"><?php echo get_the_title() ?></h1>
-                            <div class="meta d-sm-flex gap-4 align-items-center">
-                                <div class="single-blog-tags text-decoration-none text-white fs-14 fw-bold d-flex align-items-center">
+                            <h1 class="blog-title" itemprop="headline"><?php echo get_the_title() ?></h1>
+                            <div class="entry-meta">
+                                <div class="single-blog-tags">
                                     <div class="adminImg flex-shrink-0">
                                         <img class="lazy-load-image lazyload author-image" src="<?php echo $author_image?aq_resize($author_image, 22,22,true):get_template_directory_uri().'/images/blog-author-default.svg' ?>" alt="<?php echo $author_name ?>" width="22" height="22" loading="lazy">
                                     </div>
-                                    <span class="AuthorName"><?php echo $author_name; ?></span>
+                                    <span class="posted-by" itemtype="https://schema.org/Person" itemscope="itemscope" itemprop="author">
+                                        <a title="View all posts by <?php echo $author_name ?>" href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>" rel="author" class="url" itemprop="url">
+                                            <span class="author-name" itemprop="name"><?php echo $author_name ?></span>
+                                        </a>
+                                    </span>
                                 </div>
-                                <div class="single-blog-tags text-decoration-none textClrGray fs-14 fw-medium d-flex align-items-center">
+                                <div class="single-blog-tags">
                                     <div class="CalenderIcon flex-shrink-0">
                                         <img class="lazy-load-image lazyload " src="<?php echo get_template_directory_uri() ?>/images/clock1.svg" alt="Calender Img" width="20px" height="20px" loading="lazy">
                                     </div>
@@ -43,82 +47,79 @@ $audio = carbon_get_the_post_meta( 'mos_blog_details_audio' );
                                 </div>
                             </div>
                             <?php if (has_post_thumbnail()) : ?>
-                            <div class="BlogSingFeatheredImg mb-40"><?php the_post_thumbnail('full', ['class' => 'lazy-load-image lazyload img-fluid img-blog-single', 'title' => get_the_title()]); ?></div>
+                            <div class="blog-image"><?php the_post_thumbnail('full', ['class' => 'lazy-load-image lazyload img-fluid img-blog-single', 'title' => get_the_title()]); ?></div>
+                            <?php endif?>                            
+                        </div>
+                        <div class="blog-info">
+                            <?php if ($audio_option == 'ga') : ?>
+                                <div id="audio-player-blog" class="audio-player audio-player-template-2 audio-player-blog mb-40">
+                                    <div class="controls">
+                                        <source src="<?php echo wp_get_attachment_url($audio) ?>">
+                                        <div class="part-one">
+                                            <div class="left-part">
+                                                <div class="play-container">
+                                                    <div class="toggle-play play"></div>
+                                                </div>
+                                                <p>Click play to listen to the blog</p>
+                                            </div>
+                                            <div class="right-part">                    
+                                                <div class="volume-container">
+                                                    <div class="volume-button">
+                                                        <div class="volume icono-volumeMedium"></div>
+                                                    </div>
+                                                    <div class="volume-slider">
+                                                        <div class="volume-percentage"></div>
+                                                    </div>
+                                                </div>
+                                                <select class="playback-rate">
+                                                    <option value=".25">0.25x</option>
+                                                    <option value=".5">0.50x</option>
+                                                    <option value=".75">0.75x</option>
+                                                    <option value="1" selected>1x</option>
+                                                    <option value="1.25">1.25x</option>
+                                                    <option value="1.5">1.5x</option>
+                                                    <option value="1.75">1.75x</option>
+                                                    <option value="2">2x</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="part-two time">
+                                            <div class="current">0:00</div>
+                                            <div class="timeline">
+                                                <div class="progress"></div>
+                                            </div>
+                                            <div class="length">0:00</div>
+                                        </div>
+                                    </div>
+                                </div>
                             <?php endif?>
-                        </div>
-                    </div>
-                    <div class="BlogSingleContentArea position-relative">
-
-                        <?php if ($audio_option == 'ga') : ?>
-                            <div id="audio-player-blog" class="audio-player audio-player-template-2 audio-player-blog mb-40">
-                                <div class="controls">
-                                    <source src="<?php echo wp_get_attachment_url($audio) ?>">
-                                    <div class="part-one">
-                                        <div class="left-part">
-                                            <div class="play-container">
-                                                <div class="toggle-play play"></div>
-                                            </div>
-                                            <p>Click play to listen to the blog</p>
-                                        </div>
-                                        <div class="right-part">                    
-                                            <div class="volume-container">
-                                                <div class="volume-button">
-                                                    <div class="volume icono-volumeMedium"></div>
-                                                </div>
-                                                <div class="volume-slider">
-                                                    <div class="volume-percentage"></div>
-                                                </div>
-                                            </div>
-                                            <select class="playback-rate">
-                                                <option value=".25">0.25x</option>
-                                                <option value=".5">0.50x</option>
-                                                <option value=".75">0.75x</option>
-                                                <option value="1" selected>1x</option>
-                                                <option value="1.25">1.25x</option>
-                                                <option value="1.5">1.5x</option>
-                                                <option value="1.75">1.75x</option>
-                                                <option value="2">2x</option>
-                                            </select>
-                                        </div>
+                            <div class="blog-intro" itemprop="text"><?php the_content()?></div>
+                            <hr>
+                            <div class="author-intro">
+                                <?php if ($author_image) :?>
+                                    <div class="left-part">
+                                        <img class="lazy-load-image lazyload author-image mb-1" src="<?php echo $author_image ?>" alt="<?php echo $author_name ?>" width="120px" height="120px" loading="lazy">
                                     </div>
-                                    <div class="part-two time">
-                                        <div class="current">0:00</div>
-                                        <div class="timeline">
-                                            <div class="progress"></div>
-                                        </div>
-                                        <div class="length">0:00</div>
-                                    </div>
-                                </div>
-                            </div>
-                        <?php endif?>
-
-                        <div class="blogInnerContent"><?php the_content()?></div>
-                        <hr class="whiteBorder">
-                        <div class="authorIntro bgClrDarkLight">
-                            <?php if ($author_image) :?>
-                                <div class="left-part">
-                                    <img class="lazy-load-image lazyload author-image mb-1" src="<?php echo $author_image ?>" alt="<?php echo $author_name ?>" width="120px" height="120px" loading="lazy">
-                                </div>
-                            <?php endif; ?>
-                            <div class="right-part">
-                                <div class="contributor-title">VIP Contributor</div>
-                                <div class="d-sm-flex justify-content-start align-items-center mb-15">
-                                    <div class="fs-24 authoredBy"><strong><?php echo $author_name; ?></strong></div>
-                                    <?php if ($author_designation) : ?>
-                                        <div class="authorDesignation">
-                                            <div class="d-inline-block"><?php echo $author_designation; ?></div>
-                                        </div>
-                                    <?php endif?>
-                                </div>
-                                <?php if ($author_description) :  ?>
-                                <div class="fs-6 fw-normal textClrGray authorDesc">
-                                    <?php echo $author_description; ?>
-                                </div>
                                 <?php endif; ?>
+                                <div class="right-part">
+                                    <div class="contributor-title">Author</div>
+                                    <div class="d-sm-flex justify-content-start align-items-center mb-15">
+                                        <div class="fs-24 authoredBy"><strong><?php echo $author_name; ?></strong></div>
+                                        <?php if ($author_designation) : ?>
+                                            <div class="authorDesignation">
+                                                <div class="d-inline-block"><?php echo $author_designation; ?></div>
+                                            </div>
+                                        <?php endif?>
+                                    </div>
+                                    <?php if ($author_description) :  ?>
+                                    <div class="fs-6 fw-normal textClrGray authorDesc">
+                                        <?php echo $author_description; ?>
+                                    </div>
+                                    <?php endif; ?>
+                                </div>
                             </div>
                         </div>
-                        <hr class="whiteBorder">
-                    </div>
+                    </article>
                 </div>
                 <div class="col-lg-4">
                     <div class="blogSingle-sidebar pb-5 position-sticky">
