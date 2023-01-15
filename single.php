@@ -122,6 +122,7 @@ $audio = carbon_get_the_post_meta( 'mos_blog_details_audio' );
                     </article>
                 </div>
                 <div class="col-lg-4">
+                    <?php get_sidebar();?>
                     <div class="blogSingle-sidebar pb-5 position-sticky">
                         <div class="widget">
                             <?php get_search_form( true ); ?>

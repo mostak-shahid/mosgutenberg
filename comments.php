@@ -7,8 +7,8 @@ if ( post_password_required() ) {
     return;
 }
 ?>
-<h3 class="comments-count-title"><?php comments_number( 'No Comments', '1 Comments', '% Comments' );?> </h3>
-<div id="comments" class="comments">
+<div id="comments" class="comments">   
+    <h3 class="comments-count-title"><?php comments_number( 'No Comments', '1 Comments', '% Comments' );?> </h3>
     <div id="comments-list" class="comments-list">
         <?php // You can start editing here -- including this comment! ?>
         <?php if ( have_comments() ) { ?>
@@ -90,6 +90,7 @@ if ( post_password_required() ) {
 	ob_start();
 	comment_form(
 		array(
+            'class_submit' => 'btn btn-primary',
 			'fields' => array(
                 'comment_notes_before' => '<p class="email-note">Your email address will not be published. Required fields are marked *</p>',
                 

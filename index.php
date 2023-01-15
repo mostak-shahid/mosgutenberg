@@ -71,21 +71,27 @@ $term = get_queried_object();
                             </div>
                             <?php endif?>
                             
-                            <div class="entry-meta">			
-                                <span class="comments-link">
-                                    <a href="<?php echo get_the_permalink() ?>#respond">Leave a Comment</a>
-                                </span>
+                            <div class="entry-meta">	
+                                <?php if (comments_open() || '0' != get_comments_number()) : ?>
+                                    <span class="comments-link">
+                                    <?php if ( get_comments_number() ) : ?>
+                                        <a href="<?php echo get_the_permalink() ?>#comments"><?php comments_number( 'No Comments', '1 Comments', '% Comments' );?></a>
+                                    <?php else : ?>
+                                        <a href="<?php echo get_the_permalink() ?>#respond">Leave a Comment</a>
+                                    <?php endif ?>
+                                    </span>
+                                <?php endif;?>	
                                 <?php if (! empty( $categories ) ) : ?>
-                                <span class="cat-links">
-                                    <?php
-                                    $separator = ', ';
-                                    $output = '';
-                                    foreach( $categories as $category ) {
-                                        $output .= '<a href="' . esc_url( get_category_link( $category->term_id ) ) . '" title="' . esc_attr( sprintf( __( 'View all posts in %s', 'textdomain' ), $category->name ) ) . '">' . esc_html( $category->name ) . '</a>' . $separator;
-                                    }
-                                    echo trim( $output, $separator );                                    
-                                    ?>
-                                </span>
+                                    <span class="cat-links">
+                                        <?php
+                                        $separator = ', ';
+                                        $output = '';
+                                        foreach( $categories as $category ) {
+                                            $output .= '<a href="' . esc_url( get_category_link( $category->term_id ) ) . '" title="' . esc_attr( sprintf( __( 'View all posts in %s', 'textdomain' ), $category->name ) ) . '">' . esc_html( $category->name ) . '</a>' . $separator;
+                                        }
+                                        echo trim( $output, $separator );                                    
+                                        ?>
+                                    </span>
                                 <?php endif?>
                                 By <span class="posted-by" itemtype="https://schema.org/Person" itemscope="itemscope" itemprop="author">
                                     <a title="View all posts by <?php echo $author_name ?>" href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>" rel="author" class="url" itemprop="url">
@@ -98,7 +104,10 @@ $term = get_queried_object();
                                 <h3 class="blog-title" itemprop="headline">
                                     <a class="text-decoration-none" href="<?php echo get_the_permalink() ?>"><?php echo get_the_title() ?></a>
                                 </h3>
-                                <div class="blog-intro"><?php echo wp_trim_words( strip_shortcodes(get_the_content()), 28, '...' )?></div>
+                                <div class="blog-intro">
+                                <?php //echo wp_trim_words( strip_shortcodes(get_the_content()), 28, '...' )?>
+                                <?php echo get_the_excerpt() ?>
+                                </div>
                             </div>
                         </div>
                         <div class="link-part">

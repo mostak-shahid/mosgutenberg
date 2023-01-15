@@ -12,7 +12,7 @@ function disable_edit_options() {
 //	__FILE__,
 //	'mosgutenberg'
 //);
-require_once ('carbon-fields.php');
+
 require_once('functions/theme-functions.php');
 require_once('functions/scripts.php');
 require_once('functions/setup.php');
@@ -32,6 +32,7 @@ require_once('functions/breadcrumb.php');
 require_once('functions/contact-form-7-element.php');
 //require_once('functions/post-types.php');
 require_once('functions/postgrid-column-custimozation.php');
+require_once ('carbon-fields.php');
 require_once('functions/theme-options.php');
 require_once('functions/gutenberg-blocks.php');
 require_once('functions/post-metas.php');
