@@ -30,7 +30,7 @@ require_once('functions/Mobile_Detect.php');
 require_once('functions/class-wp-bootstrap-navwalker.php');
 require_once('functions/breadcrumb.php');
 require_once('functions/contact-form-7-element.php');
-//require_once('functions/post-types.php');
+require_once('functions/post-types.php');
 require_once('functions/postgrid-column-custimozation.php');
 require_once ('carbon-fields.php');
 require_once('functions/theme-options.php');

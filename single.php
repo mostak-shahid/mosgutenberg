@@ -28,23 +28,33 @@ $audio = carbon_get_the_post_meta( 'mos_blog_details_audio' );
                                 <p class="blogSingleTag"><?php echo esc_html( $categories[0]->name ); ?></p>
                             <?php endif?>
                             <h1 class="blog-title" itemprop="headline"><?php echo get_the_title() ?></h1>
-                            <div class="entry-meta">
-                                <div class="single-blog-tags">
-                                    <div class="adminImg flex-shrink-0">
-                                        <img class="lazy-load-image lazyload author-image" src="<?php echo $author_image?aq_resize($author_image, 22,22,true):get_template_directory_uri().'/images/blog-author-default.svg' ?>" alt="<?php echo $author_name ?>" width="22" height="22" loading="lazy">
-                                    </div>
-                                    <span class="posted-by" itemtype="https://schema.org/Person" itemscope="itemscope" itemprop="author">
-                                        <a title="View all posts by <?php echo $author_name ?>" href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>" rel="author" class="url" itemprop="url">
-                                            <span class="author-name" itemprop="name"><?php echo $author_name ?></span>
-                                        </a>
+                            <div class="entry-meta">	
+                                <?php if (comments_open() || '0' != get_comments_number()) : ?>
+                                    <span class="comments-link">
+                                    <?php if ( get_comments_number() ) : ?>
+                                        <a href="<?php echo get_the_permalink() ?>#comments"><?php comments_number( 'No Comments', '1 Comments', '% Comments' );?></a>
+                                    <?php else : ?>
+                                        <a href="<?php echo get_the_permalink() ?>#respond">Leave a Comment</a>
+                                    <?php endif ?>
                                     </span>
-                                </div>
-                                <div class="single-blog-tags">
-                                    <div class="CalenderIcon flex-shrink-0">
-                                        <img class="lazy-load-image lazyload " src="<?php echo get_template_directory_uri() ?>/images/clock1.svg" alt="Calender Img" width="20px" height="20px" loading="lazy">
-                                    </div>
-                                    <span class="PostDate"><time><?php echo get_post_time('M j, Y') ?></time></span>
-                                </div>
+                                <?php endif;?>	
+                                <?php if (! empty( $categories ) ) : ?>
+                                    <span class="cat-links">
+                                        <?php
+                                        $separator = ', ';
+                                        $output = '';
+                                        foreach( $categories as $category ) {
+                                            $output .= '<a href="' . esc_url( get_category_link( $category->term_id ) ) . '" title="' . esc_attr( sprintf( __( 'View all posts in %s', 'textdomain' ), $category->name ) ) . '">' . esc_html( $category->name ) . '</a>' . $separator;
+                                        }
+                                        echo trim( $output, $separator );                                    
+                                        ?>
+                                    </span>
+                                <?php endif?>
+                                <span class="posted-by" itemtype="https://schema.org/Person" itemscope="itemscope" itemprop="author">By 
+                                    <a title="View all posts by <?php echo $author_name ?>" href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>" rel="author" class="url" itemprop="url">
+                                        <span class="author-name" itemprop="name"><?php echo $author_name ?></span>
+                                    </a>
+                                </span>
                             </div>
                             <?php if (has_post_thumbnail()) : ?>
                             <div class="blog-image"><?php the_post_thumbnail('full', ['class' => 'lazy-load-image lazyload img-fluid img-blog-single', 'title' => get_the_title()]); ?></div>
@@ -93,7 +103,7 @@ $audio = carbon_get_the_post_meta( 'mos_blog_details_audio' );
                                     </div>
                                 </div>
                             <?php endif?>
-                            <div class="blog-intro" itemprop="text"><?php the_content()?></div>
+                            <div class="blog-intro"><?php the_content()?></div>
                             <hr>
                             <div class="author-intro">
                                 <?php if ($author_image) :?>
