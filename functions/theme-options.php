@@ -218,7 +218,10 @@ function mos_theme_options() {
         Field::make('complex', 'mos-contact-social-media', __('Social Media'))
         ->add_fields(array(
             Field::make('text', 'title', __('Title')),
-            Field::make('text', 'link', __('Link')),
+            Field::make('text', 'link', __('Link'))
+            ->set_attribute( 'type', 'url' ),
+            Field::make('text', 'icon', __('Icon Class'))
+            ->set_help_text( 'Example: fa-facebook' ),
             Field::make('checkbox', 'new-tab', __('Open in new tab'))
             ->set_option_value('no'),
         ))        
