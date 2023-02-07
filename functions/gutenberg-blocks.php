@@ -23,6 +23,55 @@ function mos_gutenberg_blocks() {
     ->add_tab(__('Style'), array(
         Field::make('text', 'mos_block_wrapper_class', __('Wrapper Class')),
         Field::make('text', 'mos_block_title_class', __('Title Class')),
+        Field::make('complex', 'mos_block_background', __('Background'))
+        ->set_max(1)
+        ->set_collapsed(true)
+        ->add_fields(array(
+            Field::make('color', 'background-color', __('Background Color')),
+            Field::make('image', 'background-image', __('Background Image')),
+            Field::make('select', 'background-position', __('Background Position'))
+            ->set_options(array(
+                'top left' => 'Top Left',
+                'top center' => 'Top Center',
+                'top right' => 'Top Right',
+                'center left' => 'Center Left',
+                'center center' => 'Center Center',
+                'center right' => 'Center Right',
+                'bottom left' => 'Bottom left',
+                'bottom center' => 'Bottom Center',
+                'bottom right' => 'Bottom Right',
+            ))
+            ->set_default_value(['top left']),
+            Field::make('select', 'background-size', __('Background Size'))
+            ->set_options(array(
+                'cover' => 'cover',
+                'contain' => 'contain',
+                'auto' => 'auto',
+                'inherit' => 'inherit',
+                'initial' => 'initial',
+                'revert' => 'revert',
+                'revert-layer' => 'revert-layer',
+                'unset' => 'unset',
+            ))
+            ->set_default_value(['cover']),
+            //background-repeat: repeat|repeat-x|repeat-y|no-repeat|initial|inherit;
+            Field::make('select', 'background-repeat', __('Background Repeat'))
+            ->set_options(array(
+                'repeat' => 'repeat',
+                'repeat-x' => 'repeat-x',
+                'repeat-y' => 'repeat-y',
+                'no-repeat' => 'no-repeat',
+                'initial' => 'initial',
+                'inherit' => 'inherit',
+            ))
+            ->set_default_value(['scroll']),
+            Field::make('select', 'background-attachment', __('Background Attachment'))
+            ->set_options(array(
+                'scroll' => 'Scroll',
+                'fixed' => 'Fixed',
+            ))
+            ->set_default_value(['scroll']),
+        )),
     )) 
     ->add_tab(__('Advanced'), array(
         Field::make('textarea', 'mos_block_style', __('Style'))
@@ -39,6 +88,29 @@ function mos_gutenberg_blocks() {
         <?php if(@$fields['mos_block_style']) : ?>
         <style><?php echo str_replace("selector",'#'.$id,$fields['mos_block_style']); ?></style>
         <?php endif?>
+        
+        <style>            
+            <?php echo '#'.$id ?> {
+                <?php if (@$fields['mos_block_background'][0]['background-color']) : ?>
+                    background-color: <?php echo $fields['mos_block_background'][0]['background-color'] ?>;
+                <?php endif?>
+                <?php if (@$fields['mos_block_background'][0]['background-image']) : ?>
+                    background-image: url(<?php echo $fields['mos_block_background'][0]['background-image'] ?>);
+                <?php endif?>
+                <?php if (@$fields['mos_block_background'][0]['background-position']) : ?>
+                    background-position: <?php echo $fields['mos_block_background'][0]['background-position'] ?>;
+                <?php endif?>
+                <?php if (@$fields['mos_block_background'][0]['background-size']) : ?>
+                    background-size: <?php echo $fields['mos_block_background'][0]['background-size'] ?>;
+                <?php endif?>
+                <?php if (@$fields['mos_block_background'][0]['background-repeat']) : ?>
+                    background-repeat: <?php echo $fields['mos_block_background'][0]['background-repeat'] ?>;
+                <?php endif?>
+                <?php if (@$fields['mos_block_background'][0]['background-attachment']) : ?>
+                    background-attachment: <?php echo $fields['mos_block_background'][0]['background-attachment'] ?>;
+                <?php endif?>
+            }
+        </style>
         <?php if(@$fields['mos_block_script']) : ?>
         <script><?php echo $fields['mos_block_script']; ?></script>
         <?php endif?>
