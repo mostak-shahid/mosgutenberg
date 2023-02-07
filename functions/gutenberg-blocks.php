@@ -30,13 +30,14 @@ function mos_gutenberg_blocks() {
         Field::make('textarea', 'mos_block_script', __('Script'))
         ->set_help_text('Please write your custom script without script tag'),
     ))  
-    ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
+    ->set_render_callback(function ($fields, $attributes, $inner_blocks) {        
+        $id = 'element-'.time().rand(1000, 9999);
     ?>
-        <div class="mos-block-wrapper <?php echo @$fields['mos_block_wrapper_class']; ?> <?php echo @$attributes['className']; ?>"> 
+        <div id="<?php echo $id ?>" class="mos-block-wrapper <?php echo @$fields['mos_block_wrapper_class']; ?> <?php echo @$attributes['className']; ?>"> 
         <div class="title <?php echo @$fields['mos_block_title_class']; ?>"><?php echo $fields['mos_block_title'] ?></div>
-        </div>
+        </div>        
         <?php if(@$fields['mos_block_style']) : ?>
-        <style><?php echo $fields['mos_block_style']; ?></style>
+        <style><?php echo str_replace("selector",'#'.$id,$fields['mos_block_style']); ?></style>
         <?php endif?>
         <?php if(@$fields['mos_block_script']) : ?>
         <script><?php echo $fields['mos_block_script']; ?></script>
