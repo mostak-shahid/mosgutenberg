@@ -53,7 +53,7 @@ function mos_gutenberg_blocks() {
                 'revert-layer' => 'revert-layer',
                 'unset' => 'unset',
             ))
-            ->set_default_value(['cover']),
+            ->set_default_value('cover'),
             //background-repeat: repeat|repeat-x|repeat-y|no-repeat|initial|inherit;
             Field::make('select', 'background-repeat', __('Background Repeat'))
             ->set_options(array(
@@ -64,13 +64,13 @@ function mos_gutenberg_blocks() {
                 'initial' => 'initial',
                 'inherit' => 'inherit',
             ))
-            ->set_default_value(['scroll']),
+            ->set_default_value('repeat'),
             Field::make('select', 'background-attachment', __('Background Attachment'))
             ->set_options(array(
                 'scroll' => 'Scroll',
                 'fixed' => 'Fixed',
             ))
-            ->set_default_value(['scroll']),
+            ->set_default_value('scroll'),
         )),
     )) 
     ->add_tab(__('Advanced'), array(
@@ -95,7 +95,7 @@ function mos_gutenberg_blocks() {
                     background-color: <?php echo $fields['mos_block_background'][0]['background-color'] ?>;
                 <?php endif?>
                 <?php if (@$fields['mos_block_background'][0]['background-image']) : ?>
-                    background-image: url(<?php echo $fields['mos_block_background'][0]['background-image'] ?>);
+                    background-image: url(<?php echo wp_get_attachment_url($fields['mos_block_background'][0]['background-image']) ?>);
                 <?php endif?>
                 <?php if (@$fields['mos_block_background'][0]['background-position']) : ?>
                     background-position: <?php echo $fields['mos_block_background'][0]['background-position'] ?>;
