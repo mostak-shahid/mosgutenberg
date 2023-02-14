@@ -177,7 +177,8 @@ a:hover {
 .nk-awb .nk-awb-wrap {
   margin: 0 !important;
 }
-.blog-wrapper {
+.blog-wrapper,
+.blog-single-wrapper {
   padding-top: 70px;
   padding-bottom: 70px;
 }
