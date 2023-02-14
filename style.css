@@ -244,6 +244,9 @@ a:hover {
 .single .comment-form-cookies-consent {
 	    margin-top: 1rem;
 }
+.single .entry-meta span:not(:last-child):after {
+	content: '/';
+}
 .group-container > .wp-block-group__inner-container,
 .group-container-fluid > .wp-block-group__inner-container,
 .group-container-xxl > .wp-block-group__inner-container,
