@@ -85,6 +85,14 @@ select {
     -moz-appearance: none;
     appearance: none;
 }
+pre {
+    background: #eceff3;
+    font-family: "Courier 10 Pitch",Courier,monospace;
+    margin-bottom: 1.6em;
+    overflow: auto;
+    max-width: 100%;
+    padding: 1.6em;
+}
 .wp-block-button__link {
   background-color: var(--mos-primary-color);
   color: #ffffff;
