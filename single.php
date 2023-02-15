@@ -54,6 +54,16 @@ $categories = get_the_category();
                         </div>
                         <div class="blog-info">
                             <div class="blog-intro"><?php the_content()?></div>
+                            <?php
+							wp_link_pages(
+								array(
+									'before'      => '<div class="page-links">',
+									'after'       => '</div>',
+									'link_before' => '<span class="page-link">',
+									'link_after'  => '</span>',
+								)
+							);
+							?>
 							
 							<div class="post-navigation d-flex justify-content-between align-items-center">
 								<?php previous_post_link('%link', '<i class="fa fa-arrow-left"></i> %title'); ?>
