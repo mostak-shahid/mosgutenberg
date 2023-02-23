@@ -193,8 +193,9 @@ function mos_gutenberg_blocks() {
         Field::make('text', 'mos_sec_desc', __('Section Intro')),
     ))*/
     ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
+        $id = 'element-'.time().rand(1000, 9999);
         ?>
-<div class="section-heading <?php echo @$fields['mos_sec_text_align']; ?> <?php echo @$fields['mos_sec_class']; ?> <?php echo @$attributes['className']; ?>">
+<div id="<?php echo $id ?>" class="section-heading <?php echo @$fields['mos_sec_text_align']; ?> <?php echo @$fields['mos_sec_class']; ?> <?php echo @$attributes['className']; ?>">
     <div class="text-part">
     <?php if(@$fields['mos_sec_subtitle']) : ?><h6 class="sub-title <?php echo @$fields['mos_sec_subtitle_class']; ?> wow <?php echo @$fields['mos_sec_subtitle_animation_option'] ?>" data-wow-delay="<?php echo @$fields['mos_sec_subtitle_animation_delay'] ?>ms"><?php echo do_shortcode($fields['mos_sec_subtitle']); ?></h6><?php endif?>
     
@@ -222,7 +223,7 @@ function mos_gutenberg_blocks() {
     <?php endif?>   
 </div>
 <?php if(@$fields['mos_sec_style']) : ?>
-<style><?php echo $fields['mos_sec_style']; ?></style>
+<style><?php echo str_replace("selector",'#'.$id,$fields['mos_sec_style']); ?></style>
 <?php endif?>
 <?php if(@$fields['mos_sec_script']) : ?>
 <script><?php echo $fields['mos_sec_script']; ?></script>
