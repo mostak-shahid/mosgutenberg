@@ -557,8 +557,6 @@ pre {
     .delay-xxl-1s{-webkit-animation-delay:1s;-moz-animation-delay:1s;animation-delay:1s}
 }
 
-@media (min-width: 1399.98px) {}
-
 @media (max-width:1199.98px) {}
 
 @media (max-width:991.98px) {}
