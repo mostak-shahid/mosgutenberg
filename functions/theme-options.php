@@ -13,7 +13,7 @@ function mos_theme_options() {
         Field::make('footer_scripts', 'crb_footer_script', __('Footer Script')),
     ));
 
-    Container::make('theme_options', __('Color scheme'))
+    Container::make('theme_options', __('Style and Colors'))
     ->set_page_parent($basic_options_container) // reference to a top level container
     ->add_fields(array(
         Field::make('color', 'mos_body_bg', 'Body Background')
@@ -39,6 +39,55 @@ function mos_theme_options() {
         Field::make('color', 'mos_link_hover_color', 'Link Hover Color')
         ->set_help_text('Pick the link hover color, by default it is set to #0a58ca.')
         ->set_default_value('#0a58ca'),
+
+        Field::make('color', 'mos_success_color', 'Success Color')
+        ->set_help_text('Pick the success color.'),
+
+        Field::make('color', 'mos_custom_badge_color', 'Custom Badge Color')
+        ->set_help_text('Pick the custom badge color.'),
+
+        Field::make('color', 'mos_featured_badge_color', 'Featured Badge Color')
+        ->set_help_text('Pick the featured badge color.'),
+
+        Field::make('color', 'mos_backorders_badge_color', 'Backorders Badge Color')
+        ->set_help_text('Pick the backorders  badge color.'),
+
+        Field::make('color', 'mos_sale_badge_color', 'Sale Badge Color')
+        ->set_help_text('Pick the sale badge color.'),
+
+        Field::make('color', 'mos_variants_badge_color', 'Variants Badge Color')
+        ->set_help_text('Pick the variants badge color.'),
+
+        Field::make('color', 'mos_price_badge_color', 'Price Color')
+        ->set_help_text('Pick the price badge color.'),
+
+        Field::make('color', 'mos_buttons_background_color', 'Buttons Background Color')
+        ->set_help_text('Pick the buttons background color. by default it is set to #32373c.')
+        ->set_default_value('#32373c'),
+
+        Field::make('color', 'mos_buttons_background_color_hover', 'Buttons Background Color Hover')
+        ->set_help_text('Pick the buttons background hover color.'),
+
+        Field::make('color', 'mos_buttons_text_color', 'Buttons Text Color')
+        ->set_help_text('Pick the buttons text color. by default it is set to #ffffff.')
+        ->set_default_value('#ffffff'),
+
+        Field::make('color', 'mos_buttons_text_color_hover', 'Buttons Text Color Hover')
+        ->set_help_text('Pick the buttons text hover color.'),
+
+        Field::make( 'text', 'mos_buttons_border_radius', __( 'Buttons Radius' ) )
+        ->set_default_value('4px'),
+
+        Field::make( 'text', 'mos_buttons_border_width', __( 'Buttons Border Width' ) )
+        ->set_default_value('2px'),
+
+        Field::make( 'text', 'mos_buttons_padding', __( 'Buttons Padding' ) )
+        ->set_default_value('.667em 1.333em'),
+
+        Field::make( 'text', 'mos_input_radious', __( 'Inputs Radius' ) )
+        ->set_default_value('0px'),
+
+
     ));
     
     Container::make('theme_options', __('Theme Resourcess'))
