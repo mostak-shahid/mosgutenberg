@@ -9,8 +9,11 @@ function mos_theme_options() {
     ->add_fields(array(
         Field::make('image', 'mos-logo', __('Logo'))
         ->set_default_value(get_template_directory_uri() . '/assets/img/logo.svg'),
-        Field::make('header_scripts', 'crb_header_script', __('Header Script')),
-        Field::make('footer_scripts', 'crb_footer_script', __('Footer Script')),
+        Field::make('header_scripts', 'crb_header_script', __('Header Script'))
+        ->set_classes('html-editor'),
+        Field::make('footer_scripts', 'crb_footer_script', __('Footer Script'))
+        ->set_classes('html-editor'),
+        Field::make('rich_text', 'crb_sidenote', __('Sidenote Content')),
     ));
 
     Container::make('theme_options', __('Style and Colors'))

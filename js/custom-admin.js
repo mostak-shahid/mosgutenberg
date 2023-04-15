@@ -1,4 +1,9 @@
-jQuery(document).ready(function($) {    
+jQuery(document).ready(function($) {  
+    $( window ).load(function() {
+        $('.html-editor').find("textarea").ace({ theme: 'twilight', lang: 'html' });
+        $('.css-editor').find("textarea").ace({ theme: 'twilight', lang: 'css' });
+        $('.js-editor').find("textarea").ace({ theme: 'twilight', lang: 'javascript' });
+    });
     var page_template = $('#page_template').val();
     show_meta_boxes (page_template);
 

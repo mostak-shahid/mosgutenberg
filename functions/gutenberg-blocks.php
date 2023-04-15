@@ -120,7 +120,15 @@ function mos_gutenberg_blocks() {
     */
     
     //Section Title Block start
-    Block::make(__('Section Title Block'))
+    Block::make(__('Section Title Block'))    
+    ->add_tab( __( 'Scripts' ), array(
+        Field::make('textarea', 'mos_sec_style', __('Style'))
+        ->set_help_text( 'Please write your custom css without style tag, you can target the parent element with "selector" tag' )
+        ->set_classes('css-editor'),
+        Field::make('textarea', 'mos_sec_script', __('Script'))
+        ->set_help_text( 'Please write your custom script without script tag' )        
+        ->set_classes('js-editor'),
+    )) 
     ->add_tab( __( 'Content' ), array(
         Field::make('text', 'mos_sec_subtitle', __('Sub Title')),
         Field::make('text', 'mos_sec_title', __('Main Title')),
@@ -179,13 +187,7 @@ function mos_gutenberg_blocks() {
         Field::make('text', 'mos_sec_image_animation_delay', __('Animation Delay'))
         ->set_default_value('0')
         ->set_help_text( 'Please add animation delay, unit will be ms.' ),
-    ))  
-    ->add_tab( __( 'Advanced' ), array(
-        Field::make('textarea', 'mos_sec_style', __('Style'))
-        ->set_help_text( 'Please write your custom css without style tag' ),
-        Field::make('textarea', 'mos_sec_script', __('Script'))
-        ->set_help_text( 'Please write your custom script without script tag' ),
-    ))        
+    ))       
         
     /*->add_fields(array(
         Field::make('text', 'mos_sec_subtitle', __('Section Name')),
