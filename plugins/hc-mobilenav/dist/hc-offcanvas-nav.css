@@ -643,15 +643,15 @@ body.hc-nav-open {
 }
 .hc-offcanvas-nav.nav-levels-expand li.level-open,
 .hc-offcanvas-nav.nav-levels-none li.level-open {
-  background: #2e6296;
+  background: var(--mos-primary-color);
 }
 .hc-offcanvas-nav.nav-levels-expand li.level-open > .nav-item-wrapper > a,
 .hc-offcanvas-nav.nav-levels-none li.level-open > .nav-item-wrapper > a {
-  border-bottom: 1px solid #295887;
+  border-bottom: 1px solid var(--mos-primary-color);
 }
 .hc-offcanvas-nav.nav-levels-expand li.level-open > .nav-item-wrapper > a:hover,
 .hc-offcanvas-nav.nav-levels-none li.level-open > .nav-item-wrapper > a:hover {
-  background: #2f649a;
+  background: var(--mos-primary-color);
 }
 .hc-offcanvas-nav.nav-levels-expand
   li.level-open

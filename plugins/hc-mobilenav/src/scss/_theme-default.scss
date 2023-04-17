@@ -1,6 +1,6 @@
-$hc-offcanvas-nav-background-color:   #336ca6 !default;
-$hc-offcanvas-nav-text-color:         #fff !default;
-$hc-offcanvas-nav-text-size:          14px !default;
+$hc-offcanvas-nav-background-color: #00f5eb !default;
+$hc-offcanvas-nav-text-color: #fff !default;
+$hc-offcanvas-nav-text-size: 14px !default;
 
 .hc-offcanvas-nav {
   font-family: sans-serif;
@@ -8,7 +8,7 @@ $hc-offcanvas-nav-text-size:          14px !default;
   &,
   .nav-wrapper {
     &::after {
-      background: rgba(0, 0, 0, .3);
+      background: rgba(0, 0, 0, 0.3);
     }
   }
 
@@ -19,7 +19,11 @@ $hc-offcanvas-nav-text-size:          14px !default;
   }
 
   .nav-content > {
-    h2, h3, h4, h5, h6 {
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
       font-size: round($hc-offcanvas-nav-text-size * 1.35);
       font-weight: normal;
       padding: 20px 17px;
@@ -42,7 +46,7 @@ $hc-offcanvas-nav-text-size:          14px !default;
     z-index: 1;
     background: rgba(0, 0, 0, 0);
     border-bottom: 1px solid darken($hc-offcanvas-nav-background-color, 6%);
-    transition: background .1s ease;
+    transition: background 0.1s ease;
 
     &:focus,
     &:focus-within {
@@ -50,7 +54,7 @@ $hc-offcanvas-nav-text-size:          14px !default;
     }
 
     &[disabled] {
-      color: rgba($hc-offcanvas-nav-text-color, .5);
+      color: rgba($hc-offcanvas-nav-text-color, 0.5);
     }
   }
 
@@ -82,18 +86,18 @@ $hc-offcanvas-nav-text-size:          14px !default;
 
   .nav-wrapper {
     & > .nav-content > {
-
       ul {
-
         &:first-of-type {
           & > li {
             &:first-child:not(.nav-back):not(.nav-close) {
               & > .nav-item-wrapper {
                 & > .nav-item-link {
-                  border-top: 1px solid darken($hc-offcanvas-nav-background-color, 6%);
+                  border-top: 1px solid
+                    darken($hc-offcanvas-nav-background-color, 6%);
 
                   & + a {
-                    border-top: 1px solid darken($hc-offcanvas-nav-background-color, 6%);
+                    border-top: 1px solid
+                      darken($hc-offcanvas-nav-background-color, 6%);
                   }
                 }
               }
@@ -102,23 +106,33 @@ $hc-offcanvas-nav-text-size:          14px !default;
         }
 
         &:not(:last-child) {
-          border-bottom: 2px solid darken($hc-offcanvas-nav-background-color, 6%);
+          border-bottom: 2px solid
+            darken($hc-offcanvas-nav-background-color, 6%);
         }
 
         & + {
-          h2, h3, h4, h5, h6 {
+          h2,
+          h3,
+          h4,
+          h5,
+          h6 {
             margin-top: -2px;
           }
         }
       }
 
-      h2, h3, h4, h5, h6 {
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
         & + ul {
           & > li {
             &:first-child:not(.nav-back):not(.nav-close) {
               & > .nav-item-wrapper {
                 & > .nav-item-link {
-                  border-top: 1px solid darken($hc-offcanvas-nav-background-color, 6%);
+                  border-top: 1px solid
+                    darken($hc-offcanvas-nav-background-color, 6%);
                 }
               }
             }
@@ -130,7 +144,11 @@ $hc-offcanvas-nav-text-size:          14px !default;
       .level-title,
       .nav-close {
         & + {
-          h2, h3, h4, h5, h6 {
+          h2,
+          h3,
+          h4,
+          h5,
+          h6 {
             border-top: 1px solid darken($hc-offcanvas-nav-background-color, 6%);
           }
         }
@@ -143,7 +161,6 @@ $hc-offcanvas-nav-text-size:          14px !default;
 
     &.nav-parent {
       .nav-item-link {
-
         &:last-child {
           padding-right: 58px;
         }
@@ -165,7 +182,7 @@ $hc-offcanvas-nav-text-size:          14px !default;
     bottom: 0;
     text-align: center;
     cursor: pointer;
-    transition: background .1s ease;
+    transition: background 0.1s ease;
   }
 
   .nav-close-button {
@@ -175,7 +192,7 @@ $hc-offcanvas-nav-text-size:          14px !default;
     span {
       &::before,
       &::after {
-        content: '';
+        content: "";
         position: absolute;
         top: 50%;
         left: 50%;
@@ -222,7 +239,7 @@ $hc-offcanvas-nav-text-size:          14px !default;
         border: none;
         background: radial-gradient(
           farthest-corner at top right,
-          rgba(0, 0, 0, .1),
+          rgba(0, 0, 0, 0.1),
           rgba(0, 0, 0, 0)
         );
       }
@@ -295,7 +312,7 @@ $hc-offcanvas-nav-text-size:          14px !default;
   .nav-back {
     span {
       &::before {
-        content: '';
+        content: "";
         position: absolute;
         top: 50%;
         left: 50%;
@@ -336,10 +353,9 @@ $hc-offcanvas-nav-text-size:          14px !default;
   /* Left */
 
   &.nav-position-left {
-
     &.nav-open.nav-levels-overlap {
       .nav-wrapper {
-        box-shadow: 1px 0 2px rgba(0, 0, 0, .2);
+        box-shadow: 1px 0 2px rgba(0, 0, 0, 0.2);
       }
     }
   }
@@ -347,10 +363,9 @@ $hc-offcanvas-nav-text-size:          14px !default;
   /* Right */
 
   &.nav-position-right {
-
     &.nav-open.nav-levels-overlap {
       .nav-wrapper {
-        box-shadow: -1px 0 2px rgba(0, 0, 0, .2);
+        box-shadow: -1px 0 2px rgba(0, 0, 0, 0.2);
       }
     }
 
@@ -376,10 +391,9 @@ $hc-offcanvas-nav-text-size:          14px !default;
   /* Top */
 
   &.nav-position-top {
-
     &.nav-open {
       .nav-wrapper {
-        box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
       }
     }
 
@@ -407,10 +421,9 @@ $hc-offcanvas-nav-text-size:          14px !default;
   /* Bottom */
 
   &.nav-position-bottom {
-
     &.nav-open {
       .nav-wrapper {
-        box-shadow: 0 -1px 2px rgba(0, 0, 0, .2);
+        box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
       }
     }
 
@@ -439,7 +452,6 @@ $hc-offcanvas-nav-text-size:          14px !default;
 
   &.nav-levels-expand,
   &.nav-levels-none {
-
     ul {
       .nav-wrapper {
         box-shadow: none;
@@ -448,14 +460,13 @@ $hc-offcanvas-nav-text-size:          14px !default;
     }
 
     li {
-
       &.level-open {
         background: darken($hc-offcanvas-nav-background-color, 4%);
 
         & > .nav-item-wrapper > {
-
           a {
-            border-bottom: 1px solid darken($hc-offcanvas-nav-background-color, 8%);
+            border-bottom: 1px solid
+              darken($hc-offcanvas-nav-background-color, 8%);
 
             &:hover {
               background: darken($hc-offcanvas-nav-background-color, 3%);
@@ -485,7 +496,6 @@ $hc-offcanvas-nav-text-size:          14px !default;
   /* RTL */
 
   &.rtl {
-
     a.nav-next {
       border-left: none;
       border-right: 1px solid darken($hc-offcanvas-nav-background-color, 6%);
@@ -502,7 +512,6 @@ $hc-offcanvas-nav-text-size:          14px !default;
     li {
       &.nav-parent {
         .nav-item-link {
-
           &:last-child {
             padding-left: 58px;
             padding-right: 17px;

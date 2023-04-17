@@ -97,9 +97,9 @@ function mosgutenberg_enqueue_scripts() {
         }
     }
     
-    wp_register_style( 'hc-offcanvas-nav', get_template_directory_uri() . '/plugins/hc-mobilenav/docs/hc-offcanvas-nav.css' );		
+    wp_register_style( 'hc-offcanvas-nav', get_template_directory_uri() . '/plugins/hc-mobilenav/dist/hc-offcanvas-nav.css' );		
     wp_enqueue_style( 'hc-offcanvas-nav' );
-    wp_register_script( 'hc-offcanvas-nav', get_template_directory_uri() . '/plugins/hc-mobilenav/docs/hc-offcanvas-nav.js', 'jquery', '', true );
+    wp_register_script( 'hc-offcanvas-nav', get_template_directory_uri() . '/plugins/hc-mobilenav/dist/hc-offcanvas-nav.js', 'jquery', '', true );
     wp_enqueue_script( 'hc-offcanvas-nav' );
 
 	wp_register_style( 'style', get_template_directory_uri() .  '/style.css');

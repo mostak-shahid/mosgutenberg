@@ -323,3 +323,19 @@ function fix_svg() {
         </style>';
 }
 add_action( 'admin_head', 'fix_svg' );
+
+function mos_element_wrapper_start($element_name='div', $element_id='',  $class_name = '') {
+    $output = '<'.$element_name;
+    $output .=($element_id)?' id="'.$element_id.'"':'';
+    $output .=($class_name)?' class="'.$class_name.'"':'';
+    $output .='>';
+    echo $output;
+}
+
+function mos_element_wrapper_end($element_name='div', $element_id='',  $class_name = '') {
+    $output = '</'.$element_name.'><!--/';
+    $output .=($element_id)?'#'.$element_id:'';
+    $output .=($class_name)?'.'.$class_name:'';
+    $output .='-->';
+    echo $output;
+}

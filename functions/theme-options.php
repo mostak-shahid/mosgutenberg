@@ -9,6 +9,24 @@ function mos_theme_options() {
     ->add_fields(array(
         Field::make('image', 'mos-logo', __('Logo'))
         ->set_default_value(get_template_directory_uri() . '/assets/img/logo.svg'),        
+        Field::make('select', 'mos-site-layout', __('Site Layout'))
+        ->set_options(array(
+            'wide' => 'Wide',
+            'boxed' => 'Boxed',
+        ))
+        ->set_default_value('wide'),  
+        Field::make( 'text', 'mos-site-width', __( 'Site width (px)' ) )        
+        ->set_conditional_logic(array(
+            'relation' => 'AND', // Optional, defaults to "AND"
+            array(
+                'field' => 'mos-site-layout',
+                'value' => 'boxed', // Optional, defaults to "". Should be an array if "IN" or "NOT IN" operators are used.
+                'compare' => '=', // Optional, defaults to "=". Available operators: =, <, >, <=, >=, IN, NOT IN
+            )
+        ))
+        ->set_attribute( 'type', 'number' )
+        ->set_default_value('1200')
+        ->set_required( true ),    
         Field::make( 'association', 'mos-header-layout', __( 'Select Header Layout' ) )
         ->set_types( array(
             array(

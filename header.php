@@ -53,139 +53,16 @@ else $page_id = get_the_ID();
     <?php endif; ?>
     <div id="container">
     <menu>
-      <div class="wrapper cf">
-        <nav id="main-nav">
-          <ul class="first-nav">
-            <li>
-              <a
-                href="https://www.google.com/search?q=Crypto"
-                rel="noreferrer"
-                target="_blank"
-                >Cryptocurrency</a
-              >
-              <ul>
-                <li><a href="#">Bitcoin</a></li>
-                <li><a href="#">Ethereum</a></li>
-                <li class="add">
-                  <a
-                    href="#"
-                    data-nav-close="false"
-                    data-add="['Litecoin','Dogecoin','Bitcoin Cash','ZCash']"
-                    >Add Coin</a
-                  >
-                </li>
-              </ul>
-            </li>
-            <li>
-              <span>Devices</span>
-              <ul>
-                <li>
-                  <a href="#">Mobile Phones</a>
-                  <ul>
-                    <li><a href="#">Super Smart Phone</a></li>
-                    <li><a href="#">Thin Magic Mobile</a></li>
-                    <li><a href="#">Performance Crusher</a></li>
-                    <li><a href="#">Futuristic Experience</a></li>
-                  </ul>
-                </li>
-                <li>
-                  <a href="#">Televisions</a>
-                  <div class="subnav-container">
-                    <ul>
-                      <li><a href="#">Flat Superscreen</a></li>
-                      <li><a href="#">Gigantic LED</a></li>
-                      <li><a href="#">Power Eater</a></li>
-                      <li><a href="#">3D Experience</a></li>
-                      <li><a href="#">Classic Comfort</a></li>
-                    </ul>
-                  </div>
-                </li>
-                <li>
-                  <a href="#">Cameras</a>
-                  <ul>
-                    <li><a href="#">Smart Shot</a></li>
-                    <li><a href="#">Power Shooter</a></li>
-                    <li><a href="#">Easy Photo Maker</a></li>
-                    <li><a href="#">Super Pixel</a></li>
-                  </ul>
-                </li>
-                <li data-nav-custom-content>
-                  <div class="custom-message">
-                    You can add any custom content to your navigation items.
-                    This text is just an example.
-                  </div>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a href="#magazines">Magazines</a>
-              <ul>
-                <li><a href="#">National Geographic</a></li>
-                <li><a href="#">Scientific American</a></li>
-                <li><a href="#">The Spectator</a></li>
-                <li><a href="#">The Rambler</a></li>
-                <li><a href="#">Physics World</a></li>
-                <li><a href="#">Popular Science</a></li>
-                <li><a href="#">Popular Mechanics</a></li>
-                <li><a href="#">Sky & Telescope</a></li>
-                <li><a href="#">Discover</a></li>
-                <li><a href="#">New Scientist</a></li>
-                <li><a href="#">Psychology Today</a></li>
-                <li><a href="#">Man's Health</a></li>
-                <li><a href="#">Wired</a></li>
-                <li><a href="#">Vogue</a></li>
-                <li><a href="#">Elle</a></li>
-                <li><a href="#">Cosmopolitan</a></li>
-              </ul>
-            </li>
-            <li>
-              <a href="#">Store</a>
-              <ul>
-                <li>
-                  <a href="#">Clothes</a>
-                  <ul>
-                    <li>
-                      <a href="#">Women's Clothing</a>
-                      <ul>
-                        <li><a href="#">Tops</a></li>
-                        <li><a href="#">Dresses</a></li>
-                        <li><a href="#">Trousers</a></li>
-                        <li><a href="#">Shoes</a></li>
-                        <li><a href="#">Sale</a></li>
-                      </ul>
-                    </li>
-                    <li>
-                      <a href="#">Men's Clothing</a>
-                      <ul>
-                        <li><a href="#">Shirts</a></li>
-                        <li><a href="#">Trousers</a></li>
-                        <li><a href="#">Shoes</a></li>
-                        <li><a href="#">Sale</a></li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
-                <li><a href="#">Jewelry</a></li>
-                <li><a href="#">Music</a></li>
-                <li>
-                  <a href="#">Grocery</a>
-                  <ul>
-                    <li><a href="#">Citruses and southern fruits</a></li>
-                    <li><a href="#">Exotic fruits</a></li>
-                    <li><a href="#">Apples and pears</a></li>
-                    <li><a href="#">Nuts</a></li>
-                  </ul>
-                  <ul>
-                    <li><a href="#">Root vegetables</a></li>
-                    <li><a href="#">Exotic vegetables</a></li>
-                    <li><a href="#">Herbs</a></li>
-                    <li><a href="#">Salads</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </nav>
+      <div class="wrapper cf">       
+          <?php
+                    wp_nav_menu(array(
+                        'theme_location' => 'mobilemenu',
+                        'container' => 'nav',
+                        'container_class' => 'mobile-nav',
+                        'container_id' => 'mobile-nav',
+                        'menu_class' => 'first-nav',                        
+                    ));        
+                ?>
 
         <a class="toggle" href="#">
           <span></span>

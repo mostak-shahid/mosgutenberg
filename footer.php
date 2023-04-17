@@ -121,7 +121,7 @@ if($btt_enable) :
         <?php endif?>
         jQuery(document).ready(function($) {
                   
-            var Nav = new hcOffcanvasNav("#main-nav", {
+            var Nav = new hcOffcanvasNav("#mobile-nav", {
                 disableAt: false,
                 customToggle: ".toggle",
                 levelOpen: "expand", //overlap, expand, false
@@ -132,7 +132,7 @@ if($btt_enable) :
                 pushContent: "#container",
                 labelClose: false,
                 position: "right", //left, right, top, bottom
-                theme: "carbon",
+                theme: "default",
                 closeOnClick: true,
                 disableBody: true,
                 insertClose: true,
