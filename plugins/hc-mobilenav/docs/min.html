@@ -40,11 +40,12 @@
       href="https://fonts.googleapis.com/css?family=Raleway:200,300,400,600,700"
     />
     <link rel="stylesheet" href="hc-offcanvas-nav.css" />
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://mobilhuset.se/wp-includes/js/jquery/jquery.min.js"></script>
     <script src="hc-offcanvas-nav.js"></script>
   </head>
 
   <body class="theme-default">
+    <div id="container">
     <menu>
       <div class="wrapper cf">
         <nav id="main-nav">
@@ -205,91 +206,54 @@
         </a>
       </div>
     </menu>
-
+    <footer>
+      <div class="wrapper">
+        <a
+          href="https://github.com/somewebmedia"
+          rel="noreferrer"
+          target="_blank"
+          class="swm"
+          title="Some Web Media"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="17"
+            viewBox="0 0 430.24 46"
+          >
+            <path class="l-1" d="M0,46H44L92,0H48Z" />
+            <path
+              class="l-2"
+              d="M237.24,46h-44l-26-24.92L141.24,46h-44l-24-23,22-21.08,24,23L145.24,0h44l26,24.92L241.24,0h44Z"
+            />
+            <path
+              class="l-3"
+              d="M386.24,46l-26-24.92L334.24,46h-44l-24-23,22-21.08,24,23L338.24,0h44l48,46h-44Z"
+            />
+          </svg>
+        </a>
+      </div>
+    </footer>
+    </body>
     <script>
-      (function ($) {
-        "use strict";
-
-        // call our plugin
+      jQuery(document).ready(function ($) {
         var Nav = new hcOffcanvasNav("#main-nav", {
           disableAt: false,
           customToggle: ".toggle",
+          levelOpen: "expand", //overlap, expand, false
           levelSpacing: 40,
           navTitle: "All Categories",
           levelTitles: true,
           levelTitleAsBack: true,
           pushContent: "#container",
           labelClose: false,
+          position: "right", //left, right, top, bottom
+          theme: "carbon",
+          closeOnClick: true,
+          disableBody: true,
+          insertClose: true,
+          insertBack: true,
         });
-        /*
-          // add new items to original nav
-          $('#main-nav').find('li.add').children('a').on('click', function() {
-            var $this = $(this);
-            var $li = $this.parent();
-            var items = eval('(' + $this.attr('data-add') + ')');
-
-            $li.before('<li class="new"><a href="#">'+items[0]+'</a></li>');
-
-            items.shift();
-
-            if (!items.length) {
-              $li.remove();
-            }
-            else {
-              $this.attr('data-add', JSON.stringify(items));
-            }
-
-            Nav.update(true); // update DOM
-          });
-
-          // demo settings update
-
-          const update = function(settings) {
-            if (Nav.isOpen()) {
-              Nav.on('close.once', function() {
-                Nav.update(settings);
-                Nav.open();
-              });
-
-              Nav.close();
-            }
-            else {
-              Nav.update(settings);
-            }
-          };
-
-          $('.actions').find('a').on('click', function(e) {
-            e.preventDefault();
-
-            var $this = $(this).addClass('active');
-            var $siblings = $this.parent().siblings().children('a').removeClass('active');
-            var settings = eval('(' + $this.data('demo') + ')');
-
-            if ('theme' in settings) {
-              $('body').removeClass().addClass('theme-' + settings['theme']);
-            }
-            else {
-              update(settings);
-            }
-          });
-
-          $('.actions').find('input').on('change', function() {
-            var $this = $(this);
-            var settings = eval('(' + $this.data('demo') + ')');
-
-            if ($this.is(':checked')) {
-              update(settings);
-            }
-            else {
-              var removeData = {};
-              $.each(settings, function(index, value) {
-                removeData[index] = false;
-              });
-
-              update(removeData);
-            }
-          });*/
-      })(jQuery);
+      });
     </script>
   </body>
 </html>

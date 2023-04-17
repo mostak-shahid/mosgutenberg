@@ -8,12 +8,27 @@ function mos_theme_options() {
     ->set_icon('dashicons-admin-customizer')
     ->add_fields(array(
         Field::make('image', 'mos-logo', __('Logo'))
-        ->set_default_value(get_template_directory_uri() . '/assets/img/logo.svg'),
+        ->set_default_value(get_template_directory_uri() . '/assets/img/logo.svg'),        
+        Field::make( 'association', 'mos-header-layout', __( 'Select Header Layout' ) )
+        ->set_types( array(
+            array(
+                'type'      => 'post',
+                'post_type' => 'layout',
+            )
+        ))
+        ->set_max(1),        
+        Field::make( 'association', 'mos-footer-layout', __( 'Select Footer Layout' ) )
+        ->set_types( array(
+            array(
+                'type'      => 'post',
+                'post_type' => 'layout',
+            )
+        ))
+        ->set_max(1),
         Field::make('header_scripts', 'crb_header_script', __('Header Script'))
         ->set_classes('html-editor'),
         Field::make('footer_scripts', 'crb_footer_script', __('Footer Script'))
         ->set_classes('html-editor'),
-        Field::make('rich_text', 'crb_sidenote', __('Sidenote Content')),
     ));
 
     Container::make('theme_options', __('Style and Colors'))
