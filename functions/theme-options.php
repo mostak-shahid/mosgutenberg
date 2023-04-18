@@ -49,10 +49,14 @@ function mos_theme_options() {
             )
         ))
         ->set_max(1),
-        Field::make('header_scripts', 'crb_header_script', __('Header Script'))
-        ->set_classes('html-editor'),
-        Field::make('footer_scripts', 'crb_footer_script', __('Footer Script'))
-        ->set_classes('html-editor'),
+        Field::make( 'association', 'mos-404-page', __( 'Custom 404 page' ) )
+        ->set_types( array(
+            array(
+                'type'      => 'post',
+                'post_type' => 'page',
+            )
+        ))
+        ->set_max(1),
     ));
 
     Container::make('theme_options', __('Style and Colors'))
@@ -135,6 +139,15 @@ function mos_theme_options() {
         ->set_default_value('0px'),
 
 
+    ));
+
+    Container::make('theme_options', __('Scripts'))
+    ->set_page_parent($basic_options_container) // reference to a top level container
+    ->add_fields(array(
+        Field::make('header_scripts', 'crb_header_script', __('Header Script'))
+        ->set_classes('html-editor'),
+        Field::make('footer_scripts', 'crb_footer_script', __('Footer Script'))
+        ->set_classes('html-editor'),
     ));
     
     Container::make('theme_options', __('Theme Resourcess'))

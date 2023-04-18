@@ -134,6 +134,13 @@ function mosgutenberg_plugins_management() {
 		),*/
 		
 		array(
+			'name'				=> 'Slider Revolution', 
+			'slug'				=> 'js_composer', 
+			'source'			=> get_template_directory_uri() . '/plugins/revslider.zip', 
+			'required'			=> false,
+			'force_activation'	=> false, 
+		),		
+		array(
 			'name'				=> 'WPBakery Page Builder', 
 			'slug'				=> 'js_composer', 
 			'source'			=> get_template_directory_uri() . '/plugins/js_composer.zip', 

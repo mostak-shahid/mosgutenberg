@@ -1,61 +1,47 @@
 <footer class="footer">
-    <div class="widgets">
-        <div class="container-lg">
-            <div class="wrapper">
-                <div class="row">
-                    <div class="col-lg-4 col-sm-6 text-center text-sm-start">
-                        <div class="contacts">
-                            <?php if ( is_active_sidebar( "footer_1" ) ) : ?>
-                            <?php dynamic_sidebar( "footer_1" ); ?>
-                            <?php endif; ?>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 text-center text-sm-start">
-                        <div class="contacts">
-                            <?php if ( is_active_sidebar( "footer_2" ) ) : ?>
-                            <?php dynamic_sidebar( "footer_2" ); ?>
-                            <?php endif; ?>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 text-center text-sm-start">
-                        <div class="contacts">
-                            <?php if ( is_active_sidebar( "footer_3" ) ) : ?>
-                            <?php dynamic_sidebar( "footer_3" ); ?>
-                            <?php endif; ?>
-                        </div>
+    <div class="widgets">        
+        <div class="row-wrapper">
+            <div class="row">
+                <div class="col-lg-4 col-sm-6 text-center text-sm-start">
+                    <div class="contacts">
+                        <?php if ( is_active_sidebar( "footer_1" ) ) : ?>
+                        <?php dynamic_sidebar( "footer_1" ); ?>
+                        <?php endif; ?>
                     </div>
                 </div>
+                <div class="col-lg-4 col-sm-6 text-center text-sm-start">
+                    <div class="contacts">
+                        <?php if ( is_active_sidebar( "footer_2" ) ) : ?>
+                        <?php dynamic_sidebar( "footer_2" ); ?>
+                        <?php endif; ?>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-center text-sm-start">
+                    <div class="contacts">
+                        <?php if ( is_active_sidebar( "footer_3" ) ) : ?>
+                        <?php dynamic_sidebar( "footer_3" ); ?>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </div>
+        </div>        
+    </div>
 
-            </div>
-        </div>
-    </div>
-    <div class="copyright">
-        <div class="container-lg">
-            <div class="wrapper">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="copyrightText text-center text-lg-start d-block d-lg-flex align-items-lg-center">
-                            <?php echo do_shortcode(carbon_get_theme_option( 'mos-footer-content' )); ?>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <?php $socials = carbon_get_theme_option( 'mos-contact-social-media' ) ?>
-                        <?php if ($socials and sizeof($socials)) :?>
-                        <div class="social mt-3 mt-lg-0">
-                            <ul class="footer-social-list list-inline text-lg-end text-center p-0 mt-3 mb-0 m-sm-0">
-                                <?php foreach($socials as $social) : ?>
-                                <li class="list-inline-item">
-                                    <a class="<?php echo sanitize_title($social['title'])?>-icon" href="<?php echo $social['link']?>" <?php if ($social['new-tab']) echo ' target="_blank"' ?>><?php echo $social['title']?></a>
-                                </li>
-                                <?php endforeach;?>
-                            </ul>
-                        </div>
-                        <?php endif?>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <?php 
+    $option_footer_layout = carbon_get_theme_option( 'mos-footer-layout' );
+    $mos_page_footer_type = carbon_get_post_meta( get_the_ID(), 'mos_page_footer_type' );
+    $mos_page_footer_layout = carbon_get_post_meta( get_the_ID(), 'mos_page_footer_layout' );
+    $footer_layout = ($mos_page_footer_type == 'custom')?$mos_page_footer_layout:$option_footer_layout;
+
+    if($mos_page_footer_type != 'none' && @$footer_layout) : 
+        $layout_id = $footer_layout[0]['id'];//This is page id or post id
+        $content_post = get_post($layout_id);
+        $content = $content_post->post_content;
+        $content = apply_filters('the_content', $content);
+        $content = str_replace(']]>', ']]&gt;', $content);
+        echo $content;
+    endif;
+    ?>
 </footer>
 
 <?php 
