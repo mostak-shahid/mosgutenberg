@@ -14,13 +14,13 @@ $term = get_queried_object();
 <?php //echo $blog_page_content?>
 <section class="blog-wrapper">
     <div class="filter-area">
-        <div class="container-lg">
+        <div class="row-wrapper">
             <div class="row">
                 <div class="col-xl-6">
-                    <div class="filter-left d-flex gap-3">
+                    <div class="filter-left d-flex justify-content-between justify-content-xl-start gap-xl-3">
                         <div class="single-filter custom-mos-select">
                             <?php $categories = mos_get_terms('category'); ?>
-                            <select class="bg-transparent rounded-pill px-4 form-select postFilter"onchange="window.location.replace(this.value)">
+                            <select class="bg-transparent form-select postFilter"onchange="window.location.replace(this.value)">
                                 <option value="0" selected="">All Categories</option>
                                 <?php foreach($categories as $category) : ?>
                                 <option value="<?php echo home_url().'/?s=&category='.$category['term_id'] ?>" <?php if (@$term && $term->term_id == $category['term_id']) echo 'selected'?>  ><?php echo $category['name'] ?></option>
@@ -28,7 +28,7 @@ $term = get_queried_object();
                             </select>
                         </div>
                         <div class="single-filter custom-mos-select">
-                            <select class="bg-transparent rounded-pill px-4 form-select postFilter"onchange="window.location.replace(this.value)">
+                            <select class="bg-transparent form-select postFilter"onchange="window.location.replace(this.value)">
                                 <option value="<?php echo home_url().'/?s=&time=' ?>0" selected="">Select One</option>
                                 <option value="<?php echo home_url().'/?s=&time=' ?>week">Last 7 day's</option>
                                 <option value="<?php echo home_url().'/?s=&time=' ?>month">Last Month</option>
@@ -38,7 +38,7 @@ $term = get_queried_object();
                     </div>
                 </div>
                 <div class="col-xl-3"></div>
-                <div class="col-xl-3">
+                <div class="col-xl-3 mt-3 mt-xl-0">
                     <div class="searchInput">
                         <?php get_search_form( true ); ?>
                     </div>
@@ -46,7 +46,7 @@ $term = get_queried_object();
             </div>
         </div>
     </div>
-    <div class="container-lg">
+    <div class="row-wrapper">
         <?php if ( have_posts() ) :?>
         <div id="blogs" class="row">
             <?php while ( have_posts() ) : the_post(); ?>

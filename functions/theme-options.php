@@ -11,8 +11,14 @@ function mos_theme_options() {
         ->set_default_value(get_template_directory_uri() . '/assets/img/logo.svg'),        
         Field::make('select', 'mos-site-layout', __('Site Layout'))
         ->set_options(array(
-            'wide' => 'Wide',
-            'boxed' => 'Boxed',
+            'wide-layout' => 'Wide',
+            'container-fluid' => 'Container Fluid',
+            'container-xxl' => 'Container XXL',
+            'container-xl' => 'Container XL',
+            'container-md' => 'Container MD',
+            'container-sm' => 'Container SM',
+            'container' => 'Container',
+            'boxed-layout' => 'Custom',
         ))
         ->set_default_value('wide'),  
         Field::make( 'text', 'mos-site-width', __( 'Site width (px)' ) )        
@@ -20,7 +26,7 @@ function mos_theme_options() {
             'relation' => 'AND', // Optional, defaults to "AND"
             array(
                 'field' => 'mos-site-layout',
-                'value' => 'boxed', // Optional, defaults to "". Should be an array if "IN" or "NOT IN" operators are used.
+                'value' => 'boxed-layout', // Optional, defaults to "". Should be an array if "IN" or "NOT IN" operators are used.
                 'compare' => '=', // Optional, defaults to "=". Available operators: =, <, >, <=, >=, IN, NOT IN
             )
         ))
@@ -56,6 +62,11 @@ function mos_theme_options() {
         //->set_palette(array('#FF0000', '#00FF00', '#0000FF'))
         ->set_alpha_enabled(true)
         ->set_help_text('Pick the color for body background, by default it is set to #ffffff. You can use this color in your css with var(--mos-body-bg)')
+        ->set_default_value('#ffffff'),
+        Field::make('color', 'mos_wrapper_bg', 'Wrapper Background')
+        //->set_palette(array('#FF0000', '#00FF00', '#0000FF'))
+        ->set_alpha_enabled(true)
+        ->set_help_text('Pick the color for wrapper background for boxed layout, by default it is set to #ffffff.')
         ->set_default_value('#ffffff'),
         
         Field::make('color', 'mos_primary_color', 'Primary Color')

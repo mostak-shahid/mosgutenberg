@@ -73,7 +73,7 @@ if($btt_enable) :
     <?php endif?>
 </div>
 <?php endif?>
-</div><!--/#container-->
+</div><!--/#container.<?php echo carbon_get_theme_option( 'mos-site-layout' ) ?>-->
 <?php wp_footer();?>
     <!--Theme Options CSS-->
     <style>
@@ -81,6 +81,11 @@ if($btt_enable) :
             background-color: <?php echo carbon_get_theme_option('mos_body_bg') ? 'var(--mos-body-bg)' : 'var(--bs-body-bg)' ?>;
             color: <?php echo carbon_get_theme_option('mos_content_color') ? 'var(--mos-content-color)' : 'var(--bs-body-color)' ?>;
         }
+        <?php if(carbon_get_theme_option('mos_wrapper_bg') && carbon_get_theme_option('mos-site-layout') != 'wide-layout') : ?>
+        #container {
+            background-color: <?php echo carbon_get_theme_option('mos_wrapper_bg') ?>;
+        }
+        <?php endif?>
         a {color: <?php echo carbon_get_theme_option('mos_link_color') ? carbon_get_theme_option('mos_link_color') : 'var(--bs-link-color)' ?>;}
         a:hover {color: <?php echo carbon_get_theme_option('mos_link_hover_color') ? carbon_get_theme_option('mos_link_hover_color') : 'var(--bs-link-hover-color)' ?>;}
         <?php $header_background=carbon_get_theme_option('mos-header-background');
@@ -113,7 +118,15 @@ if($btt_enable) :
             color: <?php echo carbon_get_theme_option('mos-footer-link-color-hover') ?>
         }
 
-        <?php endif?>    
+        <?php endif?>  
+        <?php if (carbon_get_theme_option('mos-site-layout') == 'boxed-layout' && carbon_get_theme_option('mos-site-width')) : ?>
+        .boxed-layout {
+            width: 100%;
+            max-width: <?php echo carbon_get_theme_option('mos-site-width') ?>px;
+            margin-left: auto;
+            margin-right: auto;
+        } 
+        <?php endif?> 
     </style>
     <script>  
         <?php if (carbon_get_theme_option( 'mos_plugin_wow' ) == 'on') : ?>
@@ -132,11 +145,12 @@ if($btt_enable) :
                 pushContent: "#container",
                 labelClose: false,
                 position: "right", //left, right, top, bottom
-                theme: "default",
+                theme: "carbon",
                 closeOnClick: true,
                 disableBody: true,
                 insertClose: true,
                 insertBack: true,
+
             });
             <?php if (carbon_get_theme_option( 'mos_plugin_owlcarousel' ) == 'on') : ?>                 
                 $('body').find('.mos-owl-carousel').each(function( e ) {            

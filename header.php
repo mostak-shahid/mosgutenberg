@@ -51,24 +51,21 @@ else $page_id = get_the_ID();
         <?php endif?>
     </div>
     <?php endif; ?>
-    <div id="container">
-    <menu>
+    <div class="<?php echo carbon_get_theme_option( 'mos-site-layout' ) ?>" id="container">
+    
       <div class="wrapper cf">       
-          <?php
-                    wp_nav_menu(array(
-                        'theme_location' => 'mobilemenu',
-                        'container' => 'nav',
-                        'container_class' => 'mobile-nav',
-                        'container_id' => 'mobile-nav',
-                        'menu_class' => 'first-nav',                        
-                    ));        
-                ?>
-
-        <a class="toggle" href="#">
-          <span></span>
-        </a>
+            <?php
+                wp_nav_menu(array(
+                    'theme_location' => 'mobilemenu',
+                    'container' => 'nav',
+                    'container_class' => 'mobile-nav',
+                    'container_id' => 'mobile-nav',
+                    'menu_class' => 'first-nav',                        
+                ));        
+            ?>
+            <?php //echo do_shortcode('[mobile-menu]') ?>
       </div>
-    </menu>
+    
         <header id="header" class="main-header smooth <?php echo carbon_get_theme_option( 'mos-header-class' ) ?>">
             <div class="wrapper">
                 <?php 

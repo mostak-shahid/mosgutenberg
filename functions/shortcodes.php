@@ -149,3 +149,16 @@ function phone_func($atts = array(), $content = '') {
     return $html;
 }
 add_shortcode( 'phone', 'phone_func' );
+
+function mos_mobile_menu_func( $atts = array(), $content = null ) {
+	$html = '';
+	$atts = shortcode_atts( array(
+		'class' => '',
+		'title' => '',
+	), $atts, 'mobile-menu' ); 
+    ob_start(); ?>
+    <a class="toggle position-relative d-inline-block <?php echo @$atts['class']?>" href="#"><span></span></a>
+<?php $html = ob_get_clean();	
+	return $html;
+}
+add_shortcode( 'mobile-menu', 'mos_mobile_menu_func' );

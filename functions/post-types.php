@@ -99,5 +99,5 @@ function mos_custom_taxonomy() {
 	];
 	register_taxonomy( "layout_tag", [ "layout" ], $args );
 }
-add_action( 'init', 'mos_custom_taxonomy' );
+//add_action( 'init', 'mos_custom_taxonomy' );
 add_action( 'after_switch_theme', 'flush_rewrite_rules' );

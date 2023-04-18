@@ -132,6 +132,14 @@ function mosgutenberg_plugins_management() {
 			'required'			=> true,
 			'force_activation'	=> false, 
 		),*/
+		
+		array(
+			'name'				=> 'WPBakery Page Builder', 
+			'slug'				=> 'js_composer', 
+			'source'			=> get_template_directory_uri() . '/plugins/js_composer.zip', 
+			'required'			=> false,
+			'force_activation'	=> false, 
+		),
 		array(
 			'name'				=> 'Advanced WordPress Backgrounds', 
 			'slug'				=> 'advanced-backgrounds', 
