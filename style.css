@@ -223,6 +223,7 @@ pre {
 .wide-layout .nk-awb .nk-awb-wrap {
   margin: 0 !important;
 }
+
 .wide-layout .row-wrapper {
   --bs-gutter-x: 1.5rem;
   --bs-gutter-y: 0;
@@ -232,7 +233,12 @@ pre {
   margin-right: auto;
   margin-left: auto;
 }
-
+.nk-awb.alignfull .nk-awb-wrap {
+  margin-left: calc(-50vw + 50%) !important;
+  margin-right: calc(-50vw + 50%) !important;
+  max-width: 100vw;
+  width: 100vw;
+}
 .blog-wrapper,
 .blog-single-wrapper {
   padding-top: 70px;
