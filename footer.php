@@ -43,7 +43,6 @@
     endif;
     ?>
 </footer>
-
 <?php 
 $btt_enable = carbon_get_theme_option('mos-back-to-top');
 $btt_image = carbon_get_theme_option('mos-back-to-top-image');
@@ -60,6 +59,8 @@ if($btt_enable) :
 </div>
 <?php endif?>
 </div><!--/#container.<?php echo carbon_get_theme_option( 'mos-site-layout' ) ?>-->
+
+<div class="bg-success" style="height: 100px; width: 100vw">hi</div>
 <?php wp_footer();?>
     <!--Theme Options CSS-->
     <style>

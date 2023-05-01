@@ -104,13 +104,16 @@ function mos_theme_options() {
         ->set_help_text('Pick the backorders  badge color.'),
 
         Field::make('color', 'mos_sale_badge_color', 'Sale Badge Color')
-        ->set_help_text('Pick the sale badge color.'),
+        ->set_help_text('Pick the sale badge color.')
+        ->set_default_value('#77a464'),
+        
 
         Field::make('color', 'mos_variants_badge_color', 'Variants Badge Color')
         ->set_help_text('Pick the variants badge color.'),
 
         Field::make('color', 'mos_price_badge_color', 'Price Color')
-        ->set_help_text('Pick the price badge color.'),
+        ->set_help_text('Pick the price badge color.')
+        ->set_default_value('#77a464'),
 
         Field::make('color', 'mos_buttons_background_color', 'Buttons Background Color')
         ->set_help_text('Pick the buttons background color. by default it is set to #32373c.')
@@ -428,65 +431,20 @@ function mos_theme_options() {
             ->set_default_value('scroll'),
         )),
     ));
-    Container::make('theme_options', __('Footer Section'))
+    Container::make('theme_options', __('Translate'))
     ->set_page_parent($basic_options_container) // reference to a top level container
     ->add_fields(array(
-        Field::make('text', 'mos-footer-padding', __('Padding')),
-        Field::make('text', 'mos-footer-margin', __('Margin')),
-        Field::make('text', 'mos-footer-border', __('Border')),
-        Field::make('text', 'mos-footer-class', __('Class')),
-        Field::make('color', 'mos-footer-content-color', __('Content Color')),
-        Field::make('color', 'mos-footer-link-color', __('Links Color')),
-        Field::make('color', 'mos-footer-link-color-hover', __('Hover Color')),
-        Field::make('rich_text', 'mos-footer-content', __('Copyright')),
-        Field::make('complex', 'mos-footer-background', __('Background'))
-        ->set_max(1)
+        Field::make('complex', 'mos-translate', __('Translate'))
         ->set_collapsed(true)
+        
         ->add_fields(array(
-            Field::make('color', 'background-color', __('Background Color')),
-            Field::make('image', 'background-image', __('Background Image')),
-            Field::make('select', 'background-position', __('Background Position'))
-            ->set_options(array(
-                'top left' => 'Top Left',
-                'top center' => 'Top Center',
-                'top right' => 'Top Right',
-                'center left' => 'Center Left',
-                'center center' => 'Center Center',
-                'center right' => 'Center Right',
-                'bottom left' => 'Bottom left',
-                'bottom center' => 'Bottom Center',
-                'bottom right' => 'Bottom Right',
-            ))
-            ->set_default_value('top left'),
-            Field::make('select', 'background-size', __('Background Size'))
-            ->set_options(array(
-                'cover' => 'cover',
-                'contain' => 'contain',
-                'auto' => 'auto',
-                'inherit' => 'inherit',
-                'initial' => 'initial',
-                'revert' => 'revert',
-                'revert-layer' => 'revert-layer',
-                'unset' => 'unset',
-            ))
-            ->set_default_value('cover'),
-            //background-repeat: repeat|repeat-x|repeat-y|no-repeat|initial|inherit;
-            Field::make('select', 'background-repeat', __('Background Repeat'))
-            ->set_options(array(
-                'repeat' => 'repeat',
-                'repeat-x' => 'repeat-x',
-                'repeat-y' => 'repeat-y',
-                'no-repeat' => 'no-repeat',
-                'initial' => 'initial',
-                'inherit' => 'inherit',
-            ))
-            ->set_default_value('repeat'),
-            Field::make('select', 'background-attachment', __('Background Attachment'))
-            ->set_options(array(
-                'scroll' => 'Scroll',
-                'fixed' => 'Fixed',
-            ))
-            ->set_default_value('scroll'),
-        )),
+            Field::make('text', 'input', __('Input')),
+            Field::make('text', 'output', __('Output')),
+        ))
+        ->set_header_template('
+            <% if (input) { %>
+                <%- input %> <%- output ? "(" + output + ")" : "" %>
+            <% } %>
+        ')
     ));
 }

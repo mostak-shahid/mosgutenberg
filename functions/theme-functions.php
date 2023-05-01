@@ -339,3 +339,5 @@ function mos_element_wrapper_end($element_name='div', $element_id='',  $class_na
     $output .='-->';
     echo $output;
 }
+
+//add_action( 'after_setup_theme', array( self::$instance, 'test' ) );

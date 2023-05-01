@@ -162,3 +162,22 @@ function mos_mobile_menu_func( $atts = array(), $content = null ) {
 	return $html;
 }
 add_shortcode( 'mobile-menu', 'mos_mobile_menu_func' );
+
+
+// function mos_translate_func($atts = array()){
+// 	$atts = shortcode_atts( array(
+// 		'input' => '',
+// 	), $atts, 'mos-translate' ); 
+//     var_dump(carbon_get_theme_option( 'mos-translate' ));
+// }
+// add_shortcode( 'mos-translate', 'mos_translate_func' );
+
+function mos_translate_func( $atts = array(), $content = null ) {
+    $phones = carbon_get_theme_option( 'mos-contact-phone' );  
+	$atts = shortcode_atts( array(
+		'input' => ''
+	), $atts, 'mos-translate' ); 
+    var_dump('XXX');
+    //var_dump($phones);
+}
+add_shortcode( 'mos-translate', 'mos_translate_func' );
