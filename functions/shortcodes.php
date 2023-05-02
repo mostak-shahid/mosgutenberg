@@ -164,20 +164,28 @@ function mos_mobile_menu_func( $atts = array(), $content = null ) {
 add_shortcode( 'mobile-menu', 'mos_mobile_menu_func' );
 
 
-// function mos_translate_func($atts = array()){
-// 	$atts = shortcode_atts( array(
-// 		'input' => '',
-// 	), $atts, 'mos-translate' ); 
-//     var_dump(carbon_get_theme_option( 'mos-translate' ));
-// }
+function _mos_translate($input='', $ucf=false){
+    $words = carbon_get_theme_option( 'mos-translate' );
+    $found = 0;
+    foreach($words as $word) {
+        if (strtolower($word['input']) == strtolower($input)) {
+            $found++;
+            break;
+        } 
+    }
+    $t_input = __($input, 'mosgutenberg');
+    return ($ucf)?(ucfirst(($found)?$word['output']:$t_input)):strtolower(($found)?$word['output']:$t_input);
+}
+function _e_mos_translate($input='', $ucf=false){
+    echo _mos_translate($input, $ucf);
+}
 // add_shortcode( 'mos-translate', 'mos_translate_func' );
 
 function mos_translate_func( $atts = array(), $content = null ) {
-    $phones = carbon_get_theme_option( 'mos-contact-phone' );  
 	$atts = shortcode_atts( array(
-		'input' => ''
+		'input' => '',
+        'ucf' => false
 	), $atts, 'mos-translate' ); 
-    var_dump('XXX');
-    //var_dump($phones);
+    return _mos_translate($atts['input'],$atts['ucf']);
 }
 add_shortcode( 'mos-translate', 'mos_translate_func' );
