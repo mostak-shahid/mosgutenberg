@@ -371,65 +371,107 @@ function mos_theme_options() {
         Field::make('text', 'mos-page-loader-class', __('Page loader class')),
     ));
 
-    Container::make('theme_options', __('Header Section'))
+
+
+    Container::make('theme_options', __('Sticky Header'))
     ->set_page_parent($basic_options_container) // reference to a top level container
     ->add_fields(array(
-        Field::make('text', 'mos-header-padding', __('Padding')),
-        Field::make('text', 'mos-header-margin', __('Margin')),
-        Field::make('text', 'mos-header-border', __('Border')),
-        Field::make('text', 'mos-header-class', __('Class')),
-        Field::make('color', 'mos-header-content-color', __('Content Color')),
-        Field::make('color', 'mos-header-link-color', __('Links Color')),
-        Field::make('color', 'mos-header-link-color-hover', __('Hover Color')),
-        Field::make('complex', 'mos-header-background', __('Background'))
-        ->set_max(1)
-        ->set_collapsed(true)
-        ->add_fields(array(
-            Field::make('color', 'background-color', __('Background Color')),
-            Field::make('image', 'background-image', __('Background Image')),
-            Field::make('select', 'background-position', __('Background Position'))
-            ->set_options(array(
-                'top left' => 'Top Left',
-                'top center' => 'Top Center',
-                'top right' => 'Top Right',
-                'center left' => 'Center Left',
-                'center center' => 'Center Center',
-                'center right' => 'Center Right',
-                'bottom left' => 'Bottom left',
-                'bottom center' => 'Bottom Center',
-                'bottom right' => 'Bottom Right',
-            ))
-            ->set_default_value('top left'),
-            Field::make('select', 'background-size', __('Background Size'))
-            ->set_options(array(
-                'cover' => 'cover',
-                'contain' => 'contain',
-                'auto' => 'auto',
-                'inherit' => 'inherit',
-                'initial' => 'initial',
-                'revert' => 'revert',
-                'revert-layer' => 'revert-layer',
-                'unset' => 'unset',
-            ))
-            ->set_default_value('cover'),
-            //background-repeat: repeat|repeat-x|repeat-y|no-repeat|initial|inherit;
-            Field::make('select', 'background-repeat', __('Background Repeat'))
-            ->set_options(array(
-                'repeat' => 'repeat',
-                'repeat-x' => 'repeat-x',
-                'repeat-y' => 'repeat-y',
-                'no-repeat' => 'no-repeat',
-                'initial' => 'initial',
-                'inherit' => 'inherit',
-            ))
-            ->set_default_value('repeat'),
-            Field::make('select', 'background-attachment', __('Background Attachment'))
-            ->set_options(array(
-                'scroll' => 'Scroll',
-                'fixed' => 'Fixed',
-            ))
-            ->set_default_value('scroll'),
+        Field::make( 'checkbox', 'mos-header-sticky-enable', __( 'Enable Sticky Header' ) ),
+        Field::make( 'radio_image', 'mos-header-sticky-layout', __( 'Sticky Header Layout' ) )
+        ->set_conditional_logic( array(
+            'relation' => 'AND', // Optional, defaults to "AND"
+            array(
+                'field' => 'mos-header-sticky-enable',
+                'value' => true, // Optional, defaults to "". Should be an array if "IN" or "NOT IN" operators are used.
+                'compare' => '=', // Optional, defaults to "=". Available operators: =, <, >, <=, >=, IN, NOT IN
+            )
+        ))
+        ->set_options( array(
+            'mountain' => 'https://source.unsplash.com/X1UTzW8e7Q4/800x600',
+            'temple' => 'https://source.unsplash.com/ioJVccFmWxE/800x600',
+            'road' => 'https://source.unsplash.com/5c8fczgvar0/800x600',
         )),
+        Field::make('image', 'mos-header-sticky-menu-icon', __('Sticky Header Menu Icon'))
+        ->set_conditional_logic( array(
+            'relation' => 'AND', // Optional, defaults to "AND"
+            array(
+                'field' => 'mos-header-sticky-enable',
+                'value' => true, // Optional, defaults to "". Should be an array if "IN" or "NOT IN" operators are used.
+                'compare' => '=', // Optional, defaults to "=". Available operators: =, <, >, <=, >=, IN, NOT IN
+            )
+        )),
+        Field::make('complex', 'mos-header-sticky-icons', __('Sticky Header Icons'))
+        ->set_conditional_logic( array(
+            'relation' => 'AND', // Optional, defaults to "AND"
+            array(
+                'field' => 'mos-header-sticky-enable',
+                'value' => true, // Optional, defaults to "". Should be an array if "IN" or "NOT IN" operators are used.
+                'compare' => '=', // Optional, defaults to "=". Available operators: =, <, >, <=, >=, IN, NOT IN
+            )
+        ))
+        ->set_collapsed(true)        
+        ->add_fields(array(
+            Field::make('text', 'title', __('Title')),
+            Field::make('image', 'icon', __('Icon')),
+            Field::make('text', 'link', __('Link'))
+            ->set_attribute( 'type', 'url' ),
+        ))
+        ->set_header_template('
+            <% if (title) { %>
+                <%- title %> <%- link ? "(" + link + ")" : "" %>
+            <% } %>
+        '),
+    ));
+
+    Container::make('theme_options', __('Mobile Header'))
+    ->set_page_parent($basic_options_container) // reference to a top level container
+    ->add_fields(array(
+        Field::make( 'checkbox', 'mos-header-mobile-enable', __( 'Enable Mobile Header' ) ),
+        Field::make( 'radio_image', 'mos-header-mobile-layout', __( 'Mobile Header Layout' ) )
+        ->set_conditional_logic( array(
+            'relation' => 'AND', // Optional, defaults to "AND"
+            array(
+                'field' => 'mos-header-mobile-enable',
+                'value' => true, // Optional, defaults to "". Should be an array if "IN" or "NOT IN" operators are used.
+                'compare' => '=', // Optional, defaults to "=". Available operators: =, <, >, <=, >=, IN, NOT IN
+            )
+        ))
+        ->set_options( array(
+            'mountain' => 'https://source.unsplash.com/X1UTzW8e7Q4/800x600',
+            'temple' => 'https://source.unsplash.com/ioJVccFmWxE/800x600',
+            'road' => 'https://source.unsplash.com/5c8fczgvar0/800x600',
+        )),
+        Field::make('image', 'mos-header-mobile-menu-icon', __('Mobile Header Menu Icon'))
+        ->set_conditional_logic( array(
+            'relation' => 'AND', // Optional, defaults to "AND"
+            array(
+                'field' => 'mos-header-mobile-enable',
+                'value' => true, // Optional, defaults to "". Should be an array if "IN" or "NOT IN" operators are used.
+                'compare' => '=', // Optional, defaults to "=". Available operators: =, <, >, <=, >=, IN, NOT IN
+            )
+        )),
+        Field::make('complex', 'mos-header-mobile-icons', __('Mobile Header Icons'))
+        ->set_conditional_logic( array(
+            'relation' => 'AND', // Optional, defaults to "AND"
+            array(
+                'field' => 'mos-header-mobile-enable',
+                'value' => true, // Optional, defaults to "". Should be an array if "IN" or "NOT IN" operators are used.
+                'compare' => '=', // Optional, defaults to "=". Available operators: =, <, >, <=, >=, IN, NOT IN
+            )
+        ))
+        ->set_collapsed(true)
+        
+        ->add_fields(array(
+            Field::make('text', 'title', __('Title')),
+            Field::make('image', 'icon', __('Icon')),
+            Field::make('text', 'link', __('Link'))
+            ->set_attribute( 'type', 'url' ),
+        ))
+        ->set_header_template('
+            <% if (title) { %>
+                <%- title %> <%- link ? "(" + link + ")" : "" %>
+            <% } %>
+        '),
     ));
     Container::make('theme_options', __('Translate'))
     ->set_page_parent($basic_options_container) // reference to a top level container

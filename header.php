@@ -40,6 +40,7 @@ else $page_id = get_the_ID();
 </head>
 
 <body <?php body_class(); ?> <?php if (carbon_get_theme_option( 'mos-page-loader' ) == 'on') : ?> onload='document.getElementById("page-loader").classList.add("d-none")' <?php endif?>>
+    <?php var_dump(carbon_get_theme_option( 'mos-header-mobile-enable' )); ?>
     <?php echo "Phone: "?>
     <?php echo do_shortcode("[mos-translate input='input']")?>
     <?php _e_mos_translate('Vasa', true);?>
