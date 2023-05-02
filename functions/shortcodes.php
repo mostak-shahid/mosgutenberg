@@ -179,7 +179,6 @@ function _mos_translate($input='', $ucf=false){
 function _e_mos_translate($input='', $ucf=false){
     echo _mos_translate($input, $ucf);
 }
-// add_shortcode( 'mos-translate', 'mos_translate_func' );
 
 function mos_translate_func( $atts = array(), $content = null ) {
 	$atts = shortcode_atts( array(
