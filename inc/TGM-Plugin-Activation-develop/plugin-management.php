@@ -133,6 +133,13 @@ function mosgutenberg_plugins_management() {
 			'force_activation'	=> false, 
 		),*/
 		
+		
+		array(
+			'name'				=> 'One Click Demo Import', 
+			'slug'				=> 'one-click-demo-import', 
+			'required'			=> false,
+			'force_activation'	=> false, 
+		),	
 		array(
 			'name'				=> 'Slider Revolution', 
 			'slug'				=> 'js_composer', 
