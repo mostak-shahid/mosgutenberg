@@ -9,11 +9,7 @@ if ( ! function_exists( 'mosgutenberg_setup' ) ) :
 	    add_theme_support( 'wc-product-gallery-lightbox' );
 	    add_theme_support( 'wc-product-gallery-slider' );
 		//add_image_size( string $name, int $width, int $height, bool|array $crop = false );
-		add_image_size( 'max-size', '1920', '1920', false );
-		add_image_size( 'container-full', '1140', '1140', false );
-		add_image_size( 'col-8-full', '750', '750', false );
-		add_image_size( 'col-4-full', '360', '360', false );
-		add_image_size( 'post-img', '1068', '1068', false );
+		//add_image_size( 'max-size', '1920', '1920', false );
 
 		load_theme_textdomain( 'theme', get_template_directory() . '/languages' );
 		register_nav_menus( array(
