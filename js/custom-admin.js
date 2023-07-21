@@ -120,6 +120,7 @@ jQuery(document).ready(function($) {
         var tab = $(this).data('tab');
         setMosCookie('mos_themeoption_active_tab',tab,1);
         $(this).closest('li').siblings().find('a').removeClass('nav-tab-active');
+        $(this).closest('li').find('ul a').removeClass('nav-tab-active');
         $(this).addClass('nav-tab-active');
         $('.mos-tab-item').hide();
 
@@ -136,7 +137,7 @@ jQuery(document).ready(function($) {
         $('.mos-tab-item--' + getMosCookie('mos_themeoption_active_tab')).show();
         
     } else {
-
+        /*Need to code here*/
     }
     //setMosCookie('mos_themeoption_active_tab','mos-tab-item--tab-2',0);
     /* Theme Option JS */
