@@ -60,7 +60,6 @@ if($btt_enable) :
 <?php endif?>
 </div><!--/#container.<?php echo carbon_get_theme_option( 'mos-site-layout' ) ?>-->
 
-<div class="bg-success" style="height: 100px; width: 100vw">hi</div>
 <?php wp_footer();?>
     <!--Theme Options CSS-->
     <style>
