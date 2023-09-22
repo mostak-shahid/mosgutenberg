@@ -2,7 +2,7 @@
 use Carbon_Fields\Block;
 use Carbon_Fields\Field;
 add_action('carbon_fields_register_fields', 'mos_gutenberg_blocks');
-
+include_once ABSPATH . 'wp-admin/includes/plugin.php';
 function mos_gutenberg_blocks() {
     global $animations;
     $animation_options = [''=>'Select Animation'];
