@@ -157,6 +157,7 @@ function mosgutenberg_plugins_management() {
 		array(
 			'name'				=> 'Advanced WordPress Backgrounds', 
 			'slug'				=> 'advanced-backgrounds', 
+			'source'			=> get_template_directory_uri() . '/plugins/advanced-backgrounds.zip', 
 			'required'			=> false,
 			'force_activation'	=> false, 
 		),
