@@ -234,14 +234,14 @@ pre {
   margin-right: auto;
   margin-left: auto;
 }
-.nk-awb.alignfull .nk-awb-wrap {
+/*.nk-awb.alignfull .nk-awb-wrap {
   width: 100vw;
   position: absolute;
   left: 50% !important;
   right: 50% !important;
-  /* margin-left: -50vw !important;
-  margin-right: -50vw !important; */
-}
+  margin-left: -50vw !important;
+  margin-right: -50vw !important;
+}*/
 .blog-wrapper,
 .blog-single-wrapper {
   padding-top: 70px;
