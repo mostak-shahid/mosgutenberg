@@ -40,7 +40,30 @@ function mos_post_meta_options() {
                 'post_type' => 'layout',
             )
         ))
-        ->set_max(1),         
+        ->set_max(1),      
+        Field::make( 'select', 'mos_page_title_type', __( 'Page Title Option' ) )
+        ->set_options( array(
+            'default' => 'Default',
+            'none' => 'Hide Title',
+            'custom' => 'Custom Title',
+        )),         
+        Field::make( 'association', 'mos_page_title_layout', __( 'Select Page Title Layout' ) )
+        ->set_required( true )
+        ->set_conditional_logic(array(
+            'relation' => 'AND', // Optional, defaults to "AND"
+            array(
+                'field' => 'mos_page_title_type',
+                'value' => 'custom', // Optional, defaults to "". Should be an array if "IN" or "NOT IN" operators are used.
+                'compare' => '=', // Optional, defaults to "=". Available operators: =, <, >, <=, >=, IN, NOT IN
+            )
+        ))
+        ->set_types( array(
+            array(
+                'type'      => 'post',
+                'post_type' => 'layout',
+            )
+        ))
+        ->set_max(1),     
         Field::make( 'select', 'mos_page_footer_type', __( 'Footer Option' ) )
         ->set_options( array(
             'default' => 'Default',

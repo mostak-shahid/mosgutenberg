@@ -112,6 +112,22 @@ pre {
   > .wp-block-button__link:not(.has-text-color):hover {
   color: var(--mos-secondary-color);
 }
+
+header .scroll-header {
+  position: fixed;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+}
+header.tiny .scroll-header {
+  top: 0;
+}
+.menu-light.hc-nav-trigger span,
+.menu-light.hc-nav-trigger span::before,
+.menu-light.hc-nav-trigger span::after {
+  background-color: #ffffff;
+}
 ::-webkit-input-placeholder {
   color: #4c4d54;
 }

@@ -118,7 +118,173 @@ function mos_gutenberg_blocks() {
     }); 
     //Base Block end
     */
-    
+    //Counter Block start
+    Block::make(__('Counter Block'))
+    ->add_tab(__('Content'), array(
+        Field::make('text', 'mos_counter_block_prefix', __('Prefix')),
+        Field::make('text', 'mos_counter_block_number', __('Number'))
+        ->set_attribute( 'type', 'number' )
+        ->set_attribute( 'min', 1 ),
+        Field::make('text', 'mos_counter_block_suffix', __('Suffix')),
+    ))
+    ->add_tab(__('Style'), array(
+        Field::make('text', 'mos_counter_block_wrapper_class', __('Wrapper Class')),
+        Field::make('complex', 'mos_counter_block_background', __('Background'))
+        ->set_max(1)
+        ->set_collapsed(true)
+        ->add_fields(array(
+            Field::make('color', 'background-color', __('Background Color')),
+            Field::make('image', 'background-image', __('Background Image')),
+            Field::make('select', 'background-position', __('Background Position'))
+            ->set_options(array(
+                'top left' => 'Top Left',
+                'top center' => 'Top Center',
+                'top right' => 'Top Right',
+                'center left' => 'Center Left',
+                'center center' => 'Center Center',
+                'center right' => 'Center Right',
+                'bottom left' => 'Bottom left',
+                'bottom center' => 'Bottom Center',
+                'bottom right' => 'Bottom Right',
+            ))
+            ->set_default_value(['top left']),
+            Field::make('select', 'background-size', __('Background Size'))
+            ->set_options(array(
+                'cover' => 'cover',
+                'contain' => 'contain',
+                'auto' => 'auto',
+                'inherit' => 'inherit',
+                'initial' => 'initial',
+                'revert' => 'revert',
+                'revert-layer' => 'revert-layer',
+                'unset' => 'unset',
+            ))
+            ->set_default_value('cover'),
+            //background-repeat: repeat|repeat-x|repeat-y|no-repeat|initial|inherit;
+            Field::make('select', 'background-repeat', __('Background Repeat'))
+            ->set_options(array(
+                'repeat' => 'repeat',
+                'repeat-x' => 'repeat-x',
+                'repeat-y' => 'repeat-y',
+                'no-repeat' => 'no-repeat',
+                'initial' => 'initial',
+                'inherit' => 'inherit',
+            ))
+            ->set_default_value('repeat'),
+            Field::make('select', 'background-attachment', __('Background Attachment'))
+            ->set_options(array(
+                'scroll' => 'Scroll',
+                'fixed' => 'Fixed',
+            ))
+            ->set_default_value('scroll'),
+        )),
+    )) 
+    ->add_tab(__('Advanced'), array(
+        Field::make('textarea', 'mos_counter_block_style', __('Style'))
+        ->set_help_text('Please write your custom css without style tag'),
+        Field::make('textarea', 'mos_counter_block_script', __('Script'))
+        ->set_help_text('Please write your custom script without script tag'),
+    ))  
+    ->set_render_callback(function ($fields, $attributes, $inner_blocks) {        
+        $id = 'element-'.time().rand(1000, 9999);
+    ?>
+        <div id="<?php echo $id ?>" class="mos-counter-block-wrapper <?php echo @$fields['mos_counter_block_wrapper_class']; ?> <?php echo @$attributes['className']; ?>"> 
+            <span class="prefix <?php echo @$fields['mos_counter_block_title_class']; ?>"><?php echo $fields['mos_counter_block_prefix'] ?></span>
+            <span class="counter <?php echo @$fields['mos_counter_block_title_class']; ?>"><?php echo $fields['mos_counter_block_number'] ?></span>
+            <span class="suffix <?php echo @$fields['mos_counter_block_title_class']; ?>"><?php echo $fields['mos_counter_block_suffix'] ?></span>
+        </div>        
+        <?php if(@$fields['mos_counter_block_style']) : ?>
+        <style><?php echo str_replace("selector",'#'.$id,$fields['mos_counter_block_style']); ?></style>
+        <?php endif?>
+        
+        <style>            
+            <?php echo '#'.$id ?> {
+                <?php if (@$fields['mos_counter_block_background'][0]['background-color']) : ?>
+                    background-color: <?php echo $fields['mos_counter_block_background'][0]['background-color'] ?>;
+                <?php endif?>
+                <?php if (@$fields['mos_counter_block_background'][0]['background-image']) : ?>
+                    background-image: url(<?php echo wp_get_attachment_url($fields['mos_counter_block_background'][0]['background-image']) ?>);
+                <?php endif?>
+                <?php if (@$fields['mos_counter_block_background'][0]['background-position']) : ?>
+                    background-position: <?php echo $fields['mos_counter_block_background'][0]['background-position'] ?>;
+                <?php endif?>
+                <?php if (@$fields['mos_counter_block_background'][0]['background-size']) : ?>
+                    background-size: <?php echo $fields['mos_counter_block_background'][0]['background-size'] ?>;
+                <?php endif?>
+                <?php if (@$fields['mos_counter_block_background'][0]['background-repeat']) : ?>
+                    background-repeat: <?php echo $fields['mos_counter_block_background'][0]['background-repeat'] ?>;
+                <?php endif?>
+                <?php if (@$fields['mos_counter_block_background'][0]['background-attachment']) : ?>
+                    background-attachment: <?php echo $fields['mos_counter_block_background'][0]['background-attachment'] ?>;
+                <?php endif?>
+            }
+        </style>
+        <?php if(@$fields['mos_counter_block_script']) : ?>
+        <script><?php echo $fields['mos_counter_block_script']; ?></script>
+        <?php endif?>
+    <?php
+    }); 
+    //Counter Block end
+    //Card Block start
+    Block::make(__('Card Block'))
+    ->add_tab(__('Content'), array(
+        Field::make('text', 'mos_card_title', __('Title')),
+        Field::make('rich_text', 'mos_card_desc', __('Intro')),
+        Field::make('text', 'mos_card_button_title', __('Button Title')),
+        Field::make('text', 'mos_card_button_url', __('Button URL')),
+        Field::make( 'image', 'mos_card_image', __( 'Image' ) ),
+        Field::make('text', 'mos_card_icon', __('Icon Class')),
+        Field::make('textarea', 'mos_card_svg', __('SVG')),
+    ))
+    ->add_tab(__('Style'), array(
+        Field::make('text', 'mos_card_wrapper_class', __('Wrapper Class')),
+        Field::make('text', 'mos_card_title_class', __('Title Class')),
+        Field::make('text', 'mos_card_intro_class', __('Intro Class')),
+        Field::make('text', 'mos_card_button_class', __('Button Class')),
+    )) 
+    ->add_tab(__('Advanced'), array(
+        Field::make('textarea', 'mos_card_style', __('Style'))
+        ->set_help_text('Please write your custom css without style tag, you can use selector tag to target the parent element'),
+        Field::make('textarea', 'mos_card_script', __('Script'))
+        ->set_help_text('Please write your custom script without script tag'),
+    ))  
+    ->set_render_callback(function ($fields, $attributes, $inner_blocks) {        
+        $id = 'element-'.time().rand(1000, 9999);
+    ?>
+        <div id="<?php echo $id ?>" class="mos-card-wrapper <?php echo @$fields['mos_card_wrapper_class']; ?> <?php echo @$attributes['className']; ?>"> 
+            <div class="media-part">
+                <?php if(@$fields['mos_card_image']) : ?>
+                    <div class="img-part">
+                        <?php echo wp_get_attachment_image( $fields['mos_card_image'], "full", "", array( "class" => "img-fluid" ) );  ?>
+                    </div>
+                <?php endif?>                 
+                <?php if (@$fields['mos_card_svg']) : ?>
+                    <span class="svg"><?php echo @$fields['mos_card_svg']; ?></span>
+                <?php endif?>
+                <?php if (@$fields['mos_card_icon']) : ?>
+                    <i class="icon <?php echo @$fields['mos_card_icon']; ?>"></i>
+                <?php endif?>
+            </div> 
+            <div class="text-part">
+                <?php if(@$fields['mos_card_title']) : ?><div class="title <?php echo @$fields['mos_card_title_class']; ?>"><?php echo $fields['mos_card_title'] ?></div><?php endif?>
+                <?php if(@$fields['mos_card_desc']) : ?><div class="intro <?php echo @$fields['mos_card_intro_class']; ?>"><?php echo do_shortcode($fields['mos_card_desc']); ?></div><?php endif?>
+
+                <?php if(@$fields['mos_card_button_title'] && @$fields['mos_card_button_url']) : ?>
+                    <div class="is-layout-flex wp-block-buttons">
+                        <div class="wp-block-button"><a href="<?php echo $fields['mos_card_button_url'] ?>" class="wp-block-button__link wp-element-button <?php echo @$fields['mos_card_button_class']; ?>"><?php echo $fields['mos_card_button_title'] ?></a></div>
+                    </div>
+                <?php endif?>
+            </div>
+        </div>        
+        <?php if(@$fields['mos_card_style']) : ?>
+            <style><?php echo str_replace("selector",'#'.$id,$fields['mos_card_style']); ?></style>
+        <?php endif?>
+        <?php if(@$fields['mos_card_script']) : ?>
+            <script><?php echo $fields['mos_card_script']; ?></script>
+        <?php endif?>
+    <?php
+    }); 
+//Card Block end  
     //Section Title Block start
     Block::make(__('Section Title Block'))        
     ->add_tab( __( 'Scripts' ), array(
@@ -248,6 +414,14 @@ function mos_gutenberg_blocks() {
             Field::make('textarea', 'svg', __('SVG')),
             Field::make('text', 'link', __('Link'))
             ->set_attribute( 'type', 'url' ),
+            Field::make( 'select', 'target', __( 'Target' ) )
+            ->set_options( array(
+                '0' => 'None',
+                '_blank' => '_blank',
+                '_self' => '_self',
+                '_parent' => '_parent',
+                '_top' => '_top',
+            ))
         ))
         ->set_header_template('
             <% if (title) { %>
@@ -291,7 +465,7 @@ function mos_gutenberg_blocks() {
                         <div class="intro"><?php echo @$item['intro']; ?></div>
                     <?php endif?>
                     <?php if (@$item['link']) : ?>
-                        <a href="<?php echo @$item['link']; ?>" class="hidden-link">Read More</a>
+                        <a href="<?php echo @$item['link']; ?>" class="hidden-link" <?php echo (@$item['target'])?'target="'.$item['target'].'"':''; ?>>Read More</a>
                     <?php endif?>
                     </div>
                 <?php endforeach?>

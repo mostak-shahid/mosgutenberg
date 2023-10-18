@@ -21,7 +21,11 @@
 .mos-tab-item {
   display: none;
 }
-
+.cf-field .ace_editor,
+.cf-field .ace_scroller,
+.cf-field .ace_scrollbar {
+  min-height: 500px !important;
+}
 @media (min-width: 992px) {
   .mos-tabs {
     width: 200px;

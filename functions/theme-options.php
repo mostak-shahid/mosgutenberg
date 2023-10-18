@@ -40,7 +40,15 @@ function mos_theme_options() {
                 'post_type' => 'layout',
             )
         ))
-        ->set_max(1),        
+        ->set_max(1),    
+        Field::make( 'association', 'mos-header-layout', __( 'Select Header Layout' ) )
+        ->set_types( array(
+            array(
+                'type'      => 'post',
+                'post_type' => 'layout',
+            )
+        ))
+        ->set_max(1),      
         Field::make( 'association', 'mos-footer-layout', __( 'Select Footer Layout' ) )
         ->set_types( array(
             array(
@@ -155,32 +163,7 @@ function mos_theme_options() {
     
     Container::make('theme_options', __('Theme Resourcess'))
     ->set_page_parent($basic_options_container) // reference to a top level container
-    ->add_fields(array(                   
-
-        Field::make('radio', 'mos_plugin_bootstrap', __('Bootsrap'))
-        ->set_options(array(
-            'bootstrap-bundle' => 'Bundle CSS',
-            'seperated-files' => 'Seperated Files',
-            'off' => 'Disabled',
-        ))
-        ->set_default_value('bootstrap-bundle'),
-        
-        Field::make('multiselect', 'mos_plugin_bootstrap_seperated_files', __('Files'))
-        ->set_options(array(
-            'bootstrap-reboot' => 'Reboot CSS',
-            'bootstrap-grid' => 'Grid CSS',
-            'bootstrap-utilities' => 'Utilities CSS',
-        ))
-        ->set_required( true )
-        ->set_conditional_logic(array(
-            'relation' => 'AND', // Optional, defaults to "AND"
-            array(
-                'field' => 'mos_plugin_bootstrap',
-                'value' => 'seperated-files', // Optional, defaults to "". Should be an array if "IN" or "NOT IN" operators are used.
-                'compare' => '=', // Optional, defaults to "=". Available operators: =, <, >, <=, >=, IN, NOT IN
-            )
-        )),
-
+    ->add_fields(array(          
         Field::make('radio', 'mos_plugin_jquery', __('Jquery'))
         ->set_options(array(
             'on' => 'Enabled',

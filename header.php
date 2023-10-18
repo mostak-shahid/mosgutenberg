@@ -21,22 +21,7 @@ else $page_id = get_the_ID();
     <script src="<?php echo get_template_directory_uri(); ?>/js/html5shiv.js"></script>
     <script src="<?php echo get_template_directory_uri(); ?>/js/respond.min.js"></script>
     <![endif]-->    
-    <style>
-    :root {
-        --mos-body-bg: <?php echo carbon_get_theme_option( 'mos_body_bg' )?carbon_get_theme_option( 'mos_body_bg' ):'#fff'?>;       
-        --mos-primary-color: <?php echo carbon_get_theme_option( 'mos_primary_color' )?carbon_get_theme_option( 'mos_primary_color' ):'#00f5eb'?>;            
-        --mos-secondary-color: <?php echo carbon_get_theme_option( 'mos_secondary_color' )?carbon_get_theme_option( 'mos_secondary_color' ):'#21fff6'?>;            
-        --mos-content-color: <?php echo carbon_get_theme_option( 'mos_content_color' )?carbon_get_theme_option( 'mos_content_color' ):'#212529'?>;       
-    }    
-    </style>
     <?php wp_head(); ?>
-    <script>
-        function hideLoader() {
-            console.log(0);
-            //document.querySelector(".se-pre-con").style.display = "none";
-            document.getElementById("page-loader").classList.add("d-none");
-        }
-    </script>
 </head>
 
 <body <?php body_class(); ?> <?php if (carbon_get_theme_option( 'mos-page-loader' ) == 'on') : ?> onload='document.getElementById("page-loader").classList.add("d-none")' <?php endif?>>
@@ -51,9 +36,9 @@ else $page_id = get_the_ID();
         <?php endif?>
     </div>
     <?php endif; ?>
-    <div class="<?php echo carbon_get_theme_option( 'mos-site-layout' ) ?>" id="container">
+    <div class="<?php echo carbon_get_theme_option( 'mos-site-layout' ) ?>" id="body-container">
     
-      <div class="wrapper cf">       
+      <div class="wrapper cf d-none">       
             <?php
                 wp_nav_menu(array(
                     'theme_location' => 'mobilemenu',
@@ -86,5 +71,54 @@ else $page_id = get_the_ID();
                 ?>
                 <?php endif?>
             </div>
+            <?php if (carbon_get_theme_option( 'mos-header-mobile-enable' ) == 'on') : ?>
+                <?php 
+                    $mobile_layout = carbon_get_theme_option( 'mos-header-mobile-layout' );
+                ?>
+                <div class="d-lg-none mobile-header">
+                    <div class="wp-block-nk-awb nk-awb alignfull p-0"> 
+                        <?php
+                            $layout_id = $mobile_layout[0]['id'];//This is page id or post id
+                            $content_post = get_post($layout_id);
+                            $content = $content_post->post_content;
+                            $content = apply_filters('the_content', $content);
+                            $content = str_replace(']]>', ']]&gt;', $content);
+                            echo $content;  
+                        ?>
+                    </div>
+                </div>
+            <?php endif?>
+            <?php if (carbon_get_theme_option( 'mos-header-sticky-enable' ) == 'on') : ?>
+                <?php 
+                    $sticky_layout = carbon_get_theme_option( 'mos-header-sticky-layout' );
+                ?>
+                <div class="scroll-header smooth">
+                    <?php 
+                        $layout_id = $sticky_layout[0]['id'];//This is page id or post id
+                        $content_post = get_post($layout_id);
+                        $content = $content_post->post_content;
+                        $content = apply_filters('the_content', $content);
+                        $content = str_replace(']]>', ']]&gt;', $content);
+                        echo $content;  
+                    ?>
+                </div>
+            <?php endif?>
         </header>
+        <?php 
+            $option_title_layout = carbon_get_theme_option( 'mos-title-layout' );
+            $mos_page_title_type = carbon_get_post_meta( get_the_ID(), 'mos_page_title_type' );
+            $mos_page_title_layout = carbon_get_post_meta( get_the_ID(), 'mos_page_title_layout' );
+            $title_layout = ($mos_page_title_type == 'custom')?$mos_page_title_layout:$option_title_layout;
+
+            if($mos_page_title_type != 'none' && @$title_layout) : 
+            ?>
+            <?php 
+                $layout_id = $title_layout[0]['id'];//This is page id or post id
+                $content_post = get_post($layout_id);
+                $content = $content_post->post_content;
+                $content = apply_filters('the_content', $content);
+                $content = str_replace(']]>', ']]&gt;', $content);
+                echo $content;            
+            ?>
+        <?php endif?>
 

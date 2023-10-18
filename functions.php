@@ -32,7 +32,7 @@ require_once('functions/breadcrumb.php');
 require_once('functions/contact-form-7-element.php');
 require_once('functions/post-types.php');
 require_once('functions/postgrid-column-custimozation.php');
-require_once ('carbon-fields.php');
+require_once('carbon-fields.php');
 require_once('functions/theme-options.php');
 require_once('functions/gutenberg-blocks.php');
 require_once('functions/post-metas.php');
@@ -609,3 +609,37 @@ $panel_settings = [
     ],
 ];
 //new Mos_Theme_Options\Options_Panel( $panel_args, $panel_settings );
+
+/*
+add_filter( 'woocommerce_checkout_fields', 'misha_remove_fields', 9999 );
+function misha_remove_fields( $checkout_fields ) {
+	
+	// she wanted me to leave these fields in checkout
+	// unset( $checkout_fields[ 'billing' ][ 'billing_first_name' ] );
+	// unset( $checkout_fields[ 'billing' ][ 'billing_last_name' ] );
+	// unset( $checkout_fields[ 'billing' ][ 'billing_phone' ] );
+	// unset( $checkout_fields[ 'billing' ][ 'billing_email' ] );
+	// unset( $checkout_fields[ 'order' ][ 'order_comments' ] ); // remove order notes
+	
+	// and to remove the billing fields below
+	unset( $checkout_fields[ 'billing' ][ 'billing_company' ] ); // remove company field
+	unset( $checkout_fields[ 'billing' ][ 'billing_country' ] );
+	//unset( $checkout_fields[ 'billing' ][ 'billing_address_1' ] );
+	unset( $checkout_fields[ 'billing' ][ 'billing_address_2' ] );
+	unset( $checkout_fields[ 'billing' ][ 'billing_city' ] );
+	unset( $checkout_fields[ 'billing' ][ 'billing_state' ] ); // remove state field
+	unset( $checkout_fields[ 'billing' ][ 'billing_postcode' ] ); // remove zip code field
+
+	return $checkout_fields;
+}
+add_filter( 'woocommerce_checkout_fields' , 'misha_not_required_fields', 9999 );
+function misha_not_required_fields( $fields ) {
+	
+	unset( $fields[ 'billing' ][ 'billing_email' ][ 'required' ] );
+
+	// the same way you can make any field required, example:
+	// $fields[ 'billing' ][ 'billing_company' ][ 'required' ] = true;
+	
+	return $fields;
+}
+*/
