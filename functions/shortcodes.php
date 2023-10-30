@@ -37,8 +37,6 @@ function home_url_func( $atts = array(), $content = '' ) {
 }
 add_shortcode( 'home-url', 'home_url_func' );
 function site_identity_func( $atts = array(), $content = null ) {
-	global $forclient_options;
-	$logo_option = (carbon_get_theme_option( 'mos-logo-show' ))?carbon_get_theme_option( 'mos-logo-show' ):'title';
 	$html = '';
 	$atts = shortcode_atts( array(
 		'class' => '',
@@ -46,20 +44,14 @@ function site_identity_func( $atts = array(), $content = null ) {
 	), $atts, 'site-identity' ); 
     ob_start(); ?>
 <div class="logo-wrapper <?php echo $atts['container_class']?>">
-    <?php if($logo_option == 'logo') : ?>
     <a class="logo <?php echo $atts['class']?>" href="<?php echo home_url()?>">
         <?php if(carbon_get_theme_option( 'mos-logo' )) : ?>
         <?php echo wp_get_attachment_image( carbon_get_theme_option( 'mos-logo' ), 'full', "", array( "class" => "img-responsive img-fluid" ) );  ?>
         <?php else : ?>
-        <img class="img-responsive img-fluid" src="<?php echo get_template_directory_uri(). '/images/logo.png'?>" alt="<?php echo get_bloginfo('name').' - Logo'?>">
-        <?php endif?>
-    </a>
-    <?php else : ?>
-    <div class="<?php echo $atts['class']?>">
         <h1 class="site-title"><a href="<?php echo home_url()?>"><?php echo get_bloginfo('name')?></a></h1>
         <p class="site-description"><?php echo get_bloginfo( 'description' )?></p>
-    </div>
-    <?php endif;?>
+        <?php endif?>
+    </a>
 </div>
 <?php $html = ob_get_clean();	
 	return $html;

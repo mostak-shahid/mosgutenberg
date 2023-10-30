@@ -163,7 +163,8 @@ function mosgutenberg_plugins_management() {
 		),
 		array(
 			'name'				=> 'Bootstrap Blocks', 
-			'slug'				=> get_template_directory_uri() . '/plugins/wp-bootstrap-blocks.php', 
+			'slug'				=> 'wp-bootstrap-blocks', 
+			'source'			=> get_template_directory_uri() . '/plugins/wp-bootstrap-blocks.zip', 
 			'required'			=> false,
 			'force_activation'	=> false, 
 		),

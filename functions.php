@@ -46,7 +46,7 @@ require_once('functions/ocdi.php');
     // WP < 5 beta
     add_filter('gutenberg_can_edit_post_type', '__return_false');    
 }*/
-require_once('functions/MOS_Options_Panel.php');
+//require_once('functions/MOS_Options_Panel.php');
 // Register new Options panel.
 $panel_args = [
     'title'           => 'My Options',

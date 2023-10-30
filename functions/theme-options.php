@@ -8,7 +8,8 @@ function mos_theme_options() {
     ->set_icon('dashicons-admin-customizer')
     ->add_fields(array(
         Field::make('image', 'mos-logo', __('Logo'))
-        ->set_default_value(get_template_directory_uri() . '/assets/img/logo.svg'),        
+        ->set_default_value(get_template_directory_uri() . '/assets/img/logo.svg'),      
+
         Field::make('select', 'mos-site-layout', __('Site Layout'))
         ->set_options(array(
             'wide-layout' => 'Wide',
@@ -20,7 +21,8 @@ function mos_theme_options() {
             'container' => 'Container',
             'boxed-layout' => 'Custom',
         ))
-        ->set_default_value('wide'),  
+        ->set_default_value('wide'), 
+
         Field::make( 'text', 'mos-site-width', __( 'Site width (px)' ) )        
         ->set_conditional_logic(array(
             'relation' => 'AND', // Optional, defaults to "AND"
@@ -33,6 +35,7 @@ function mos_theme_options() {
         ->set_attribute( 'type', 'number' )
         ->set_default_value('1200')
         ->set_required( true ),    
+
         Field::make( 'association', 'mos-header-layout', __( 'Select Header Layout' ) )
         ->set_types( array(
             array(
@@ -40,15 +43,17 @@ function mos_theme_options() {
                 'post_type' => 'layout',
             )
         ))
-        ->set_max(1),    
-        Field::make( 'association', 'mos-header-layout', __( 'Select Header Layout' ) )
+        ->set_max(1),   
+
+        Field::make( 'association', 'mos-title-layout', __( 'Select Page Title Layout' ) )
         ->set_types( array(
             array(
                 'type'      => 'post',
                 'post_type' => 'layout',
             )
         ))
-        ->set_max(1),      
+        ->set_max(1),   
+
         Field::make( 'association', 'mos-footer-layout', __( 'Select Footer Layout' ) )
         ->set_types( array(
             array(
@@ -57,6 +62,7 @@ function mos_theme_options() {
             )
         ))
         ->set_max(1),
+        
         Field::make( 'association', 'mos-404-page', __( 'Custom 404 page' ) )
         ->set_types( array(
             array(
@@ -65,6 +71,7 @@ function mos_theme_options() {
             )
         ))
         ->set_max(1),
+
     ));
 
     Container::make('theme_options', __('Style and Colors'))
@@ -360,6 +367,23 @@ function mos_theme_options() {
     ->set_page_parent($basic_options_container) // reference to a top level container
     ->add_fields(array(
         Field::make( 'checkbox', 'mos-header-sticky-enable', __( 'Enable Sticky Header' ) ),
+        Field::make( 'association', 'mos-header-sticky-layout', __( 'Select Header Layout' ) )
+        ->set_conditional_logic( array(
+            'relation' => 'AND', // Optional, defaults to "AND"
+            array(
+                'field' => 'mos-header-sticky-enable',
+                'value' => true, // Optional, defaults to "". Should be an array if "IN" or "NOT IN" operators are used.
+                'compare' => '=', // Optional, defaults to "=". Available operators: =, <, >, <=, >=, IN, NOT IN
+            )
+        ))
+        ->set_types( array(
+            array(
+                'type'      => 'post',
+                'post_type' => 'layout',
+            )
+        ))
+        ->set_max(1),  
+        /*
         Field::make( 'radio_image', 'mos-header-sticky-layout', __( 'Sticky Header Layout' ) )
         ->set_conditional_logic( array(
             'relation' => 'AND', // Optional, defaults to "AND"
@@ -404,12 +428,30 @@ function mos_theme_options() {
                 <%- title %> <%- link ? "(" + link + ")" : "" %>
             <% } %>
         '),
+        */
     ));
 
     Container::make('theme_options', __('Mobile Header'))
     ->set_page_parent($basic_options_container) // reference to a top level container
     ->add_fields(array(
         Field::make( 'checkbox', 'mos-header-mobile-enable', __( 'Enable Mobile Header' ) ),
+        Field::make( 'association', 'mos-header-mobile-layout', __( 'Select Header Layout' ) )
+        ->set_conditional_logic( array(
+            'relation' => 'AND', // Optional, defaults to "AND"
+            array(
+                'field' => 'mos-header-mobile-enable',
+                'value' => true, // Optional, defaults to "". Should be an array if "IN" or "NOT IN" operators are used.
+                'compare' => '=', // Optional, defaults to "=". Available operators: =, <, >, <=, >=, IN, NOT IN
+            )
+        ))
+        ->set_types( array(
+            array(
+                'type'      => 'post',
+                'post_type' => 'layout',
+            )
+        ))
+        ->set_max(1),  
+        /*
         Field::make( 'radio_image', 'mos-header-mobile-layout', __( 'Mobile Header Layout' ) )
         ->set_conditional_logic( array(
             'relation' => 'AND', // Optional, defaults to "AND"
@@ -454,8 +496,9 @@ function mos_theme_options() {
             <% if (title) { %>
                 <%- title %> <%- link ? "(" + link + ")" : "" %>
             <% } %>
-        '),
+        '),*/
     ));
+
     Container::make('theme_options', __('Translate'))
     ->set_page_parent($basic_options_container) // reference to a top level container
     ->add_fields(array(
