@@ -610,7 +610,7 @@ $panel_settings = [
 ];
 //new Mos_Theme_Options\Options_Panel( $panel_args, $panel_settings );
 
-/*
+
 add_filter( 'woocommerce_checkout_fields', 'misha_remove_fields', 9999 );
 function misha_remove_fields( $checkout_fields ) {
 	
@@ -642,4 +642,4 @@ function misha_not_required_fields( $fields ) {
 	
 	return $fields;
 }
-*/
+

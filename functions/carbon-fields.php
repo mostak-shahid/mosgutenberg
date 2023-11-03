@@ -350,7 +350,7 @@ function crb_attach_theme_options() {
                 
                 Field::make( 'separator', 'mos-single-job-application-page-hr', __( 'Application page' ) ),
                 Field::make('text', 'mos-single-job-application-page', __('Application page')),
-//                
+               
                 Field::make( 'separator', 'mos-single-job-newsletter-hr', __( 'Newsletter' ) ),
                 
                 Field::make('radio', 'mos-single-job-newsletter-enable', __('Show newsletter?'))
