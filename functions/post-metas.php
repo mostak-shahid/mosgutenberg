@@ -17,6 +17,7 @@ function mos_post_meta_options() {
     ));    
     Container::make('post_meta', 'Page Data')
     ->where('post_type', '=', 'page')
+    ->or_where( 'post_type', '=', 'post' )
     ->add_fields(array(        
         Field::make( 'select', 'mos_page_header_type', __( 'Header Option' ) )
         ->set_options( array(
