@@ -53,6 +53,25 @@ function mos_theme_options() {
             )
         ))
         ->set_max(1),   
+        
+
+        Field::make( 'association', 'mos-page-title-layout', __( 'Select Page Title Layout' ) )
+        ->set_types( array(
+            array(
+                'type'      => 'post',
+                'post_type' => 'layout',
+            )
+        ))
+        ->set_max(1),
+
+        Field::make( 'association', 'mos-post-title-layout', __( 'Select Post Title Layout' ) )
+        ->set_types( array(
+            array(
+                'type'      => 'post',
+                'post_type' => 'layout',
+            )
+        ))
+        ->set_max(1), 
 
         Field::make( 'association', 'mos-footer-layout', __( 'Select Footer Layout' ) )
         ->set_types( array(
