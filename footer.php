@@ -28,9 +28,10 @@
     </div>
 
     <?php 
+    $page_id = (is_home())?get_option('page_for_posts', true):get_the_ID(); 
     $option_footer_layout = carbon_get_theme_option( 'mos-footer-layout' );
-    $mos_page_footer_type = carbon_get_post_meta( get_the_ID(), 'mos_page_footer_type' );
-    $mos_page_footer_layout = carbon_get_post_meta( get_the_ID(), 'mos_page_footer_layout' );
+    $mos_page_footer_type = carbon_get_post_meta( $page_id, 'mos_page_footer_type' );
+    $mos_page_footer_layout = carbon_get_post_meta( $page_id, 'mos_page_footer_layout' );
     $footer_layout = ($mos_page_footer_type == 'custom')?$mos_page_footer_layout:$option_footer_layout;
 
     if($mos_page_footer_type != 'none' && @$footer_layout) : 
