@@ -54,9 +54,10 @@ else $page_id = get_the_ID();
         <header id="header" class="main-header smooth <?php echo carbon_get_theme_option( 'mos-header-class' ) ?>">
             <div class="wrapper">
                 <?php 
+                $page_id = (is_home())?get_option('page_for_posts', true):get_the_ID(); 
                 $option_header_layout = carbon_get_theme_option( 'mos-header-layout' );
-                $mos_page_header_type = carbon_get_post_meta( get_the_ID(), 'mos_page_header_type' );
-                $mos_page_header_layout = carbon_get_post_meta( get_the_ID(), 'mos_page_header_layout' );
+                $mos_page_header_type = carbon_get_post_meta( $page_id, 'mos_page_header_type' );
+                $mos_page_header_layout = carbon_get_post_meta( $page_id, 'mos_page_header_layout' );
                 $header_layout = ($mos_page_header_type == 'custom')?$mos_page_header_layout:$option_header_layout;
 
                 if($mos_page_header_type != 'none' && @$header_layout) : 
@@ -105,20 +106,37 @@ else $page_id = get_the_ID();
             <?php endif?>
         </header>
         <?php 
-            $option_title_layout = carbon_get_theme_option( 'mos-title-layout' );
-            $mos_page_title_type = carbon_get_post_meta( get_the_ID(), 'mos_page_title_type' );
-            $mos_page_title_layout = carbon_get_post_meta( get_the_ID(), 'mos_page_title_layout' );
-            $title_layout = ($mos_page_title_type == 'custom')?$mos_page_title_layout:$option_title_layout;
+            if (is_single()){
+                
+                $option_title_layout = carbon_get_theme_option( 'mos-post-title-layout' );
+                $mos_page_title_type = carbon_get_post_meta( get_the_ID(), 'mos_page_title_type' );
+                $mos_page_title_layout = carbon_get_post_meta( get_the_ID(), 'mos_page_title_layout' );
+                $title_layout = ($mos_page_title_type == 'custom')?$mos_page_title_layout:$option_title_layout;
 
-            if($mos_page_title_type != 'none' && @$title_layout) : 
-            ?>
-            <?php 
-                $layout_id = $title_layout[0]['id'];//This is page id or post id
-                $content_post = get_post($layout_id);
-                $content = $content_post->post_content;
-                $content = apply_filters('the_content', $content);
-                $content = str_replace(']]>', ']]&gt;', $content);
-                echo $content;            
-            ?>
-        <?php endif?>
+                if($vertical_page_title_type != 'none' && @$title_layout) : 
+                    $layout_id = $title_layout[0]['id'];//This is page id or post id
+                    $content_post = get_post($layout_id);
+                    $content = $content_post->post_content;
+                    $content = apply_filters('the_content', $content);
+                    $content = str_replace(']]>', ']]&gt;', $content);
+                    echo $content;                 
+                    echo '<style>'.get_post_meta( $layout_id, 'gutentor_dynamic_css', true ).'</style>';    
+                endif;
+            }
+            else {
+                $page_id = (is_home())?get_option('page_for_posts', true):get_the_ID();
+                $option_title_layout = carbon_get_theme_option( 'mos-page-title-layout' );
+                $mos_page_title_type = carbon_get_post_meta( $page_id, 'mos_page_title_type' );
+                $mos_page_title_layout = carbon_get_post_meta( $page_id, 'mos_page_title_layout' );
+                $title_layout = ($mos_page_title_type == 'custom')?$mos_page_title_layout:$option_title_layout;
+    
+                if($mos_page_title_type != 'none' && @$title_layout) : 
+                    $layout_id = $title_layout[0]['id'];//This is page id or post id
+                    $content_post = get_post($layout_id);
+                    $content = $content_post->post_content;
+                    $content = apply_filters('the_content', $content);
+                    $content = str_replace(']]>', ']]&gt;', $content);
+                    echo $content;
+                endif;
+            }?>
 
