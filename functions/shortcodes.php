@@ -180,3 +180,80 @@ function mos_translate_func( $atts = array(), $content = null ) {
     return _mos_translate($atts['input'],$atts['ucf']);
 }
 add_shortcode( 'mos-translate', 'mos_translate_func' );
+
+function page_title_func( $atts = array(), $content = null ) {
+    if (is_archive()) {
+        $page_title = get_the_archive_title();
+    }
+    else if (is_home()) {
+        $page_title = get_the_title( get_option('page_for_posts', true));
+    }
+    else if (is_search()) {
+        $page_title = 'Search result for: ' . get_search_query();
+    }
+    else {
+        $page_title = get_the_title( get_the_ID() );
+    }
+    
+	$atts = shortcode_atts( array(
+		'tag' => 'h1',
+        'class' => '',
+        'text' => ''
+	), $atts, 'page-title' ); 
+    ob_start(); ?>
+<<?php echo @$atts['tag']?> class="<?php echo @$atts['class']?>">
+    <?php echo (@$atts['text'])?$atts['text']:$page_title ?></<?php echo @$atts['tag']?>>
+<?php $html = ob_get_clean();	
+	return $html;
+}
+add_shortcode( 'page-title', 'page_title_func' );
+
+
+function page_short_description_func( $atts = array(), $content = null ) {
+    $page_id = (is_home())?get_option('page_for_posts', true):get_the_ID();
+    $short_description = carbon_get_post_meta( $page_id, 'mos_page_short_description' );
+	$atts = shortcode_atts( array(
+		'tag' => 'div',
+        'class' => '',
+        'text' => ''
+	), $atts, 'page-short-description' ); 
+    ob_start(); ?>
+<<?php echo @$atts['tag']?> class="<?php echo @$atts['class']?>">
+    <?php echo (@$atts['text'])?$atts['text']:$short_description ?></<?php echo @$atts['tag']?>>
+<?php $html = ob_get_clean();	
+	return $html;
+}
+add_shortcode( 'page-short-description', 'page_short_description_func' );
+
+function feature_image_func( $atts = array(), $content = null ) {    
+    $page_id = (is_home())?get_option('page_for_posts', true):get_the_ID();
+	$atts = shortcode_atts( array(
+		'tag' => 'div',
+        'class' => '',
+        'text' => ''
+	), $atts, 'feature-image' ); 
+    ob_start(); ?>
+<<?php echo @$atts['tag']?> class="<?php echo @$atts['class']?>">
+    <?php if ( has_post_thumbnail() ) {
+    the_post_thumbnail();
+    }
+    ?>
+    <?php $html = ob_get_clean();	
+	return $html;
+}
+add_shortcode( 'feature-image', 'feature_image_func' );
+
+function breadcrumbs_func( $atts = array(), $content = null ) {
+    $short_description = carbon_get_post_meta( get_the_ID(), 'mos_page_short_description' );
+	$atts = shortcode_atts( array(
+		'tag' => 'div',
+        'class' => '',
+        'text' => ''
+	), $atts, 'breadcrumbs' ); 
+    ob_start(); ?>
+
+    <?php return vertical_breadcrumbs()?>
+    <?php $html = ob_get_clean();	
+	return $html;
+}
+add_shortcode( 'breadcrumbs', 'breadcrumbs_func' );
