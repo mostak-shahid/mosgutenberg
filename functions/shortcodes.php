@@ -252,8 +252,20 @@ function breadcrumbs_func( $atts = array(), $content = null ) {
 	), $atts, 'breadcrumbs' ); 
     ob_start(); ?>
 
-    <?php return vertical_breadcrumbs()?>
+    <?php return mos_breadcrumbs()?>
     <?php $html = ob_get_clean();	
 	return $html;
 }
 add_shortcode( 'breadcrumbs', 'breadcrumbs_func' );
+function print_layout_func( $atts = array(), $content = null ) {
+	$atts = shortcode_atts( array(
+		'id' => '',
+	), $atts, 'print-layout' ); 
+    $content_post = get_post($atts['id']);
+    $content = $content_post->post_content;
+    $content = apply_filters('the_content', $content);
+    $content = str_replace(']]>', ']]&gt;', $content);     
+    $content .= '<style data-id="gutentor-dynamic-css">'.get_post_meta( $atts['id'], 'gutentor_dynamic_css', true ).'</style>';    
+    return $content;
+}
+add_shortcode( 'print-layout', 'print_layout_func' );
